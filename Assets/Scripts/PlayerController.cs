@@ -6,25 +6,28 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
-    private float playerSpeed = 100.0f;
+    public float playerSpeed = 100.0f;
+    public float maxSpeed = 150.0f;
     public int health = 3;
-    public TextMeshProUGUI livesText;
+    public int maxHealth = 3;
+    public int dashes = 0;
+    public int maxDashes = 3;
+    public int tokenCount = 0;
     public bool parry = false;
+    public bool iFrames = false;
     private bool canParry = true;
     float maxHeight;
     float maxWidth;
+
+    public TextMeshProUGUI livesText;
     private Color baseColor;
 
     // Start is called before the first frame update
     void Start()
     {
         Canvas canvas = FindObjectOfType<Canvas>();
-        RectTransform rt = canvas.GetComponent<RectTransform>();
-        // Global height and width are about 100. Not sure how to grab the exact numbers yet
-        // maxHeight = rt.rect.height / 2;
-        maxHeight = 50;
-        // maxWidth = rt.rect.width / 2;
-        maxWidth = 100;
+        maxHeight = (canvas.planeDistance / 2) - 1;
+        maxWidth = canvas.planeDistance - 1;
         Debug.Log("Height: " + maxHeight);
         Debug.Log("Width: " + maxWidth);
         controller = gameObject.AddComponent<CharacterController>();
@@ -64,7 +67,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(GameObject collider)
+    public void OnCollision(GameObject collider)
     {
         if (parry)
         {
@@ -73,12 +76,19 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(SuccessfulParry());
             return;
         }
-        health -= 1;
-        livesText.text = "Lives Remaining: " + health;
-        if(health <= 0)
+        else if (iFrames)
         {
-            Debug.Log("You died!");
+            Debug.Log("In damage iFrames");
+            Destroy(collider);
+            return;
         }
+        StartCoroutine(TakeDamage());
+        
+    }
+
+    public void OnDeath()
+    {
+        Debug.Log("You died!");
     }
 
     IEnumerator PlayerParry()
@@ -103,7 +113,24 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SuccessfulParry()
     {
+        parry = false;
         canParry = true;
         yield return null;
+    }
+
+    IEnumerator TakeDamage()
+    {
+        canParry = true;
+        iFrames = true;
+        health -= 1;
+        if (health <= 0)
+        {
+            OnDeath();
+        }
+        livesText.text = "Lives Remaining: " + health;
+        this.GetComponentInChildren<Renderer>().material.color = new Color(255, 0, 0);
+        yield return new WaitForSeconds(1);
+        this.GetComponentInChildren<Renderer>().material.color = baseColor;
+        iFrames = false;
     }
 }
