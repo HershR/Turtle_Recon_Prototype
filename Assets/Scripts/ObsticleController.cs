@@ -10,8 +10,7 @@ public class ObsticleController : MonoBehaviour
 
     private void Awake()
     {
-        Canvas canvas = FindObjectOfType<Canvas>();
-        RectTransform rt = canvas.GetComponent<RectTransform>();
+        RectTransform rt = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
         maxHeight = rt.rect.height/2;
         maxWidth = rt.rect.width/2;
         transform.localPosition = new Vector3(Random.Range(-1 * maxWidth, maxWidth), Random.Range(-1 * maxHeight, maxHeight), 5000);
@@ -34,7 +33,7 @@ public class ObsticleController : MonoBehaviour
         {
             return;
         }
-        collision.gameObject.GetComponent<PlayerController>().TakeDamage(this.gameObject);
+        collision.gameObject.GetComponent<PlayerController>().OnCollision(this.gameObject);
         Destroy(this.gameObject);
         Debug.Log("You got hit");
     }
