@@ -2,23 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObsticleSpawner : MonoBehaviour
+namespace AYellowpaper.SerializedCollections
 {
-    public GameObject obsticle;
-
-	float timer = 0f;
-
-	void Update()
+	public class ObsticleSpawner : MonoBehaviour
 	{
-		if (timer <= 3f)
+		public GameObject obsticle;
+		public GameObject token;
+
+		[SerializedDictionary("Interactable", "Weight")]
+		public SerializedDictionary<InteractableType, int> InteractableWeights;
+
+		public enum InteractableType
 		{
-			timer += Time.deltaTime;
+			Trash,
+			Sharp,
+			Oil,
+			Wires,
+			Tokens,
+			Kelp,
+			JellyFish,
+			Dash
 		}
-		else
+
+		// We get env passed in
+		// From that enum, we get 
+
+		float timer = 0f;
+
+		private void Start()
 		{
-			timer = 0;
-			Instantiate(obsticle, this.transform);
-			Debug.Log("obsticle spawned");
+			Debug.Log(InteractableWeights);
+		}
+
+		void Update()
+		{
+			if (timer <= 3f)
+			{
+				timer += Time.deltaTime;
+			}
+			else
+			{
+				timer = 0;
+				Instantiate(obsticle, this.transform);
+				Debug.Log("obsticle spawned");
+			}
 		}
 	}
 }
