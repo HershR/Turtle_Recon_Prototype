@@ -2,23 +2,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObsticleSpawner : MonoBehaviour
+namespace AYellowpaper.SerializedCollections
 {
-    public GameObject obsticle;
-
-	float timer = 0f;
-
-	void Update()
+	public class ObsticleSpawner : MonoBehaviour
 	{
-		if (timer <= 3f)
+		[SerializedDictionary("Interactable", "Weight")]
+		public SerializedDictionary<InteractableType, int> InteractableWeights;
+		public SerializedDictionary<InteractableType, GameObject> InteractableObjects;
+
+
+		public enum InteractableType
 		{
-			timer += Time.deltaTime;
+			Trash,
+			Sharp,
+			Oil,
+			Wires,
+			Tokens,
+			Kelp,
+			JellyFish,
+			Dash
 		}
-		else
+
+		// We get env passed in
+		// From that enum, we get 
+
+		float timer = 0f;
+		private int totalWeight = 0;
+		private List<(InteractableType, int)> objWeights = new List<(InteractableType, int)>{};
+
+		private void Start()
 		{
-			timer = 0;
-			Instantiate(obsticle, this.transform);
-			Debug.Log("obsticle spawned");
+			foreach((InteractableType t, int i) in InteractableWeights)
+            {
+				if(i > 0)
+                {
+					objWeights.Add((t, i + totalWeight));
+					totalWeight += i;
+				}
+            }
+			Debug.Log(InteractableWeights);
+			Debug.Log("Total weight:" + totalWeight);
+			Debug.Log("(Objects, weights): " + objWeights);
+		}
+
+		void Update()
+		{
+			if (timer <= 3f)
+			{
+				timer += Time.deltaTime;
+			}
+			else
+			{
+				timer = 0;
+				int index = Random.Range(0, totalWeight);
+				foreach ((InteractableType t, int i) in objWeights)
+				{
+					if (i > index)
+					{
+						Instantiate(InteractableObjects[t], this.transform);
+						Debug.Log("Spawned a " + t);
+						break;
+					}
+				}
+				Debug.Log("obsticle spawned");
+			}
 		}
 	}
 }
