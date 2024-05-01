@@ -8,22 +8,32 @@ public class ObsticleController : MonoBehaviour
     float maxHeight;
     float maxWidth;
 
+    // give it random movement on (x) similar to (gust of wind)
+
     private void Awake()
     {
         RectTransform rt = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
-        maxHeight = rt.rect.height/2;
-        maxWidth = rt.rect.width/2;
-        transform.localPosition = new Vector3(Random.Range(-1 * maxWidth, maxWidth), Random.Range(-1 * maxHeight, maxHeight), 5000);
+        maxHeight = rt.rect.height / 2;
+        maxWidth = rt.rect.width / 2;
+        gameObject.transform.localPosition = new Vector3(Random.Range(-1 * maxWidth, maxWidth), Random.Range(-1 * maxHeight, maxHeight), 5000);
+    }
+
+    private void Start()
+    {
+        // gameObject.transform.rotation.eulerAngles.Set(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
     }
 
     void Update()
     {
-        if (this.transform.position.z < -10)
+        // gameObject.transform.rotation.eulerAngles.Set(gameObject.transform.rotation.eulerAngles.x,
+        //    gameObject.transform.rotation.eulerAngles.y,
+        //    gameObject.transform.rotation.eulerAngles.z + 1);
+        if (gameObject.transform.position.z < -10)
         {
             Debug.Log("Obsticle destoyed (went behind camera)");
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
-        transform.position += new Vector3(0, 0, -1);
+        transform.position += new Vector3(0, 0, -0.5f);
     }
 
     private void OnCollisionEnter(Collision collision)
