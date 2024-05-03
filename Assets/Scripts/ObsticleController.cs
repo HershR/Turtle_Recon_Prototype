@@ -12,9 +12,8 @@ public class ObsticleController : MonoBehaviour
 
     private void Awake()
     {
-        RectTransform rt = FindObjectOfType<Canvas>().GetComponent<RectTransform>();
-        maxHeight = rt.rect.height / 2;
-        maxWidth = rt.rect.width / 2;
+        maxHeight = FindObjectOfType<Camera>().scaledPixelHeight / 2;
+        maxWidth = FindObjectOfType<Camera>().scaledPixelWidth / 2;
         gameObject.transform.localPosition = new Vector3(Random.Range(-1 * maxWidth, maxWidth), Random.Range(-1 * maxHeight, maxHeight), 5000);
     }
 
