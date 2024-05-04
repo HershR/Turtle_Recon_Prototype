@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc88bc33beb49c428b7111685b8e93d, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  <HealthLvl>k__BackingField: 0
+  <SpeedLvl>k__BackingField: 0
+  <DashLvl>k__BackingField: 0
+  <ParryDashRefillLvl>k__BackingField: 0
+  <Food1SpawnLvl>k__BackingField: 0
+  <Food2SpawnLvl>k__BackingField: 0
+  <DashRefillSpawnLvl>k__BackingField: 0
+  <TokenSpawnLvl>k__BackingField: 0
+  <DroneCollectionLvl>k__BackingField: 0
+  <DroneSpawnLvl>k__BackingField: 0
+  <OilResearchLvl>k__BackingField: 0
+  <TrashResearchLvl>k__BackingField: 0
+  <AcidityResearchLvl>k__BackingField: 0
