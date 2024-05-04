@@ -38,6 +38,10 @@ public class StatSO : ScriptableObject
 [CreateAssetMenu(fileName = "new PlayerStats", menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStatsSO : ScriptableObject
 {
+    /*
+     Holds the Players Total Money
+     and Holds the Players Stat Levels in a Dict<StatType, StatSO>
+     */
     [field: SerializeField] public int Tokens { get; private set; } = 0;
     [field: SerializeField] public SerializedDictionary<StatType, StatSO> Stats { get; private set; }
 
@@ -57,4 +61,5 @@ public class PlayerStatsSO : ScriptableObject
     }
 
 }
+//Differnt type of upgradeable stats
 public enum StatType { Health, Speed, Dash, DashRefillParry, Food1Spawn, Food2S, DashRefillSpawn, TokenSpawn, DroneCollectionRate, DroneSpawn, OilResearch, TrashResearch, AcidityResearch };
