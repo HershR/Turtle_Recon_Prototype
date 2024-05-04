@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Stats", menuName = "ScriptableObjects/", order = 1)]
+[CreateAssetMenu(fileName = "new Stats", menuName = "ScriptableObjects/Stats")]
 public class StatsSO : ScriptableObject
 {
+    [field: SerializeField] public int PlayerMoney { get; private set; } = 0;
     [field: SerializeField] public int HealthLvl { get; private set; } = 0;
     [field: SerializeField] public int SpeedLvl { get; private set; } = 0;
     [field: SerializeField] public int DashLvl { get; private set; } = 0;
