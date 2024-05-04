@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using AYellowpaper.SerializedCollections;
+using AYellowpaper.SerializedCollections;
 
 [CreateAssetMenu(fileName = "new PlayerStats", menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStatsSO : ScriptableObject
@@ -11,7 +11,7 @@ public class PlayerStatsSO : ScriptableObject
      and Holds the Players Stat Levels in a Dict<StatType, StatSO>
      */
     [field: SerializeField] public int Tokens { get; private set; } = 0;
-    [field: SerializeField] public Dictionary<StatType, StatSO> Stats { get; private set; }
+    [field: SerializeField] public SerializedDictionary<StatType, StatSO> Stats { get; private set; }
 
     public bool IsUpgradable(StatType type)
     {
