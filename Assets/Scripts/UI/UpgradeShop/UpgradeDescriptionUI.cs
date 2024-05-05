@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class UpgradeDescriptionUI : MonoBehaviour
 {
+
+    [SerializeField] private PlayerStatsSO playerStatsSO;
+
     [SerializeField] private TextMeshProUGUI upgradeName;
     [SerializeField] private TextMeshProUGUI upgradeDescription;
     [SerializeField] private TextMeshProUGUI upgradeCost;
@@ -13,27 +16,38 @@ public class UpgradeDescriptionUI : MonoBehaviour
     [SerializeField] private Slider upgradeLevelSlider;
     [SerializeField] private Button upgradePurchaceButton;
 
+    private StatType statType;
+
     private void Start()
     {
         upgradePurchaceButton.onClick.AddListener(BuyUpgrade);
     }
-
-    public void Init(
-        string upgradeName, 
-        string upgradeDescription,
-        int upgradeCost=0, 
-        int upgradeLevel=0)
+    public void Init(StatType type)
     {
-        this.upgradeName.text = upgradeName;
-        this.upgradeDescription.text =upgradeDescription;
-        upgradeLevelSlider.value = upgradeLevel / 5;
-        this.upgradeCost.text = upgradeCost.ToString();
-        upgradePurchaceButton.interactable = upgradeCost >= 0; 
+
+        statType = type;
+        StatSO stat = playerStatsSO.GetStat(type);
+        upgradeName.text = stat.Name;
+        upgradeDescription.text = stat.GetDescription();
+        upgradeLevelSlider.value = stat.Level / stat.MaxLevel;
+        upgradeCost.text = stat.GetCost().ToString();
+        upgradePurchaceButton.interactable = playerStatsSO.IsUpgradable(type);
     }
 
+    public void Refresh()
+    {
+        StatSO stat = playerStatsSO.GetStat(statType);
+        //upgradeName.text = stat.Name;
+        upgradeDescription.text = stat.GetDescription();
+        upgradeLevelSlider.value = stat.Level / stat.MaxLevel;
+        upgradeCost.text = stat.GetCost().ToString();
+        upgradePurchaceButton.interactable = playerStatsSO.IsUpgradable(statType);
+    }
     private void BuyUpgrade()
     {
-
+        Debug.Log($"Buy Upgrade: {System.Enum.GetName(typeof(StatType), statType)}");
+        playerStatsSO.UpgradeStat(statType);
+        Refresh();
     }
 
 

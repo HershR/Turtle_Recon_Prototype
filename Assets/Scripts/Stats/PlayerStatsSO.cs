@@ -11,21 +11,31 @@ public class PlayerStatsSO : ScriptableObject
      and Holds the Players Stat Levels in a Dict<StatType, StatSO>
      */
     [field: SerializeField] public int Tokens { get; private set; } = 0;
-    [field: SerializeField] public SerializedDictionary<StatType, StatSO> Stats { get; private set; }
+    [SerializeField] private SerializedDictionary<StatType, StatSO> Stats;
+    [field: SerializeField] public SerializedDictionary<StatType, StatSO> PlayerStats { get; private set; }
+    [field: SerializeField] public SerializedDictionary<StatType, StatSO> SpawnStats { get; private set; }
+    [field: SerializeField] public SerializedDictionary<StatType, StatSO> ResearchStats { get; private set; }
 
     public bool IsUpgradable(StatType type)
     {
-        var stat = Stats[type];
-        if (stat.Level == stat.MaxLevel) { return false; }
-        if (stat.GetCost() > Tokens) { return false; }
-        return true;
+        return Stats[type].IsUpgradable(Tokens);
     }
 
     public void UpgradeStat(StatType type)
     {
-        if (!IsUpgradable(type)) { return; }
+        if (!IsUpgradable(type)) 
+        {
+            Debug.Log($"Fail to upgrade stat");
+            return; 
+        }
         Stats[type].Upgrade();
 
+    }
+
+    public StatSO GetStat(StatType type)
+    {
+        Stats.TryGetValue(type, out StatSO stat);
+        return stat;
     }
 
 }
