@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public bool parry = false;
     public bool iFrames = false;
     private bool canParry = true;
+    private bool screenBlur = false;
+    private bool bleed = false;
     float maxHeight;
     float maxWidth;
 
@@ -115,6 +117,10 @@ public class PlayerController : MonoBehaviour
     {
         parry = false;
         canParry = true;
+        if (dashes < maxDashes)
+        {
+            dashes = dashes + 1;
+        }
         yield return null;
     }
 
