@@ -29,6 +29,7 @@ public class StatSO : ScriptableObject
     {
         if (Level == MaxLevel) { return; }
         Level += 1;
+        Debug.Log($"Stat {Name} upgraded");
     }
     public int GetCost()
     {
@@ -39,6 +40,14 @@ public class StatSO : ScriptableObject
     public string GetDescription()
     {
         return description[Mathf.Min(description.Length - 1, Level)];
+    }
+    public void ResetLevel()
+    {
+        Level = 0;
+    }
+    public override string ToString()
+    {
+        return $"StatSO {Name} : Level {Level}";
     }
 }
 
