@@ -1,32 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class UpgradeCardUI : MonoBehaviour
 {
-
-    [SerializeField] private string upgradeName;
-    [SerializeField, TextArea] private string upgradeDescription;
-    [SerializeField] private int upgradeCost;
-
-
-    private Button cardButton;
+    [SerializeField] private StatType type;
+    
     private UpgradeDescriptionUI upgradeDescriptionUI;
-    private void Start()
+
+    private void Awake()
     {
         upgradeDescriptionUI = FindObjectOfType<UpgradeDescriptionUI>();
-        if(upgradeDescriptionUI == null)
-        {
-            Debug.LogError("UpgradeCardUI Error: Unable to find UpgradeDesciptionUI panel");
-        }
-        cardButton = GetComponent<Button>();
-        cardButton.onClick.AddListener(OnSelect);
+        GetComponent<Button>().onClick.AddListener(OnSelect);
     }
 
-    private void OnSelect()
+    public void OnSelect()
     {
-        upgradeDescriptionUI.Init(upgradeName, upgradeDescription, upgradeCost);
+        upgradeDescriptionUI.Init(type);
     }
-
 }
