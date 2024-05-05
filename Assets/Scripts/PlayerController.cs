@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         Canvas canvas = FindObjectOfType<Canvas>();
         maxHeight = (canvas.planeDistance / 2) - 1;
-        maxWidth = canvas.planeDistance - 1;
+        maxWidth = (canvas.planeDistance / 4) - 1;
         Debug.Log("Height: " + maxHeight);
         Debug.Log("Width: " + maxWidth);
         controller = gameObject.AddComponent<CharacterController>();
