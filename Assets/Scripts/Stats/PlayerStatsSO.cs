@@ -28,14 +28,23 @@ public class PlayerStatsSO : ScriptableObject
             Debug.Log($"Fail to upgrade stat");
             return; 
         }
+        Tokens -= Stats[type].GetCost();
         Stats[type].Upgrade();
-
     }
 
     public StatSO GetStat(StatType type)
     {
         Stats.TryGetValue(type, out StatSO stat);
         return stat;
+    }
+
+    [ContextMenu("Reset Stats to 0")]
+    public void ResetAllStats()
+    {
+        foreach(StatSO stat in Stats.Values)
+        {
+            stat.ResetLevel();
+        }
     }
 
 }

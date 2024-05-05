@@ -11,8 +11,9 @@ public class UpgradeDescriptionUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI upgradeName;
     [SerializeField] private TextMeshProUGUI upgradeDescription;
+    [SerializeField] private TextMeshProUGUI upgradeLevel;  
     [SerializeField] private TextMeshProUGUI upgradeCost;
-    
+
     [SerializeField] private Slider upgradeLevelSlider;
     [SerializeField] private Button upgradePurchaceButton;
 
@@ -29,18 +30,19 @@ public class UpgradeDescriptionUI : MonoBehaviour
         StatSO stat = playerStatsSO.GetStat(type);
         upgradeName.text = stat.Name;
         upgradeDescription.text = stat.GetDescription();
+        upgradeLevel.text = "Lvl: " + stat.Level.ToString();
         upgradeLevelSlider.value = stat.Level / stat.MaxLevel;
-        upgradeCost.text = stat.GetCost().ToString();
+        upgradeCost.text = stat.GetCost() >= 0 ? stat.GetCost().ToString() : "Max";
         upgradePurchaceButton.interactable = playerStatsSO.IsUpgradable(type);
     }
 
     public void Refresh()
     {
-        StatSO stat = playerStatsSO.GetStat(statType);
-        //upgradeName.text = stat.Name;
+        StatSO stat = playerStatsSO.GetStat(statType);        
         upgradeDescription.text = stat.GetDescription();
-        upgradeLevelSlider.value = stat.Level / stat.MaxLevel;
-        upgradeCost.text = stat.GetCost().ToString();
+        upgradeLevel.text = "Lvl: " + stat.Level.ToString();
+        upgradeLevelSlider.value = stat.Level / (float)stat.MaxLevel;
+        upgradeCost.text = stat.GetCost() >= 0 ? stat.GetCost().ToString() : "Max";
         upgradePurchaceButton.interactable = playerStatsSO.IsUpgradable(statType);
     }
     private void BuyUpgrade()
