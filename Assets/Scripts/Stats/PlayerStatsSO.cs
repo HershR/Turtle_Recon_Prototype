@@ -33,7 +33,7 @@ public class PlayerStatsSO : ScriptableObject
     }
 
     public StatSO GetStat(StatType type)
-    {
+    {        
         Stats.TryGetValue(type, out StatSO stat);
         return stat;
     }
