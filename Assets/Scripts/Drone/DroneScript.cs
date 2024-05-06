@@ -1,84 +1,125 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class DroneScript : MonoBehaviour
 {
-
     public float timeDuration = 10f;
+    public float moveSpeed = 5f;
+    public float minWidth;
+    public float maxWidth;
+    public float minHeight;
+    public float maxHeight;
     private float timeRemaining;
-    private bool isCollecting = false;
+    private bool isCollecting;
+    private Vector3 targetPosition;
+    private bool isEntering; 
 
-    // Start is called before the first frame update
-    // Move to position, start timer, enable collider
+    [SerializeField] public PlayerController playerStats;
+
     void Start()
     {
-        MoveToPosition(0, 0, 0);
+        // float x = RandVal();
+        float x = Random.value > 0.5f ? Random.Range(250, 301) : Random.Range(-300, -249);
+        float y = Random.value > 0.5f ? Random.Range(250, 301) : Random.Range(-300, -249);
+        transform.position = new Vector3(x, y, 350); 
+        targetPosition = new Vector3(0, 0, 350);
         timeRemaining = timeDuration;
         isCollecting = true;
+        isEntering = true;
         GetComponent<Collider>().enabled = true;
     }
 
-    // Update is called once per frame
-    // Update timer, move drone around screen randomly
-    void Update()
+    void Update() 
     {
-        if (isCollecting)
-        {
-            timeRemaining -= Time.deltaTime;
-            if (timeRemaining <= 0)
+        if (isEntering) {
+            // Move to on-screen position
+            MoveToPosition(targetPosition.x, targetPosition.y, targetPosition.z);
+            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
-                EndTimer();
+                Debug.Log("Drone in screen");
+                isEntering = false; 
+                
             }
+        } else {
 
-            RandomMovement();
+            timeRemaining -= Time.deltaTime;
+
+            if (timeRemaining >= 0)
+            {   
+                RandomMovement();
+
+            } else {
+
+                OnTimerEnd();
+
+            }
+            
+            
         }
-        
     }
 
-    // Every second, collect one token from player and update total tokens
-    // in player stats
-    void OnCollision()
+    void RandomMovement()
     {
-        return;
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f) // Check if reached the current target
+        {
+            // Generate new random target position
+            float x = Random.Range(minWidth, maxWidth);
+            float y = Random.Range(minHeight, maxHeight);
+
+            targetPosition = new Vector3(x, y, 350);
+        }
+        MoveToPosition(targetPosition.x, targetPosition.y, targetPosition.z);
     }
 
-    // Helper function for randomzing movement
-    void RandomMovement() 
+    void MoveToPosition(float x, float y, float z)
     {
-        // Move drone around screen (Values subject to change)
-        float x = Random.Range(-10, 10);
-        float y = Random.Range(-10, 10);
-        transform.Translate(new Vector3(x, y, 0));
+        Vector3 newPos = new Vector3(x, y, z);
+        transform.position = Vector3.MoveTowards(transform.position, newPos, moveSpeed * Time.deltaTime);
     }
 
-    // Disable collider, move off screen, and destroy object
     void OnTimerEnd()
     {
-        // Disable the collider and stop collecting
-        isCollecting = false;
+        if (isCollecting) {
+            isCollecting = false;
+        }
+
         GetComponent<Collider>().enabled = false;
-        transform.position = new Vector3(-1000, 0, 0);
-        Destroy(gameObject);
+        MoveToPosition(400, 0, 350);
+        if (Vector3.Distance(transform.position, new Vector3(400, 0, 350)) < 0.1f)
+        {
+            Debug.Log("Drone off screen");
+            Destroy(gameObject);
+        }
+    
     }
 
     // End timer early
     public void EndTimer()
     {
         timeRemaining = 0;
+        OnTimerEnd(); 
+        
+    }
+
+    // Every second, collect one token from player and update total tokens
+    // in player stats
+    private void OnCollision(GameObject collider)
+    {
+        isCollecting = true;
+        // To Do
+
     }
 
     // Collect token, add visual / sound feedback
     void OnCollectToken()
     {
+        // To Do
         return;
     }
 
-    // Helper function to move drone to specified position
-    void MoveToPosition(float x, float y, float z)
-    {
-        // Move the drone to the specified position
-        transform.position = new Vector3(x, y, z);
-    }
     
 }
+
