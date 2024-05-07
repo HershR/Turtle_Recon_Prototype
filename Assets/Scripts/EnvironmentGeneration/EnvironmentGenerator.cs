@@ -20,13 +20,14 @@ public class EnvironmentGenerator : MonoBehaviour
     [SerializeField] private float environmentTargetSpeed;
     private float speedDelta = 1f;
 
-    [SerializeField] private int minEnvironmentSpawnCount; //min amount to spawn an env
-    [SerializeField] private int maxEnvironmentSpawnCount; //max amount to spawn an env
-    [SerializeField] private float environmentSpawnCount; //amount left for current env    
+    [SerializeField] private int minEnvironmentTime; //min amount to spawn an env
+    [SerializeField] private int maxEnvironmentTime; //max amount to spawn an env
+    [SerializeField] private float environmentTimer; //amount left for current env    
     private void Start()
     {
         CurrentEnvironment = EnvironmentType.Normal;
         environmentTargetSpeed = environmentSpeed;
+        environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
         Spawn();
     }
 
@@ -37,32 +38,34 @@ public class EnvironmentGenerator : MonoBehaviour
             var newSpeed = environmentSpeed + speedDelta * Time.deltaTime;
             environmentSpeed = Mathf.Min(environmentTargetSpeed, newSpeed);
         }
-        if (environmentSpawnCount < 1)
+        if (environmentTimer < 0.0f)
         {
             var oldEnv = CurrentEnvironment;
             if (CurrentEnvironment != EnvironmentType.Transition)
             {
                 CurrentEnvironment = EnvironmentType.Transition;
-                environmentSpawnCount = Random.Range(minEnvironmentSpawnCount / 3, maxEnvironmentSpawnCount / 3);
+                environmentTimer = Random.Range(minEnvironmentTime / 3, maxEnvironmentTime / 3);
             }
             else
             {
                 CurrentEnvironment = (EnvironmentType)Random.Range(0, Enum.GetValues(typeof(EnvironmentType)).Length - 1);
-                environmentSpawnCount = Random.Range(minEnvironmentSpawnCount, maxEnvironmentSpawnCount);
+                environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
             }
             Debug.Log($"Change Env from {oldEnv} to {CurrentEnvironment}");
+        }
+        else
+        {
+            environmentTimer -= Time.deltaTime;
         }
     }
     public void Spawn()
     {
-        Debug.Log("Spawn");
         GameObject nextSpawn;
         int index = Random.Range(0, environments[CurrentEnvironment].Count);
         nextSpawn = environments[CurrentEnvironment][index];
         GameObject spawned = Instantiate(nextSpawn, transform.position, Quaternion.identity);
         EnvironmentController environmentController = spawned.GetComponent<EnvironmentController>();
         environmentController.Init(this);
-        environmentSpawnCount -= 1;
     }
 
     public float GetSpeed()
