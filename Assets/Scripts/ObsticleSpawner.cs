@@ -10,7 +10,7 @@ public class ObsticleSpawner : MonoBehaviour
 	[SerializeField] public SerializedDictionary<InteractableType, int> InteractableWeights;
 	[SerializeField] public SerializedDictionary<InteractableType, GameObject> InteractableObjects;
 
-
+	
 	public enum InteractableType
 	{
 		Trash,

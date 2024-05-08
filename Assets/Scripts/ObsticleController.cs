@@ -12,8 +12,8 @@ public class ObsticleController : MonoBehaviour
 
     private void Awake()
     {
-        maxHeight = FindObjectOfType<Camera>().pixelHeight / 2;
-        maxWidth = FindObjectOfType<Camera>().pixelWidth / 2;
+        maxHeight = 0.9f;
+        maxWidth = 2;
         gameObject.transform.localPosition = new Vector3(Random.Range(-1 * maxWidth, maxWidth), Random.Range(-1 * maxHeight, maxHeight), 0);
     }
 
@@ -28,7 +28,7 @@ public class ObsticleController : MonoBehaviour
         //    gameObject.transform.rotation.eulerAngles.y,
         //    gameObject.transform.rotation.eulerAngles.z + 1);
         
-        transform.position += new Vector3(0, 0, -0.5f);
+        transform.position += new Vector3(0, 0, -0.01f);
     }
 
     private void OnCollisionEnter(Collision collision)
