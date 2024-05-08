@@ -43,27 +43,31 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        if (this.transform.localPosition.x > 2 && move[0] > 0)
-        {
-            move[0] = 0;
-            Debug.Log("out of bounds on X");
-        }
-        else if (this.transform.localPosition.x < -2 && move[0] < 0)
-        {
-            move[0] = 0;
-            Debug.Log("out of bounds on X");
-        }
-        if (this.transform.localPosition.y > 2 && move[1] > 0)
-        {
-            move[1] = 0;
-            Debug.Log("out of bounds on Y");
-        }
-        else if (this.transform.localPosition.y < 0 && move[1] < 0)
-        {
-            move[1] = 0;
-            Debug.Log("out of bounds on Y");
-        }
+        // if (this.transform.localPosition.x > 2 && move[0] > 0)
+        // {
+        //     move[0] = 0;
+        //     Debug.Log("out of bounds on X");
+        // }
+        // else if (this.transform.localPosition.x < -2 && move[0] < 0)
+        // {
+        //     move[0] = 0;
+        //     Debug.Log("out of bounds on X");
+        // }
+        // if (this.transform.localPosition.y > 2 && move[1] > 0)
+        // {
+        //     move[1] = 0;
+        //     Debug.Log("out of bounds on Y");
+        // }
+        // else if (this.transform.localPosition.y < 0 && move[1] < 0)
+        // {
+        //     move[1] = 0;
+        //     Debug.Log("out of bounds on Y");
+        // }
         controller.Move(move * Time.deltaTime * playerSpeed);
+        Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
+		pos.x = Mathf.Clamp01(pos.x);
+		pos.y = Mathf.Clamp01(pos.y);
+		transform.position = Camera.main.ViewportToWorldPoint(pos);
 
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
