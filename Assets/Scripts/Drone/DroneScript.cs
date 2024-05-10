@@ -6,8 +6,8 @@ using UnityEngine.Rendering;
 
 public class DroneScript : MonoBehaviour
 {
-    public float timeDuration = 10f;
-    public float moveSpeed = 5f;
+    public float timeDuration;
+    public float moveSpeed;
     public float minWidth;
     public float maxWidth;
     public float minHeight;
