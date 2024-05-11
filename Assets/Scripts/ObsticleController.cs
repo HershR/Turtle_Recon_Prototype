@@ -7,6 +7,7 @@ public class ObsticleController : MonoBehaviour
     // Update is called once per frame
     float maxHeight;
     float maxWidth;
+    public InteractableType obsticle_type;
 
     // give it random movement on (x) similar to (gust of wind)
 
@@ -34,6 +35,7 @@ public class ObsticleController : MonoBehaviour
     private void Start()
     {
         // gameObject.transform.rotation.eulerAngles.Set(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+        Debug.Log("Ima "+ obsticle_type + " type obsticle");
     }
 
     void Update()
