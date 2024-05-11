@@ -22,10 +22,10 @@ public class DroneScript : MonoBehaviour
     void Start()
     {
         // float x = RandVal();
-        float x = Random.value > 0.5f ? Random.Range(250, 301) : Random.Range(-300, -249);
-        float y = Random.value > 0.5f ? Random.Range(250, 301) : Random.Range(-300, -249);
-        transform.position = new Vector3(x, y, 350); 
-        targetPosition = new Vector3(0, 0, 350);
+        float x = Random.value > 0.5f ? Random.Range(20, 31) : Random.Range(-20, -31);
+        float y = Random.value > 0.5f ? Random.Range(20, 31) : Random.Range(-20, -31);
+        transform.position = new Vector3(x, y, 0); 
+        targetPosition = new Vector3(0, 0, 0);
         timeRemaining = timeDuration;
         isCollecting = true;
         isEntering = true;
@@ -46,18 +46,12 @@ public class DroneScript : MonoBehaviour
         } else {
 
             timeRemaining -= Time.deltaTime;
-
-            if (timeRemaining >= 0)
+            if (timeRemaining > 0)
             {   
                 RandomMovement();
-
             } else {
-
                 OnTimerEnd();
-
             }
-            
-            
         }
     }
 
@@ -69,7 +63,7 @@ public class DroneScript : MonoBehaviour
             float x = Random.Range(minWidth, maxWidth);
             float y = Random.Range(minHeight, maxHeight);
 
-            targetPosition = new Vector3(x, y, 350);
+            targetPosition = new Vector3(x, y, 0);
         }
         MoveToPosition(targetPosition.x, targetPosition.y, targetPosition.z);
     }
@@ -87,8 +81,8 @@ public class DroneScript : MonoBehaviour
         }
 
         GetComponent<Collider>().enabled = false;
-        MoveToPosition(400, 0, 350);
-        if (Vector3.Distance(transform.position, new Vector3(400, 0, 350)) < 0.1f)
+        MoveToPosition(30, 0, 0);
+        if (Vector3.Distance(transform.position, new Vector3(30, 0, 0)) < 0.1f)
         {
             Debug.Log("Drone off screen");
             Destroy(gameObject);
