@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Drone/DroneAsset/Art/material/Red.mat.meta
+guid: f0cecbec17236e44c99a41ac5c2dbb93
+========
+guid: 3f3a67611db2bc04a831cb423df010f4
+>>>>>>>> master:Assets/Scenes/UpgradeScene/LightingData.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

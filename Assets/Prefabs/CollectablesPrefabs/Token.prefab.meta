@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Drone/DroneAsset/prefab/drone blue.prefab.meta
+guid: 12944a191c811e94fb15dabf7d9e1cb4
+========
+guid: 8f870a2c7f9ca40c8af82485151d09c9
+>>>>>>>> master:Assets/Prefabs/CollectablesPrefabs/Token.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

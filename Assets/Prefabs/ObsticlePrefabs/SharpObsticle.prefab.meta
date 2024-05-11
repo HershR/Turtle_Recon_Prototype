@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Drone/DroneAsset/prefab/drone Black.prefab.meta
+guid: 279c2cdd8c5422e4191300ed2745a7fd
+========
+guid: 9a0073acbc0cd440b90cc626176f01e4
+>>>>>>>> master:Assets/Prefabs/ObsticlePrefabs/SharpObsticle.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

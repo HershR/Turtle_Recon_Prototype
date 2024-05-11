@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Settings/High_PipelineAsset.asset.meta
+guid: 8b2811e35d037084888c22abae76f9a2
+========
+guid: 8f773524923ab624fb5cf23bd5d04dc4
+>>>>>>>> master:Assets/ScriptableObjects/PlayerStats/PlayerStats.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

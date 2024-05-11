@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Settings.meta
+guid: c50ff3e1bbbc9bf479d4a48f04e5cac7
+========
+guid: 7691132b92786be418f91bf39639db87
+>>>>>>>> master:Assets/Plugins/SerializedCollections/Editor/Scripts/Settings.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

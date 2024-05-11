@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Drone/DroneAsset/prefab/drone green Variant.prefab.meta
+guid: 3bb92de72570aa842963638c37c68578
+========
+guid: 4313ccf702344497e98f7173f631c5d1
+>>>>>>>> master:Assets/Prefabs/ObsticlePrefabs/OilObsticle.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

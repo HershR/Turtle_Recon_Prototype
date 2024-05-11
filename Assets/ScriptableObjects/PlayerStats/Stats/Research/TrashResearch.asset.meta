@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Settings/Low_PipelineAsset_ForwardRenderer.asset.meta
+guid: 994f840874f45334cb008fac2d03565a
+========
+guid: 8703b439acd0c084c94a35de9937b722
+>>>>>>>> master:Assets/ScriptableObjects/PlayerStats/Stats/Research/TrashResearch.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Settings/High_PipelineAsset_ForwardRenderer.asset.meta
+guid: f967f1d4e972e1b4c817ad85238c35e7
+========
+guid: 1db79d4f1c11e1347b3d9871871b6aed
+>>>>>>>> master:Assets/ScriptableObjects/PlayerStats/Stats/Research/OceanAcidityResearch.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
