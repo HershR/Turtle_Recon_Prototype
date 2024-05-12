@@ -17,7 +17,7 @@ public class PostProcessingManager : MonoBehaviour
 
     private void Update()
     {
-        if (nextEnvironment != currentEnvironment)
+        if (environmentVolumes[nextEnvironment] != environmentVolumes[currentEnvironment])
         {
             fadeToVolume();
         }

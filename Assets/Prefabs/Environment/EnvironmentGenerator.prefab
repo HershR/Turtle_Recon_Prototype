@@ -65,12 +65,13 @@ MonoBehaviour:
     - Key: 4
       Value:
       - {fileID: 6719016649828426457, guid: 4085099b7b665374fa183e61b352d873, type: 3}
-  CurrentEnvironment: 0
+  currentEnvironment: 0
   environmentSpeed: 20
   environmentTargetSpeed: 5
-  minEnvironmentTime: 10
-  maxEnvironmentTime: 20
+  minEnvironmentTime: 5
+  maxEnvironmentTime: 10
   environmentTimer: 0
+  postProcessingManager: {fileID: 0}
 --- !u!1 &2617797104097892099
 GameObject:
   m_ObjectHideFlags: 0
