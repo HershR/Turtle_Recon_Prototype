@@ -1,22 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: UnderWater_Basic Profile
-  m_EditorClassIdentifier: 
-  components:
-  - {fileID: 6860079929870293272}
-  - {fileID: 2455465851610034266}
-  - {fileID: 7026618398554708157}
---- !u!114 &2455465851610034266
+--- !u!114 &-37331935509189820
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31,20 +15,36 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.401
+    m_Value: 0.15
   smoothness:
-    m_OverrideState: 0
-    m_Value: 0.2
+    m_OverrideState: 1
+    m_Value: 0.764
   rounded:
-    m_OverrideState: 0
-    m_Value: 0
---- !u!114 &6860079929870293272
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Underwater_Oil
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 6739108574447307776}
+  - {fileID: -37331935509189820}
+  - {fileID: 7494652867602438149}
+--- !u!114 &6739108574447307776
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,10 +62,10 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.27
+    m_Value: 1.37
   intensity:
     m_OverrideState: 1
-    m_Value: 0.72
+    m_Value: 6.7
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -86,12 +86,12 @@ MonoBehaviour:
     m_Value: 6
   dirtTexture:
     m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 2800000, guid: 2afd717cb7010f240ab3747b76d6a1c9, type: 3}
     dimension: 1
   dirtIntensity:
     m_OverrideState: 0
-    m_Value: 0
---- !u!114 &7026618398554708157
+    m_Value: 21.6
+--- !u!114 &7494652867602438149
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,10 +106,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.3931492, y: 0.91442853, z: 1, w: 0}
+    m_Value: {x: 0.7599643, y: 0.8537887, z: 1, w: -0.0207901}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.37902445, y: 0.88499874, z: 1, w: 0}
+    m_Value: {x: 0.9832349, y: 1, z: 0.96768886, w: -0.29106024}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0.37529635, y: 0.9065787, z: 1, w: 0}
+    m_Value: {x: 0.925961, y: 0.9548115, z: 1, w: 0.000000007439921}

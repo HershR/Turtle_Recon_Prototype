@@ -10,11 +10,14 @@ public enum EnvironmentType { Normal, OilField, TrashField, CoralReef, Transitio
 public class EnvironmentGenerator : MonoBehaviour
 {
     [SerializeField] private PlayerStatsSO playerStats;
-    [SerializedDictionary("Environment Type", "Prefabs")]
+    
+    [SerializedDictionary("Environment Type", "Weights")]    
     [SerializeField] private SerializedDictionary<EnvironmentType, float> environmentWeights;
+    
+    [SerializedDictionary("Environment Type", "Prefabs")]
     [SerializeField] private SerializedDictionary<EnvironmentType, List<GameObject>> environments;
 
-    [field: SerializeField] public EnvironmentType CurrentEnvironment;
+    [SerializeField] private EnvironmentType currentEnvironment;
 
     //[SerializeField] private Queue<GameObject> environmentSpawnQueue;
 
@@ -26,6 +29,8 @@ public class EnvironmentGenerator : MonoBehaviour
     [SerializeField] private int maxEnvironmentTime; //max amount to spawn an env
     [SerializeField] private float environmentTimer; //amount left for current env    
 
+    [SerializeField] private PostProcessingManager postProcessingManager;
+
     private void Awake()
     {
         InitEnvironmentWeights();
@@ -33,7 +38,7 @@ public class EnvironmentGenerator : MonoBehaviour
 
     private void Start()
     {
-        CurrentEnvironment = EnvironmentType.Normal;
+        currentEnvironment = EnvironmentType.Normal;
         environmentTargetSpeed = environmentSpeed;
         environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
         Spawn();
@@ -48,11 +53,12 @@ public class EnvironmentGenerator : MonoBehaviour
         }
         if (environmentTimer < 0.0f)
         {
-            var oldEnv = CurrentEnvironment;
-            if (CurrentEnvironment != EnvironmentType.Transition)
+            var oldEnv = currentEnvironment;
+            if (currentEnvironment != EnvironmentType.Transition)
             {
-                CurrentEnvironment = EnvironmentType.Transition;
+                currentEnvironment = EnvironmentType.Transition;
                 environmentTimer = Random.Range(minEnvironmentTime / 3, maxEnvironmentTime / 3);
+                postProcessingManager.SwitchEnvironment(EnvironmentType.Normal);
             }
             else
             {
@@ -62,13 +68,14 @@ public class EnvironmentGenerator : MonoBehaviour
                     weight -= pair.Value;
                     if (weight <= 0f)
                     {
-                        CurrentEnvironment = pair.Key;
+                        currentEnvironment = pair.Key;
                         break;
                     }
                 }
                 environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
+                postProcessingManager.SwitchEnvironment(currentEnvironment);
             }
-            Debug.Log($"Change Env from {oldEnv} to {CurrentEnvironment}");
+            Debug.Log($"Change Env from {oldEnv} to {currentEnvironment}");
         }
         else
         {
@@ -80,7 +87,9 @@ public class EnvironmentGenerator : MonoBehaviour
     {
         environmentWeights = new SerializedDictionary<EnvironmentType, float>();
         float totalWeight = 100f;
-        float baseWeight = 100f / (Enum.GetValues(typeof(EnvironmentType)).Length - 1); //exclude transition
+        
+        //60% chance to get a differnt env
+        float baseWeight = 90f / (Enum.GetValues(typeof(EnvironmentType)).Length - 2); //exclude transition and basic
 
         float oilWeight = baseWeight - (baseWeight * playerStats.GetStat(StatType.OilResearch).Level / playerStats.GetStat(StatType.OilResearch).MaxLevel);
         float trashWeight = baseWeight - (baseWeight * playerStats.GetStat(StatType.TrashResearch).Level / playerStats.GetStat(StatType.TrashResearch).MaxLevel);
@@ -94,8 +103,8 @@ public class EnvironmentGenerator : MonoBehaviour
     public void Spawn()
     {
         GameObject nextSpawn;
-        int index = Random.Range(0, environments[CurrentEnvironment].Count);
-        nextSpawn = environments[CurrentEnvironment][index];
+        int index = Random.Range(0, environments[currentEnvironment].Count);
+        nextSpawn = environments[currentEnvironment][index];
         GameObject spawned = Instantiate(nextSpawn, transform.position, Quaternion.identity);
         EnvironmentController environmentController = spawned.GetComponent<EnvironmentController>();
         environmentController.Init(this);
