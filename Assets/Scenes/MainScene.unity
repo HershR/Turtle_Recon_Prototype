@@ -1258,18 +1258,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4753940332338477795, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: moveSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4753940332338477795, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 1184253577}
-    - target: {fileID: 4753940332338477795, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: timeDuration
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5054379811673952670, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: m_Name
       value: drone
@@ -1315,36 +1303,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: upForce
-      value: 98.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: maxWidth
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: minWidth
-      value: -18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: maxHeight
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: minHeight
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: moveSpeed
-      value: 10
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: timeDuration
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: tiltIntensity
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

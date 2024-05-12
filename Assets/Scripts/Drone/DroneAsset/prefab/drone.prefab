@@ -283,7 +283,6 @@ GameObject:
   - component: {fileID: 8845290193486611585}
   - component: {fileID: 6711559545460944971}
   - component: {fileID: 8217267014819515826}
-  - component: {fileID: 4753940332338477795}
   - component: {fileID: 5088542178613592282}
   - component: {fileID: 4518457264529184038}
   m_Layer: 0
@@ -377,30 +376,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upForce: 98.1
   moveSpeed: 10
-  minWidth: -5
-  maxWidth: 5
-  minHeight: -5
-  maxHeight: 5
-  timeDuration: 10
---- !u!114 &4753940332338477795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054379811673952670}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b5d8f37dec30ea4e93bf157a28218b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeDuration: 10
-  moveSpeed: 10
-  minWidth: 0
-  maxWidth: 0
-  minHeight: 0
-  maxHeight: 0
-  playerStats: {fileID: 0}
+  minHeight: -8
+  maxHeight: 8
+  minWidth: -18
+  maxWidth: 18
+  timeDuration: 20
+  tiltIntensity: 3
 --- !u!64 &5088542178613592282
 MeshCollider:
   m_ObjectHideFlags: 0

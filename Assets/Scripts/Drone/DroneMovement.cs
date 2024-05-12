@@ -6,7 +6,6 @@ public class DroneMovement : MonoBehaviour
 {
     Rigidbody drone;
     public float upForce;
-    public float movementForwardSpeed = 500f;
     public float moveSpeed;
     private Vector3 velocityDamp;
 
@@ -19,6 +18,7 @@ public class DroneMovement : MonoBehaviour
     public float timeDuration;
     private float timeRemaining;
     private bool isEntering = true;
+    private bool isCollecting = false;
     private float wantedYRotation;
     private float currentYRotation;
     private float rotateAmount = 2.5f;
@@ -32,7 +32,10 @@ public class DroneMovement : MonoBehaviour
     void Start() {
         timeRemaining = timeDuration;
         drone = GetComponent<Rigidbody>();
-        startPosition = new Vector3(0, -25, 10); 
+        GetComponent<Collider>().enabled = true;
+        float x = Random.value > 0.5f ? Random.Range(20, 31) : Random.Range(-20, -31);
+        float y = Random.value > 0.5f ? Random.Range(20, 31) : Random.Range(-20, -31);
+        startPosition = new Vector3(x, y, 10); 
         transform.position = startPosition;
         targetPosition = new Vector3(0, 0, 10); 
         StartCoroutine(MoveDroneIntoView());
@@ -49,14 +52,14 @@ public class DroneMovement : MonoBehaviour
 
     void Update() {
         if (!isEntering && timeRemaining > 0) {
+            isCollecting = true;
             timeRemaining -= Time.deltaTime;
-            Debug.Log("Time remaining: " + timeRemaining + " seconds");
+            // Debug.Log("Time remaining: " + timeRemaining + " seconds");
             if (Vector3.Distance(transform.position, targetPosition) < 3f || transform.position.y < -maxHeight || transform.position.y > maxHeight) {
                 UpdateRandomTarget();
             }
         } else if (!isEntering && timeRemaining <= 0) {
-            targetPosition = new Vector3(0, -25, 10);
-            MoveToPosition();
+            OnTimerEnd();
         }
     }
 
@@ -103,6 +106,43 @@ public class DroneMovement : MonoBehaviour
 
         currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
         drone.rotation = Quaternion.Euler(new Vector3(1, currentYRotation, drone.rotation.z));
+    }
+
+    void OnTimerEnd()
+    {
+        if (isCollecting) {
+            isCollecting = false;
+        }
+
+        GetComponent<Collider>().enabled = false;
+        targetPosition = new Vector3(30, 0, 10);
+        MoveToPosition();
+        if (Vector3.Distance(transform.position, targetPosition) < 3f) {
+            Destroy(gameObject);
+        }    
+    }
+
+    // End timer early
+    public void EndTimer()
+    {
+        timeRemaining = 0;
+        OnTimerEnd(); 
+    }
+
+    // Every second, collect one token from player and update total tokens
+    // in player stats
+    private void OnCollision(GameObject collider)
+    {
+        isCollecting = true;
+        // To Do
+
+    }
+
+    // Collect token, add visual / sound feedback
+    void OnCollectToken()
+    {
+        // To Do
+        return;
     }
 
 }
