@@ -501,10 +501,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2129967705739062306, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129967705739062306, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: m_Name
       value: EnvironmentGenerator
       objectReference: {fileID: 0}
@@ -547,18 +543,6 @@ PrefabInstance:
     - target: {fileID: 5639225481918593188, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environmentSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: maxEnvironmentTime
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: minEnvironmentTime
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
