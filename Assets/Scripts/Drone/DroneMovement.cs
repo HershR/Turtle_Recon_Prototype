@@ -25,6 +25,9 @@ public class DroneMovement : MonoBehaviour
     private float rotationYVelocity;
     public float tiltIntensity;
 
+    [SerializeField] PlayerController player;
+    [SerializeField] PlayerStatsSO stats;
+
     void Awake() {
         drone = GetComponent<Rigidbody>();
     }
@@ -125,6 +128,9 @@ public class DroneMovement : MonoBehaviour
     // End timer early
     public void EndTimer()
     {
+        if (isCollecting) {
+            isCollecting = false;
+        }
         timeRemaining = 0;
         OnTimerEnd(); 
     }
@@ -134,8 +140,18 @@ public class DroneMovement : MonoBehaviour
     private void OnCollision(GameObject collider)
     {
         isCollecting = true;
-        // To Do
+        while (timeRemaining > 0 && player.tokenCount > 0)
+        {
+            StartCoroutine(TokenCollection());
+        }
 
+    }
+
+    IEnumerator TokenCollection()
+    {
+        player.tokenCount -= 1;
+        stats.AddTokens(1);
+        yield return new WaitForSeconds(1);   
     }
 
     // Collect token, add visual / sound feedback
