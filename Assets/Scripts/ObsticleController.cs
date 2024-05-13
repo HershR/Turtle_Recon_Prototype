@@ -30,6 +30,10 @@ public class ObsticleController : MonoBehaviour
                                         Random.Range(-1 * maxHeight, maxHeight) / transform.localScale.y,
                                         -1 * player.transform.position.z) + player.transform.position;
         Debug.Log("X, Y: " + transform.position.x + ", " + transform.position.y);
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        pos.x = Mathf.Clamp01(pos.x);
+        pos.y = Mathf.Clamp01(pos.y);
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 
     private void Start()
@@ -51,10 +55,10 @@ public class ObsticleController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         // Debug.Log(collision.gameObject.tag);
-        
+
         if (collision.gameObject.tag == "Despawner")
         {
             Debug.Log("Obsticle destoyed (went behind camera)");
