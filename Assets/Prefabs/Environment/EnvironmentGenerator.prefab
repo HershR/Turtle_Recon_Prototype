@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnvironmentGenerator
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5737869e53f6f84698dd3d215f9fc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
+  environmentWeights:
+    _serializedList: []
   environments:
     _serializedList:
     - Key: 0
@@ -62,12 +65,13 @@ MonoBehaviour:
     - Key: 4
       Value:
       - {fileID: 6719016649828426457, guid: 4085099b7b665374fa183e61b352d873, type: 3}
-  CurrentEnvironment: 0
-  environmentSpeed: 5
+  currentEnvironment: 0
+  environmentSpeed: 20
   environmentTargetSpeed: 5
-  minEnvironmentSpawnCount: 2
-  maxEnvironmentSpawnCount: 6
-  environmentSpawnCount: 3
+  minEnvironmentTime: 5
+  maxEnvironmentTime: 10
+  environmentTimer: 0
+  postProcessingManager: {fileID: 0}
 --- !u!1 &2617797104097892099
 GameObject:
   m_ObjectHideFlags: 0
