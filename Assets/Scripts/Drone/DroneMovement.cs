@@ -35,10 +35,10 @@ public class DroneMovement : MonoBehaviour
     void Start() {
         timeRemaining = timeDuration;
         drone = GetComponent<Rigidbody>();
-        GetComponent<Collider>().enabled = true;
-        float x = Random.value > 0.5f ? Random.Range(20, 31) : Random.Range(-20, -31);
-        float y = Random.value > 0.5f ? Random.Range(20, 31) : Random.Range(-20, -31);
-        
+ 
+        float x = Random.value > 0.5f ? Random.Range(10, 16) : Random.Range(-15, -9);
+        float y = Random.value > 0.5f ? -10 : 10;
+
         startPosition = new Vector3(x, y, 0); 
         transform.position = startPosition;
         targetPosition = new Vector3(0, 0, 0); 
@@ -46,7 +46,7 @@ public class DroneMovement : MonoBehaviour
     }
 
     IEnumerator MoveDroneIntoView() {
-        while (Vector3.Distance(transform.position, targetPosition) > 5f) {
+        while (Vector3.Distance(transform.position, targetPosition) > 3f) {
             MoveToPosition();
             yield return null;
         }
@@ -60,8 +60,8 @@ public class DroneMovement : MonoBehaviour
             // Debug.Log("Time remaining: " + timeRemaining + " seconds");
             if (Vector3.Distance(transform.position, targetPosition) < 3f || transform.position.y < -maxHeight || transform.position.y > maxHeight) {
                 UpdateRandomTarget();
-            }
-            // Debug.Log("z: " + transform.position.z + " y: " + transform.position.y + " x: " + transform.position.x);
+            }    
+            NearPlayer();    
         } else if (!isEntering && timeRemaining <= 0) {
             OnTimerEnd();
         }
@@ -73,11 +73,11 @@ public class DroneMovement : MonoBehaviour
             AdjustTilt();
             // Rotation();
             AdjustUpwardForce();
+            NearPlayer();
         }
     }
 
     void MoveToPosition() {
-        Vector3 newPos = new Vector3(targetPosition.x, targetPosition.y, 0);
         Vector3 direction = (targetPosition - transform.position).normalized;
         drone.velocity = Vector3.SmoothDamp(drone.velocity, direction * moveSpeed, ref velocityDamp, 0.3f);
     }
@@ -119,8 +119,7 @@ public class DroneMovement : MonoBehaviour
             isCollecting = false;
         }
 
-        GetComponent<Collider>().enabled = false;
-        targetPosition = new Vector3(25, 0, 0);
+        targetPosition = new Vector3(15, 0, 0);
         MoveToPosition();
         if (Vector3.Distance(transform.position, targetPosition) < 3f) {
             Destroy(gameObject);
@@ -137,28 +136,28 @@ public class DroneMovement : MonoBehaviour
         OnTimerEnd(); 
     }
 
-    // Every second, collect one token from player and update total tokens
-    // in player stats
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.CompareTag("Player")) {
-            return;
-        }
-        isCollecting = true;
-        collision.gameObject.GetComponent<PlayerController>().OnCollision(this.gameObject);
-        while (timeRemaining > 0 && player.tokenCount > 0)
-        {
+    void NearPlayer() {
+        Vector3 turtlePos = player.transform.position;
+        Vector3 dronePos = transform.position;
+        Vector2 turtle = new Vector2(turtlePos.x, turtlePos.y);
+        Vector2 drone = new Vector2(dronePos.x, dronePos.y);
+        float distance = Vector2.Distance(turtle, drone);
+        if (distance < 3f && !isCollecting && player.tokenCount > 0) {
             StartCoroutine(TokenCollection());
-        }  
+        }
         
     }
 
+    // Every second, collect one token from player and update total tokens
+    // in player stats
     IEnumerator TokenCollection()
     {
+        isCollecting = true;
         Debug.Log("Player touched drone");
         player.tokenCount -= 1;
-        stats.AddTokens(1);
-        yield return new WaitForSeconds(1);   
+        stats.AddToken();
+        yield return new WaitForSeconds(1);
+        isCollecting = false;   
     }
 
     // Collect token, add visual / sound feedback

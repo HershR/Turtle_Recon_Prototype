@@ -283,7 +283,6 @@ GameObject:
   - component: {fileID: 8845290193486611585}
   - component: {fileID: 6711559545460944971}
   - component: {fileID: 8217267014819515826}
-  - component: {fileID: 5088542178613592282}
   - component: {fileID: 4518457264529184038}
   m_Layer: 0
   m_Name: drone
@@ -302,7 +301,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7674171913462469784}
@@ -375,35 +374,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upForce: 98.1
-  moveSpeed: 10
-  minHeight: -8
-  maxHeight: 8
-  minWidth: -18
-  maxWidth: 18
+  moveSpeed: 5
+  minHeight: -5
+  maxHeight: 5
+  minWidth: -11
+  maxWidth: 11
   timeDuration: 20
   tiltIntensity: 3
---- !u!64 &5088542178613592282
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5054379811673952670}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2403283451262950110, guid: 77ec979c4a1053f4fb90fee3d17b240c, type: 3}
+  player: {fileID: 0}
+  stats: {fileID: 11400000, guid: 8b2811e35d037084888c22abae76f9a2, type: 2}
 --- !u!54 &4518457264529184038
 Rigidbody:
   m_ObjectHideFlags: 0
