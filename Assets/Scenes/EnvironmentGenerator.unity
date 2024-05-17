@@ -16,9 +16,9 @@ RenderSettings:
   serializedVersion: 9
   m_Fog: 1
   m_FogColor: {r: 0.4236383, g: 0.6754446, b: 0.754717, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
+  m_FogMode: 3
+  m_FogDensity: 0.07
+  m_LinearFogStart: 7.7
   m_LinearFogEnd: 50
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
@@ -136,12 +136,12 @@ GameObject:
   - component: {fileID: 37830350}
   - component: {fileID: 37830349}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &37830349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -222,8 +222,8 @@ Transform:
   m_GameObject: {fileID: 37830348}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.46, y: 1.1891519, z: 8.669304}
-  m_LocalScale: {x: 1, y: 11.65, z: 21.4}
+  m_LocalPosition: {x: -5.5, y: 0, z: 9.64}
+  m_LocalScale: {x: 1, y: 3.67, z: 42.14}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -898,12 +898,12 @@ GameObject:
   - component: {fileID: 1991363657}
   - component: {fileID: 1991363656}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1991363656
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -984,8 +984,8 @@ Transform:
   m_GameObject: {fileID: 1991363655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.31, y: 1.1891519, z: 8.669304}
-  m_LocalScale: {x: 1, y: 11.65, z: 21.4}
+  m_LocalPosition: {x: 5.5, y: 0, z: 9.64}
+  m_LocalScale: {x: 1, y: 3.67, z: 42.14}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1171,11 +1171,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 886707044}
   - {fileID: 657567842}
+  - {fileID: 1332293517}
   - {fileID: 334752809}
   - {fileID: 2995047511298018498}
   - {fileID: 2019478702743105218}
   - {fileID: 716823797008925741}
-  - {fileID: 1332293517}
   - {fileID: 1791896067}
   - {fileID: 37830352}
   - {fileID: 1991363659}
