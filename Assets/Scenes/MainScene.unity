@@ -577,6 +577,10 @@ PrefabInstance:
       value: drone
       objectReference: {fileID: 0}
     - target: {fileID: 5579699372444814116, guid: e746f881748d3a147949e70e5c570880, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579699372444814116, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -620,6 +624,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1184253577}
+    - target: {fileID: 8217267014819515826, guid: e746f881748d3a147949e70e5c570880, type: 3}
+      propertyPath: droneRange
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

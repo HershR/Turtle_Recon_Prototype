@@ -19,11 +19,13 @@ public class DroneMovement : MonoBehaviour
     private float timeRemaining;
     private bool isEntering = true;
     private bool isCollecting = false;
+    public float tiltIntensity;
+    public float droneRange;
     private float wantedYRotation;
     private float currentYRotation;
     private float rotateAmount = 2.5f;
     private float rotationYVelocity;
-    public float tiltIntensity;
+    
 
     [SerializeField] PlayerController player;
     [SerializeField] PlayerStatsSO stats;
@@ -101,17 +103,17 @@ public class DroneMovement : MonoBehaviour
         drone.rotation = Quaternion.Slerp(drone.rotation, targetRotation, Time.deltaTime * moveSpeed);
     }
 
-    void Rotation() {
-        if (targetPosition.x < transform.position.x) {
-            wantedYRotation -= rotateAmount;
-        }
-        if (targetPosition.x > transform.position.x) {
-            wantedYRotation += rotateAmount;
-        }
+    // void Rotation() {
+    //     if (targetPosition.x < transform.position.x) {
+    //         wantedYRotation -= rotateAmount;
+    //     }
+    //     if (targetPosition.x > transform.position.x) {
+    //         wantedYRotation += rotateAmount;
+    //     }
 
-        currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
-        drone.rotation = Quaternion.Euler(new Vector3(1, currentYRotation, drone.rotation.z));
-    }
+    //     currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
+    //     drone.rotation = Quaternion.Euler(new Vector3(1, currentYRotation, drone.rotation.z));
+    // }
 
     void OnTimerEnd()
     {
@@ -140,9 +142,9 @@ public class DroneMovement : MonoBehaviour
         Vector3 turtlePos = player.transform.position;
         Vector3 dronePos = transform.position;
         Vector2 turtle = new Vector2(turtlePos.x, turtlePos.y);
-        Vector2 drone = new Vector2(dronePos.x, dronePos.y);
+        Vector2 drone = new Vector2(dronePos.x / 8, dronePos.y / 8);
         float distance = Vector2.Distance(turtle, drone);
-        if (distance < 3f && !isCollecting && player.tokenCount > 0) {
+        if (distance < droneRange && !isCollecting && player.tokenCount > 0) {
             StartCoroutine(TokenCollection());
         }
         
@@ -153,7 +155,6 @@ public class DroneMovement : MonoBehaviour
     IEnumerator TokenCollection()
     {
         isCollecting = true;
-        Debug.Log("Player touched drone");
         player.tokenCount -= 1;
         stats.AddToken();
         yield return new WaitForSeconds(1);
