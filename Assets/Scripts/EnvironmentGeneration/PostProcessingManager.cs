@@ -19,7 +19,7 @@ public class PostProcessingManager : MonoBehaviour
     {
         if (environmentVolumes[nextEnvironment] != environmentVolumes[currentEnvironment])
         {
-            fadeToVolume();
+            transitionToVolume();
         }
     }
 
@@ -30,7 +30,7 @@ public class PostProcessingManager : MonoBehaviour
 
     }
 
-    private void fadeToVolume()
+    private void transitionToVolume()
     {
         if(environmentVolumes[nextEnvironment].weight < 1f)
         {
@@ -39,9 +39,12 @@ public class PostProcessingManager : MonoBehaviour
         }
         else
         {
-            environmentVolumes[nextEnvironment].weight = 1f;
-            environmentVolumes[currentEnvironment].weight = 0f;
-            currentEnvironment = nextEnvironment;
+            if(currentEnvironment != nextEnvironment)
+            {
+                environmentVolumes[currentEnvironment].weight = 0f;
+                environmentVolumes[nextEnvironment].weight = 1f;
+                currentEnvironment = nextEnvironment;
+            }
 
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2882795485453295165}
   - component: {fileID: 4016009300224134696}
   - component: {fileID: 8024218539267146015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnvDespawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8024218539267146015
 MonoBehaviour:
   m_ObjectHideFlags: 0

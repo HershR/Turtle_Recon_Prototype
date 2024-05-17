@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OilEnv Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5981030416529459737, guid: a225db6e1dd97aa4b81064bc7f4d2d92, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6884586728039092365, guid: a225db6e1dd97aa4b81064bc7f4d2d92, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

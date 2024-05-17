@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5639225481918593188}
   - component: {fileID: 8967354980100875621}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnvironmentGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 7087908938131670661}
   - component: {fileID: 4553448879216882763}
   - component: {fileID: 7797726808725600154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
