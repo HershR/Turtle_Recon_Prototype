@@ -819,7 +819,7 @@ MonoBehaviour:
     - Key: 5
       Value: 0
     - Key: 6
-      Value: 0
+      Value: 100
     - Key: 7
       Value: 0
   InteractableObjects:
@@ -837,7 +837,7 @@ MonoBehaviour:
     - Key: 5
       Value: {fileID: 0}
     - Key: 6
-      Value: {fileID: 0}
+      Value: {fileID: 1928891561747924454, guid: 4493df0d3f8a341c59bbdcbdf886c61a, type: 3}
     - Key: 7
       Value: {fileID: 0}
 --- !u!4 &1896123094
