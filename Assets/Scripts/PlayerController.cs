@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Canvas canvas = FindObjectOfType<Canvas>();
+        //maxHeight = (canvas.planeDistance / 2) - 1;
+        //maxWidth = canvas.planeDistance - 1;
+        //Debug.Log("Height: " + maxHeight);
+        //Debug.Log("Width: " + maxWidth);
         controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
         livesText.text = "Lives Remaining: " + health;
@@ -72,7 +76,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollision(GameObject collider)
     {
-        //GameObject collider = collision.gameObject;
         if (parry)
         {
             Debug.Log("Nice Parry!");
@@ -86,46 +89,41 @@ public class PlayerController : MonoBehaviour
             Destroy(collider);
             return;
         }
-        else
+        else if (true) // Collider is trash
         {
             InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
             Debug.Log("You hit a " + obst_type);
             if (obst_type == InteractableType.Trash)
-            {   
-                Debug.Log("That's trash");
-                StartCoroutine(TakeDamage());
-            }
-            else if (obst_type == InteractableType.Oil) // case for oil
             {
-                Debug.Log("That's oil");
-                StartCoroutine(CollideOil());
+                Debug.Log("thats a trash");
             }
-            else if (obst_type == InteractableType.Wires) // case for wire
+            else if(obst_type == InteractableType.Sharp)
             {
-                Debug.Log("That's wire");
-                StartCoroutine(CollideWire());
+                Debug.Log("thats a sharp");
             }
-            else if (obst_type == InteractableType.Tokens) // Case for token
-            {
-                Debug.Log("That's a token");
-                tokenCount += 1;
-            }
-            else if (obst_type == InteractableType.Kelp) // Case for food
-            {
-                Debug.Log("That's kelp");
-                StartCoroutine(CollectFood());
-            }
-            else if (obst_type == InteractableType.Sharp) // case for sharps
-            {
-                Debug.Log("That's sharp");
-                StartCoroutine(CollideSharp());
-            }
-            else 
-            {
-                Debug.Log("Error in finding collider type");
-            }
-            Destroy(collider);
+            StartCoroutine(TakeDamage());
         }
+        //else if (collider is token) // Case for token
+        //{
+        //    tokenCount += 1;
+        //}
+        //else if (collider is food) // Case for food
+        //{
+        //    StartCoroutine(CollectFood());
+        //}
+        //else if (collider is oil) // case for oil
+        //{
+        //    StartCoroutine(CollideOil());
+        //}
+        //else if (collider is sharp) // case for sharps
+        //{
+        //    StartCoroutine(CollideSharp());
+        //}
+        //else if (collider is wire) // case for wire
+        //{
+        //    StartCoroutine(CollideWire());
+        //}
+        Destroy(collider);
     }
 
     public void OnDeath()

@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40546b8d4ff834d45968305ed7018d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obsticle_type: 4
+  obsticle_type: 0
 --- !u!54 &2649433053279960743
 Rigidbody:
   m_ObjectHideFlags: 0
