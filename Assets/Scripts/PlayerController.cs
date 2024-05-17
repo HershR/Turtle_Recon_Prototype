@@ -91,6 +91,16 @@ public class PlayerController : MonoBehaviour
         }
         else if (true) // Collider is trash
         {
+            InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
+            Debug.Log("You hit a " + obst_type);
+            if (obst_type == InteractableType.Trash)
+            {
+                Debug.Log("thats a trash");
+            }
+            else if(obst_type == InteractableType.Sharp)
+            {
+                Debug.Log("thats a sharp");
+            }
             StartCoroutine(TakeDamage());
         }
         //else if (collider is token) // Case for token
