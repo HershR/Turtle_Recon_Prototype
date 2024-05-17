@@ -22,6 +22,6 @@ public class EnvironmentController : MonoBehaviour
                 environmentGenerator.Spawn();
                 hasTriggeredSpawn = true;
             }
-        }
+        }        
     }
 }
