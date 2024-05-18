@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollision(GameObject collider)
     {
-        //GameObject collider = collision.gameObject;
         if (parry)
         {
             Debug.Log("Nice Parry!");
@@ -90,7 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
             Debug.Log("You hit a " + obst_type);
-            if (obst_type == InteractableType.Trash)
+            if (obst_type == InteractableType.Trash) // case for Trash
             {   
                 Debug.Log("That's trash");
                 StartCoroutine(TakeDamage());
