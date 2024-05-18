@@ -362,6 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sidewaysStrength: 0
   backwardsStrength: 0
+  spiralStrength: 0
   curveRate: 0.2
 --- !u!1 &886707042
 GameObject:
@@ -828,7 +829,7 @@ Transform:
   m_GameObject: {fileID: 1767416703}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 11, y: 0, z: 40}
+  m_LocalPosition: {x: 9, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1002,7 +1003,7 @@ Transform:
   m_GameObject: {fileID: 1844270417}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -11, y: 0, z: 40}
+  m_LocalPosition: {x: -9, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1091,7 +1092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639225481918593188, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 77
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5639225481918593188, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1138,8 +1139,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 886707044}
   - {fileID: 657567842}
+  - {fileID: 886707044}
   - {fileID: 1332293517}
   - {fileID: 334752809}
   - {fileID: 2995047511298018498}

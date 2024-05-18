@@ -8,6 +8,9 @@ public class WorldCurver : MonoBehaviour
     
     [Range(-20.0f, 20.0f)]
     [SerializeField] private float backwardsStrength = 0.0f;
+    
+    [Range(-180.0f, 180.0f)]
+    [SerializeField] private float spiralStrength = 0.0f;
 
     [SerializeField] private float curveRate = 0.5f;
 
@@ -16,11 +19,13 @@ public class WorldCurver : MonoBehaviour
 
     int sidewaysStrengthID;
     int backwardStrengthID;
+    int spiralStrengthID;
 
     private void OnEnable()
     {
         sidewaysStrengthID = Shader.PropertyToID("_Sideways_strength");
         backwardStrengthID = Shader.PropertyToID("_Backwards_strength");
+        spiralStrengthID = Shader.PropertyToID("_Spiral_strength");
     }
 
 	void Update()
@@ -47,11 +52,22 @@ public class WorldCurver : MonoBehaviour
                 }
                 Shader.SetGlobalFloat(backwardStrengthID, newStrength);
             }
+            if (Shader.GetGlobalFloat(spiralStrengthID) != spiralStrength)
+            {
+                float currentStrength = Shader.GetGlobalFloat(spiralStrengthID);
+                float newStrength = Mathf.Lerp(currentStrength, spiralStrength, curveRate * Time.deltaTime);
+                if (Mathf.Abs(newStrength - spiralStrength) < 0.01f)
+                {
+                    newStrength = spiralStrength;
+                }
+                Shader.SetGlobalFloat(spiralStrengthID, newStrength);
+            }
         }
         else
         {
             Shader.SetGlobalFloat(sidewaysStrengthID, sidewaysStrength);
             Shader.SetGlobalFloat(backwardStrengthID, backwardsStrength);
+            Shader.SetGlobalFloat(spiralStrengthID, spiralStrength);
         }
     }
 

@@ -117,7 +117,7 @@ public class EnvironmentGenerator : MonoBehaviour
         }
         if (Random.Range(0.0f, 1.0f) > 0.2)
         {
-            worldCurver.UpdateSidewaysStrength(Random.Range(worldCurver.minStrength, worldCurver.maxStrength));
+            //worldCurver.UpdateSidewaysStrength(Random.Range(worldCurver.minStrength, worldCurver.maxStrength));
         }
     }
 
