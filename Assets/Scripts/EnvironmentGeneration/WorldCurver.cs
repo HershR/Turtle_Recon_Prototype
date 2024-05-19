@@ -9,7 +9,7 @@ public class WorldCurver : MonoBehaviour
     [Range(-20.0f, 20.0f)]
     [SerializeField] private float backwardsStrength = 0.0f;
     
-    [Range(-180.0f, 180.0f)]
+    [Range(-20.0f, 20.0f)]
     [SerializeField] private float spiralStrength = 0.0f;
 
     [SerializeField] private float curveRate = 0.5f;
