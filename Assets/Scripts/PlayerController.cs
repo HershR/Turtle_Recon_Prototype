@@ -14,16 +14,21 @@ public class PlayerController : MonoBehaviour
     public int maxDashes = 3;
     public int tokenCount = 0;
     public bool parry = false;
+    public bool parrySucceed = false;
     public bool iFrames = false;
     private bool canParry = true;
     private bool screenBlur = false;
     private bool bleed = false;
     private bool slowed = false;
-    float maxHeight;
-    float maxWidth;
 
     public TextMeshProUGUI livesText;
     private Color baseColor;
+    private Color damageColor;
+    private Color healColor;
+    private Color researchColor;
+    private Color bleedColor;
+    private Color oilColor;
+    private Color parryColor;
 
     // Start is called before the first frame update
     void Start()
@@ -33,32 +38,18 @@ public class PlayerController : MonoBehaviour
         Debug.Log(this.transform.localPosition.x);
         livesText.text = "Lives Remaining: " + health;
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
+        damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
+        healColor = Color.Lerp(baseColor, Color.green, 0.5f);
+        researchColor = Color.Lerp(baseColor, Color.blue, 0.5f);
+        bleedColor = Color.Lerp(baseColor, Color.red, 1);
+        oilColor = Color.Lerp(baseColor, Color.black, 0.75f);
+        parryColor = Color.Lerp(baseColor, Color.cyan, 0.5f);
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        // if (this.transform.localPosition.x > 2 && move[0] > 0)
-        // {
-        //     move[0] = 0;
-        //     Debug.Log("out of bounds on X");
-        // }
-        // else if (this.transform.localPosition.x < -2 && move[0] < 0)
-        // {
-        //     move[0] = 0;
-        //     Debug.Log("out of bounds on X");
-        // }
-        // if (this.transform.localPosition.y > 2 && move[1] > 0)
-        // {
-        //     move[1] = 0;
-        //     Debug.Log("out of bounds on Y");
-        // }
-        // else if (this.transform.localPosition.y < 0 && move[1] < 0)
-        // {
-        //     move[1] = 0;
-        //     Debug.Log("out of bounds on Y");
-        // }
         controller.Move(move * Time.deltaTime * playerSpeed);
         Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
 		pos.x = Mathf.Clamp01(pos.x);
@@ -107,7 +98,7 @@ public class PlayerController : MonoBehaviour
             else if (obst_type == InteractableType.Tokens) // Case for token
             {
                 Debug.Log("That's a token");
-                tokenCount += 1;
+                StartCoroutine(CollideToken());
             }
             else if (obst_type == InteractableType.Kelp) // Case for food
             {
@@ -135,11 +126,29 @@ public class PlayerController : MonoBehaviour
     IEnumerator PlayerParry()
     {
         Debug.Log("Player has parried");
+        float parryDuration = 0.5f;
+        float passedTime = 0;
+        Quaternion initialRotation = this.transform.rotation;
         parry = true;
-        this.GetComponentInChildren<Renderer>().material.color = new Color(255, 255, 255);
         canParry = false;
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(ParryCooldown(3));
+        this.GetComponentInChildren<Renderer>().material.color = parryColor; // Swap to parry color.
+        // SPIIIIIIIIIIIIIINNNNN
+        while (passedTime < parryDuration)
+        {
+            this.transform.Rotate(Vector3.up * (360 * Time.deltaTime / parryDuration));
+            passedTime += Time.deltaTime;
+            yield return null;
+        }
+        this.transform.rotation = initialRotation;
+        //yield return new WaitForSeconds(parryDuration);
+        if (parrySucceed == false) {
+            StartCoroutine(ParryCooldown(3));
+        }
+        else
+        {
+            parrySucceed = false;
+            StartCoroutine(ParryCooldown(0));
+        }
         yield return null;
     }
 
@@ -153,7 +162,8 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator SuccessfulParry()
-    {
+    {   
+        parrySucceed = true;
         parry = false;
         canParry = true;
         if (dashes < maxDashes)
@@ -173,7 +183,7 @@ public class PlayerController : MonoBehaviour
             OnDeath();
         }
         livesText.text = "Lives Remaining: " + health;
-        this.GetComponentInChildren<Renderer>().material.color = new Color(255, 0, 0);
+        this.GetComponentInChildren<Renderer>().material.color = damageColor; // Swap to the damage color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
         iFrames = false;
@@ -186,7 +196,7 @@ public class PlayerController : MonoBehaviour
             health += 1;
         }
         livesText.text = "Lives Remaining: " + health;
-        this.GetComponentInChildren<Renderer>().material.color = new Color(0, 255, 0); // Turtle flashes green
+        this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
     }
@@ -195,7 +205,7 @@ public class PlayerController : MonoBehaviour
     {
         screenBlur = true;
         StartCoroutine(TakeDamage());
-        this.GetComponentInChildren<Renderer>().material.color = new Color(0, 0, 0); // Turtle goes black
+        this.GetComponentInChildren<Renderer>().material.color = oilColor; // Swap to oil color.
         yield return new WaitForSeconds(5);
         screenBlur = false;
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
@@ -205,7 +215,7 @@ public class PlayerController : MonoBehaviour
     {
         bleed = true;
         StartCoroutine(TakeDamage());
-        this.GetComponentInChildren<Renderer>().material.color = new Color(255, baseColor[1], baseColor[2]);
+        this.GetComponentInChildren<Renderer>().material.color = bleedColor; // Flash to bleed color.
         yield return new WaitForSeconds(20);
         bleed = false;
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
@@ -219,5 +229,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(10);
         playerSpeed = 5;
         slowed = false;
+    }
+
+    IEnumerator CollideToken()
+    {
+        tokenCount += 1;
+        this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
+        yield return new WaitForSeconds(1);
+        this.GetComponentInChildren<Renderer>().material.color = baseColor;
     }
 }
