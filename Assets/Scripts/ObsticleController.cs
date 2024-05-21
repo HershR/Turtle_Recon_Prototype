@@ -51,9 +51,9 @@ public class ObsticleController : MonoBehaviour
         
         transform.position += new Vector3(0, 0, -0.01f);
         transform.Rotate(new Vector3(0, 0, 0.01f));
-        if (transform.position.z > (transform.position.z  + 0.5f))
+        if (transform.position.z < Camera.main.transform.position.z)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 1f);
         }
     }
 
@@ -70,7 +70,11 @@ public class ObsticleController : MonoBehaviour
         {
             return;
         }
-        collision.gameObject.GetComponent<PlayerController>().OnCollision(this.gameObject);
+        var player = collision.gameObject.GetComponent<PlayerController>();
+        if (player != null)
+        {
+            player.OnCollision(this.gameObject);
+        }
     
         Destroy(this.gameObject);
         Debug.Log("You got hit");
