@@ -24,6 +24,7 @@ public class UpgradeDescriptionUI : MonoBehaviour
     {
         upgradePurchaceButton.onClick.AddListener(BuyUpgrade);
         totalTokensText.text = "Tokens: " + playerStatsSO.Tokens.ToString();
+        Init(StatType.Health);
     }
     public void Init(StatType type)
     {
