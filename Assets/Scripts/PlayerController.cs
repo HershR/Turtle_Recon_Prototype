@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController controller;
+    // private CharacterController controller;
     public float playerSpeed;
     public float maxSpeed;
     public int health = 3;
@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Canvas canvas = FindObjectOfType<Canvas>();
-        controller = gameObject.AddComponent<CharacterController>();
+        // controller = gameObject.AddComponent<CharacterController>();
+
         Debug.Log(this.transform.localPosition.x);
         livesText.text = "Lives Remaining: " + health;
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             move = move.normalized;
         }
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        transform.position += (move * Time.deltaTime * playerSpeed);
         Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
 		pos.x = Mathf.Clamp01(pos.x);
 		pos.y = Mathf.Clamp01(pos.y);
@@ -67,14 +68,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollision(GameObject collider)
     {
-        if (parry)
+        InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
+        if (parry && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp))
         {
             Debug.Log("Nice Parry!");
             Destroy(collider);
             StartCoroutine(SuccessfulParry());
             return;
         }
-        else if (iFrames)
+        else if (iFrames && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp))
         {
             Debug.Log("In damage iFrames");
             Destroy(collider);
@@ -82,10 +84,9 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
             Debug.Log("You hit a " + obst_type);
             if (obst_type == InteractableType.Trash) // case for Trash
-            {   
+            {
                 Debug.Log("That's trash");
                 StartCoroutine(TakeDamage());
             }
@@ -114,7 +115,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("That's sharp");
                 StartCoroutine(CollideSharp());
             }
-            else 
+            else
             {
                 Debug.Log("Error in finding collider type");
             }

@@ -22,8 +22,6 @@ public class ObsticleSpawner : MonoBehaviour
 	[SerializeField] public SerializedDictionary<InteractableType, GameObject> InteractableObjects;
 
 	
-	
-
 	// We get env passed in
 	// From that enum, we get 
 
@@ -55,18 +53,22 @@ public class ObsticleSpawner : MonoBehaviour
 		else
 		{
 			timer = 0;
-			int index = Random.Range(0, totalWeight);
-			foreach ((InteractableType t, int i) in objWeights)
-			{
-				if (i > index)
+			for(int i = 0; i < Random.Range(1, 4); i++)
+            {
+				int index = Random.Range(0, totalWeight);
+				foreach ((InteractableType t, int w) in objWeights)
 				{
-					GameObject new_obsticle = Instantiate(InteractableObjects[t], this.transform);
-					new_obsticle.GetComponent<ObsticleController>().obsticle_type = t;
-					Debug.Log("Spawned a " + t);
-					break;
+					if (w > index)
+					{
+						GameObject new_obsticle = Instantiate(InteractableObjects[t], this.transform);
+						new_obsticle.GetComponent<ObsticleController>().obsticle_type = t;
+						Debug.Log("Spawned a " + t);
+						break;
+					}
 				}
+				Debug.Log("obsticle spawned");
 			}
-			Debug.Log("obsticle spawned");
+				
 		}
 	}
 }

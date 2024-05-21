@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 7627436007639590421}
   m_Layer: 0
   m_Name: turtleGeo
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +207,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 8029743232352607863}
   m_AABB:
-    m_Center: {x: 0.03148231, y: 0.15722582, z: 0.024062037}
+    m_Center: {x: 0, y: 0.2, z: 0}
     m_Extent: {x: 0.61647844, y: 0.22714946, z: 0.52889454}
   m_DirtyAABB: 0
 --- !u!136 &1884849633388283527
@@ -1194,7 +1194,7 @@ GameObject:
   - component: {fileID: 125650093978324464}
   m_Layer: 0
   m_Name: turtle_rig
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
