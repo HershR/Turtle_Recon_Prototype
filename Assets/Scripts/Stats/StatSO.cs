@@ -18,23 +18,39 @@ public class StatSO : ScriptableObject
     [Tooltip("Cost to upgrade Stat at each level under MaxLevel")]
     private int[] levelCosts = new int[4];
 
+    public bool IsUpgradable(int tokens)
+    {
+        if(Level == MaxLevel) { return false; }
+        if(GetCost() > tokens) { return false; }
+        return true;
+    }
+
     public void Upgrade()
     {
         if (Level == MaxLevel) { return; }
         Level += 1;
+        Debug.Log($"Stat {Name} upgraded");
     }
     public int GetCost()
     {
         if (Level >= MaxLevel) { return -1; }
-        return levelCosts[Mathf.Min(levelCosts.Length, Level)];
+        return levelCosts[Mathf.Min(levelCosts.Length - 1, Level)];
     }
 
     public string GetDescription()
     {
-        return description[Mathf.Min(description.Length, Level)];
+        return description[Mathf.Min(description.Length - 1, Level)];
+    }
+    public void ResetLevel()
+    {
+        Level = 0;
+    }
+    public override string ToString()
+    {
+        return $"StatSO {Name} : Level {Level}";
     }
 }
 
 
 //Differnt type of upgradeable stats
-public enum StatType { Health, Speed, Dash, DashRefillParry, Food1Spawn, Food2Spawn, DashRefillSpawn, TokenSpawn, DroneCollectionRate, DroneSpawn, OilResearch, TrashResearch, AcidityResearch };
+public enum StatType { Health, Speed, Dash, DashRefillParry, DroneCollectionRate, Food1Spawn, Food2Spawn, DashRefillSpawn, TokenSpawn, DroneSpawn, OilResearch, TrashResearch, AcidityResearch };
