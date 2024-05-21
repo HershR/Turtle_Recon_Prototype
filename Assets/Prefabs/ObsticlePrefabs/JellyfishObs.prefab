@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8299312982951193162}
   - component: {fileID: -413378824369436683}
   - component: {fileID: 2849215252292717573}
+  - component: {fileID: 8270287004124532097}
   m_Layer: 0
   m_Name: JellyfishObs
   m_TagString: Untagged
@@ -148,3 +149,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5835053200908361716, guid: 78326c178a61d3044b64b40eb85e40d2, type: 3}
+--- !u!222 &8270287004124532097
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928891561747924454}
+  m_CullTransparentMesh: 1
