@@ -17,9 +17,9 @@ public class EnvironmentGenerator : MonoBehaviour
     [SerializedDictionary("Environment Type", "Prefabs")]
     [SerializeField] private SerializedDictionary<EnvironmentType, List<GameObject>> environments;
 
-    [field: SerializeField] public EnvironmentType CurrentEnvironment { get; private set; }
+    [SerializeField] private EnvironmentType currentEnvironment;
     
-    [SerializeField] private EnvironmentType currentEnvironmentToSpawn;
+    [field: SerializeField] public EnvironmentType CurrentEnvironmentToSpawn { get; private set; }
 
     //[SerializeField] private Queue<GameObject> environmentSpawnQueue;
 
@@ -41,7 +41,7 @@ public class EnvironmentGenerator : MonoBehaviour
 
     private void Start()
     {
-        currentEnvironmentToSpawn = EnvironmentType.Normal;
+        CurrentEnvironmentToSpawn = EnvironmentType.Normal;
         environmentTargetSpeed = environmentSpeed;
         environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
         Spawn(Vector3.zero);
@@ -56,10 +56,10 @@ public class EnvironmentGenerator : MonoBehaviour
         }
         if (environmentTimer < 0.0f)
         {
-            var oldEnv = currentEnvironmentToSpawn;
-            if (currentEnvironmentToSpawn != EnvironmentType.Transition)
+            var oldEnv = CurrentEnvironmentToSpawn;
+            if (CurrentEnvironmentToSpawn != EnvironmentType.Transition)
             {
-                currentEnvironmentToSpawn = EnvironmentType.Transition;
+                CurrentEnvironmentToSpawn = EnvironmentType.Transition;
                 environmentTimer = Random.Range(minEnvironmentTime / 3, maxEnvironmentTime / 3);
                 //postProcessingManager.SwitchEnvironment(EnvironmentType.Normal);
             }
@@ -71,14 +71,14 @@ public class EnvironmentGenerator : MonoBehaviour
                     weight -= pair.Value;
                     if (weight <= 0f)
                     {
-                        currentEnvironmentToSpawn = pair.Key;
+                        CurrentEnvironmentToSpawn = pair.Key;
                         break;
                     }
                 }
                 environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
                 //postProcessingManager.SwitchEnvironment(currentEnvironmentToSpawn);
             }
-            Debug.Log($"Change Env from {oldEnv} to {currentEnvironmentToSpawn}");
+            Debug.Log($"Change Env from {oldEnv} to {CurrentEnvironmentToSpawn}");
         }
         else
         {
@@ -92,7 +92,8 @@ public class EnvironmentGenerator : MonoBehaviour
         float totalWeight = 100f;
         
         //60% chance to get a differnt env
-        float baseWeight = 90f / (Enum.GetValues(typeof(EnvironmentType)).Length - 2); //exclude transition and basic
+        //20% chance or any
+        float baseWeight = 60f / (Enum.GetValues(typeof(EnvironmentType)).Length - 2); //exclude transition and basic
 
         float oilWeight = baseWeight - (baseWeight * playerStats.GetStat(StatType.OilResearch).Level / playerStats.GetStat(StatType.OilResearch).MaxLevel);
         float trashWeight = baseWeight - (baseWeight * playerStats.GetStat(StatType.TrashResearch).Level / playerStats.GetStat(StatType.TrashResearch).MaxLevel);
@@ -105,20 +106,16 @@ public class EnvironmentGenerator : MonoBehaviour
 
     public void Spawn(Vector3 offset)
     {
-        int index = Random.Range(0, environments[currentEnvironmentToSpawn].Count);
-        GameObject prefabToSpawn = environments[currentEnvironmentToSpawn][index];
+        int index = Random.Range(0, environments[CurrentEnvironmentToSpawn].Count);
+        GameObject prefabToSpawn = environments[CurrentEnvironmentToSpawn][index];
         GameObject spawned = Instantiate(prefabToSpawn, transform.position + offset, Quaternion.identity);
         EnvironmentController environmentController = spawned.GetComponent<EnvironmentController>();
         environmentController.Init(this);
-        if (currentEnvironmentToSpawn == EnvironmentType.Transition)
-        {
-            worldCurver.ResetStrenghts();
-            return;
-        }
-        if (Random.Range(0.0f, 1.0f) > 0.2)
-        {
-            //worldCurver.UpdateSidewaysStrength(Random.Range(worldCurver.minStrength, worldCurver.maxStrength));
-        }
+        //if (CurrentEnvironmentToSpawn == EnvironmentType.Transition)
+        //{
+        //    worldCurver.ResetStrenghts();
+        //    return;
+        //}        
     }
 
     public float GetSpeed()
@@ -127,7 +124,6 @@ public class EnvironmentGenerator : MonoBehaviour
     }
     public void TriggerEnvironmentChange(EnvironmentType type)
     {
-        CurrentEnvironment = type;
         postProcessingManager.SwitchEnvironment(type);
     }
 }
