@@ -38,12 +38,12 @@ public class DroneMovement : MonoBehaviour
         timeRemaining = timeDuration;
         drone = GetComponent<Rigidbody>();
  
-        float x = Random.value > 0.5f ? Random.Range(10, 16) : Random.Range(-15, -9);
-        float y = Random.value > 0.5f ? -10 : 10;
+        float x = Random.value > 0.5f ? Random.Range(1, 21) : Random.Range(-20, 0);
+        float y = Random.value > 0.5f ? -25 : 25;
 
-        startPosition = new Vector3(x, y, 0); 
+        startPosition = new Vector3(x, y, transform.position.z); 
         transform.position = startPosition;
-        targetPosition = new Vector3(0, 0, 0); 
+        targetPosition = new Vector3(0, 0, transform.position.z); 
         StartCoroutine(MoveDroneIntoView());
     }
 
@@ -75,7 +75,6 @@ public class DroneMovement : MonoBehaviour
             AdjustTilt();
             // Rotation();
             AdjustUpwardForce();
-            NearPlayer();
         }
     }
 
@@ -91,7 +90,7 @@ public class DroneMovement : MonoBehaviour
     void UpdateRandomTarget() {
         float x = Random.Range(minWidth, maxWidth);
         float y = Random.Range(minHeight, maxHeight);
-        targetPosition = new Vector3(x, y, 0);
+        targetPosition = new Vector3(x, y, transform.position.z);
     }
 
     void AdjustTilt() {
@@ -121,7 +120,7 @@ public class DroneMovement : MonoBehaviour
             isCollecting = false;
         }
 
-        targetPosition = new Vector3(15, 0, 0);
+        targetPosition = new Vector3(30, 0, transform.position.z);
         MoveToPosition();
         if (Vector3.Distance(transform.position, targetPosition) < 3f) {
             Destroy(gameObject);
@@ -154,6 +153,7 @@ public class DroneMovement : MonoBehaviour
     // in player stats
     IEnumerator TokenCollection()
     {
+        Debug.Log("Player in range of drone");
         isCollecting = true;
         player.tokenCount -= 1;
         stats.AddToken();
