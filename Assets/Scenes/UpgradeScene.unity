@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 441171730}
-  m_IndirectSpecularColor: {r: 0.12473945, g: 0.40816116, b: 0.64933443, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1291,8 +1291,8 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 128
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 20.237396, y: 8.364248, z: 24.238113}
-  m_BoxOffset: {x: 0.07413244, y: 0.81787586, z: 2.4573975}
+  m_BoxSize: {x: 20.237396, y: 8.364248, z: 25.846157}
+  m_BoxOffset: {x: 0.07413292, y: 0.81787586, z: -2.0592098}
   m_NearClip: 0.3
   m_FarClip: 1000
   m_ShadowDistance: 100
@@ -1318,7 +1318,7 @@ Transform:
   m_GameObject: {fileID: 599056210}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.05, z: 2.73}
+  m_LocalPosition: {x: 0, y: 3.05, z: 5.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
