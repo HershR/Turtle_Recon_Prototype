@@ -69,14 +69,14 @@ public class PlayerController : MonoBehaviour
     public void OnCollision(GameObject collider)
     {
         InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
-        if (parry && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp))
+        if (parry && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp && obst_type != InteractableType.JellyFish))
         {
             Debug.Log("Nice Parry!");
             Destroy(collider);
             StartCoroutine(SuccessfulParry());
             return;
         }
-        else if (iFrames && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp))
+        else if (iFrames && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp && obst_type != InteractableType.JellyFish))
         {
             Debug.Log("In damage iFrames");
             Destroy(collider);
@@ -114,6 +114,11 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("That's sharp");
                 StartCoroutine(CollideSharp());
+            }
+            else if (obst_type == InteractableType.JellyFish) // case for jellyfish
+            {
+                Debug.Log("That's jellyfish");
+                // Add coroutine for jellyfish
             }
             else
             {

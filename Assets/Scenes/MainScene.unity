@@ -956,6 +956,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643184d7d1f76d045ba231ca008fa51a, type: 3}
+--- !u!114 &1398126204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
+  m_PrefabInstance: {fileID: 1161915737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5737869e53f6f84698dd3d215f9fc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1465403512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55330641944c6476b8f6423a9a052385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  environmentGenerator: {fileID: 1398126204}
   InteractableWeights:
     _serializedList:
     - Key: 0
@@ -1246,6 +1258,81 @@ MonoBehaviour:
       Value: {fileID: 1928891561747924454, guid: 4493df0d3f8a341c59bbdcbdf886c61a, type: 3}
     - Key: 7
       Value: {fileID: 0}
+  CurrentEnviornment: 0
+  NormalEnv:
+    _serializedList:
+    - Key: 0
+      Value: 100
+    - Key: 1
+      Value: 100
+    - Key: 2
+      Value: 100
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 100
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 100
+    - Key: 7
+      Value: 0
+  OilEnv:
+    _serializedList:
+    - Key: 0
+      Value: 100
+    - Key: 1
+      Value: 50
+    - Key: 2
+      Value: 300
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 100
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 0
+    - Key: 7
+      Value: 0
+  TrashEnv:
+    _serializedList:
+    - Key: 0
+      Value: 500
+    - Key: 1
+      Value: 500
+    - Key: 2
+      Value: 100
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 100
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 0
+    - Key: 7
+      Value: 0
+  CoralEnv:
+    _serializedList:
+    - Key: 0
+      Value: 50
+    - Key: 1
+      Value: 50
+    - Key: 2
+      Value: 50
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 100
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 100
+    - Key: 7
+      Value: 0
+  EnvWeightDict:
+    _serializedList: []
 --- !u!4 &1896123094
 Transform:
   m_ObjectHideFlags: 0

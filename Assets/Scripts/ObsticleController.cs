@@ -50,7 +50,7 @@ public class ObsticleController : MonoBehaviour
         //    gameObject.transform.rotation.eulerAngles.y,
         //    gameObject.transform.rotation.eulerAngles.z + 1);
         
-        transform.position += new Vector3(0, 0, -0.01f);
+        transform.position += new Vector3(0, 0, -0.01f / transform.lossyScale.z);
         transform.Rotate(new Vector3(0, 0, 0.01f));
         if (transform.position.z < Camera.main.transform.position.z)
         {

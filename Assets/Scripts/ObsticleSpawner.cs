@@ -17,11 +17,20 @@ public enum InteractableType
 
 public class ObsticleSpawner : MonoBehaviour
 {
-	[SerializedDictionary("Interactable", "Weight")]
-	[SerializeField] public SerializedDictionary<InteractableType, int> InteractableWeights;
+	[SerializeField] public EnvironmentGenerator environmentGenerator;
+	[SerializeField] public SerializedDictionary<InteractableType, int> InteractableWeights; // Serves no purpose anymore
 	[SerializeField] public SerializedDictionary<InteractableType, GameObject> InteractableObjects;
-
 	
+	[SerializeField] public EnvironmentType CurrentEnviornment;
+
+	[SerializeField] public SerializedDictionary<InteractableType, int> NormalEnv;
+	[SerializeField] public SerializedDictionary<InteractableType, int> OilEnv;
+	[SerializeField] public SerializedDictionary<InteractableType, int> TrashEnv;
+	[SerializeField] public SerializedDictionary<InteractableType, int> CoralEnv;
+	[SerializeField] private SerializedDictionary<EnvironmentType, SerializedDictionary<InteractableType, int>> EnvWeightDict =
+			new SerializedDictionary<EnvironmentType, SerializedDictionary<InteractableType, int>> { };
+
+
 	// We get env passed in
 	// From that enum, we get 
 
@@ -31,21 +40,29 @@ public class ObsticleSpawner : MonoBehaviour
 
 	private void Start()
 	{
-		foreach((InteractableType t, int i) in InteractableWeights)
-        {
-			if(i > 0)
-            {
-				objWeights.Add((t, i + totalWeight));
-				totalWeight += i;
-			}
-        }
-		Debug.Log(InteractableWeights);
+		// Get Current env
+		CurrentEnviornment = environmentGenerator.CurrentEnvironmentToSpawn;
+		// Populate Weight dictionaries based on current enviornemnt
+		EnvWeightDict.Add(EnvironmentType.Normal, NormalEnv);
+		EnvWeightDict.Add(EnvironmentType.OilField, OilEnv);
+		EnvWeightDict.Add(EnvironmentType.CoralReef, CoralEnv);
+		EnvWeightDict.Add(EnvironmentType.TrashField, TrashEnv);
+		UpdateObsticleWeights();
+
+		// Fill dict with env values (make ur own dict)
+		UpdateObsticleWeights();
 		Debug.Log("Total weight:" + totalWeight);
 		Debug.Log("(Objects, weights): " + objWeights);
 	}
 
 	void Update()
 	{
+		if(CurrentEnviornment != environmentGenerator.CurrentEnvironmentToSpawn && environmentGenerator.CurrentEnvironmentToSpawn != EnvironmentType.Transition)
+        {
+			CurrentEnviornment = environmentGenerator.CurrentEnvironmentToSpawn;
+			Debug.Log("New enviornemnt: " + CurrentEnviornment);
+			UpdateObsticleWeights();
+        }
 		if (timer <= 3f)
 		{
 			timer += Time.deltaTime;
@@ -71,4 +88,19 @@ public class ObsticleSpawner : MonoBehaviour
 				
 		}
 	}
+	// grab values from corresponding dict
+	void UpdateObsticleWeights()
+    {
+		foreach ((InteractableType t, int i) in EnvWeightDict[CurrentEnviornment])
+		{
+			if (i > 0)
+			{
+				objWeights.Add((t, i + totalWeight));
+				totalWeight += i;
+			}
+		}
+		Debug.Log("New Obsticle Spawn Rates: " + string.Join(", ", objWeights));
+	}
+	// THIS IS WHERE ALL THE ENV DICTIONARIES WILL GO IF WE MAKE EM PRIVATE!!!!
+ 
 }
