@@ -3,23 +3,29 @@
 [ExecuteInEditMode]
 public class WorldCurver : MonoBehaviour
 {
-	[Range(-20.0f, 20.0f)]
-	[SerializeField] private float sidewaysStrength = 0.0f;
-    
+    [Range(-20.0f, 20.0f)]
+    [SerializeField] private float sidewaysStrength = 0.0f;
+
     [Range(-20.0f, 20.0f)]
     [SerializeField] private float backwardsStrength = 0.0f;
-    
-    [Range(-180.0f, 180.0f)]
+
+    [Range(-20.0f, 20.0f)]
     [SerializeField] private float spiralStrength = 0.0f;
 
     [SerializeField] private float curveRate = 0.5f;
 
+    [SerializeField] private float sidewaysChangeTimerMax = 30f;
+
+    private float sidewaysChangeTimer = 30f;
+
     public float minStrength { get; private set; } = -20f;
     public float maxStrength { get; private set; } = 20f;
 
-    int sidewaysStrengthID;
-    int backwardStrengthID;
-    int spiralStrengthID;
+
+
+    private int sidewaysStrengthID;
+    private int backwardStrengthID;
+    private int spiralStrengthID;
 
     private void OnEnable()
     {
@@ -28,10 +34,29 @@ public class WorldCurver : MonoBehaviour
         spiralStrengthID = Shader.PropertyToID("_Spiral_strength");
     }
 
-	void Update()
-	{
+    void Update()
+    {
         if (Application.isPlaying)
         {
+            if (sidewaysChangeTimer > 0.0f)
+            {
+                sidewaysChangeTimer -= Time.deltaTime;
+            }
+            else
+            {
+                if(sidewaysStrength == 0)
+                {
+                    float[] options = new float[3] { -10.0f, 0f, 10f };
+                    sidewaysStrength = options[Random.Range(0, 2)];
+                }
+                else
+                {
+                    float[] options = new float[2] { 0f, sidewaysStrength };
+                    sidewaysStrength = options[Random.Range(0, 2)];
+                }
+                sidewaysChangeTimer = Random.Range(0, sidewaysChangeTimerMax);
+            }
+
             if (Shader.GetGlobalFloat(sidewaysStrengthID) != sidewaysStrength)
             {
                 float currentStrength = Shader.GetGlobalFloat(sidewaysStrengthID);
