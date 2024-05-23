@@ -24,8 +24,8 @@ public class ObsticleController : MonoBehaviour
         dist = Mathf.Abs(camera.GetComponent<Transform>().transform.position.z - player.GetComponent<Transform>().transform.position.z);
         maxHeight = Mathf.Abs(2 * Mathf.Tan(0.5f * fov) * dist * camera.transform.localScale.x) * 0.9f;
         maxWidth = maxHeight * 1.78f;
-        Debug.Log("MH: " + maxHeight);
-        Debug.Log("MW: " + maxWidth);
+        // Debug.Log("MH: " + maxHeight);
+        // Debug.Log("MW: " + maxWidth);
         transform.position = new Vector3(Random.Range(-1 * maxWidth, maxWidth) / transform.localScale.x,
                                         Random.Range(-1 * maxHeight, maxHeight) / transform.localScale.y,
                                         -1 * player.transform.position.z) + player.transform.position;
@@ -34,6 +34,7 @@ public class ObsticleController : MonoBehaviour
         pos.x = Mathf.Clamp01(pos.x);
         pos.y = Mathf.Clamp01(pos.y);
         transform.position = Camera.main.ViewportToWorldPoint(pos);
+        transform.Rotate(new Vector3(0, 0, Random.Range(-180, 180)));
     }
 
     private void Start()
@@ -49,7 +50,8 @@ public class ObsticleController : MonoBehaviour
         //    gameObject.transform.rotation.eulerAngles.z + 1);
         
         transform.position += new Vector3(0, 0, -0.01f);
-        if(transform.position.z > (transform.position.z  + 0.5f))
+        transform.Rotate(new Vector3(0, 0, 0.01f));
+        if (transform.position.z > (transform.position.z  + 0.5f))
         {
             Destroy(gameObject);
         }
@@ -69,6 +71,7 @@ public class ObsticleController : MonoBehaviour
             return;
         }
         collision.gameObject.GetComponent<PlayerController>().OnCollision(this.gameObject);
+    
         Destroy(this.gameObject);
         Debug.Log("You got hit");
     }
