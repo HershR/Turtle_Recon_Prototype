@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5639225481918593188}
   - component: {fileID: 8967354980100875621}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnvironmentGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2129967705739062306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 50.41}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65,12 +65,14 @@ MonoBehaviour:
     - Key: 4
       Value:
       - {fileID: 6719016649828426457, guid: 4085099b7b665374fa183e61b352d873, type: 3}
-  currentEnvironment: 0
+  <CurrentEnvironment>k__BackingField: 0
+  currentEnvironmentToSpawn: 0
   environmentSpeed: 20
   environmentTargetSpeed: 5
   minEnvironmentTime: 5
   maxEnvironmentTime: 10
   environmentTimer: 0
+  worldCurver: {fileID: 0}
   postProcessingManager: {fileID: 0}
 --- !u!1 &2617797104097892099
 GameObject:
@@ -83,7 +85,7 @@ GameObject:
   - component: {fileID: 7087908938131670661}
   - component: {fileID: 4553448879216882763}
   - component: {fileID: 7797726808725600154}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

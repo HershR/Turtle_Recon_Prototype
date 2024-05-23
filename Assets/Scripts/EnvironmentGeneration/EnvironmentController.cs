@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EnvironmentController : MonoBehaviour
 {
+    [SerializeField] private EnvironmentType type;
+    [SerializeField] private Transform despawnPoint;
+    
     private EnvironmentGenerator environmentGenerator;
-    bool hasTriggeredSpawn = false;
+    private bool hasTriggeredSpawn = false;
     public void Init(EnvironmentGenerator environmentGenerator)
     {
         this.environmentGenerator = environmentGenerator;
@@ -16,12 +19,19 @@ public class EnvironmentController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - Time.deltaTime * environmentGenerator.GetSpeed());
         if (!hasTriggeredSpawn)
         {
-            float distance = Mathf.Abs(Vector3.Distance(gameObject.transform.position, environmentGenerator.gameObject.transform.position));
-            if (distance > 10 * transform.localScale.z) //plane size 10m*1*10m
+            if(despawnPoint.transform.position.z < environmentGenerator.transform.position.z)
             {
-                environmentGenerator.Spawn();
+                environmentGenerator.Spawn(despawnPoint.transform.position - environmentGenerator.transform.position);
                 hasTriggeredSpawn = true;
             }
+        }
+        if (transform.position.z < Camera.main.transform.position.z)
+        {
+            environmentGenerator.TriggerEnvironmentChange(type);
+        }
+        if (despawnPoint.position.z < Camera.main.transform.position.z)
+        {
+            Destroy(gameObject, 1f);
         }
     }
 }

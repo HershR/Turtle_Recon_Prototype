@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        if(move.magnitude > 1f)
+        {
+            move = move.normalized;
+        }
         controller.Move(move * Time.deltaTime * playerSpeed);
         Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
 		pos.x = Mathf.Clamp01(pos.x);
