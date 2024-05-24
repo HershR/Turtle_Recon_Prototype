@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbbf3a05aa3f0f499ca0e8c0db673c8, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  <Tokens>k__BackingField: 200
+  <Tokens>k__BackingField: 20
   Stats:
     _serializedList:
     - Key: 0
@@ -36,11 +36,11 @@ MonoBehaviour:
     - Key: 9
       Value: {fileID: 11400000, guid: 7dc672758a130da4aa2130ff262efd4c, type: 2}
     - Key: 10
-      Value: {fileID: 0}
+      Value: {fileID: 11400000, guid: 12aa8864edebee34ea35291b9ff9cf82, type: 2}
     - Key: 11
-      Value: {fileID: 0}
+      Value: {fileID: 11400000, guid: 8703b439acd0c084c94a35de9937b722, type: 2}
     - Key: 12
-      Value: {fileID: 0}
+      Value: {fileID: 11400000, guid: 1db79d4f1c11e1347b3d9871871b6aed, type: 2}
   <PlayerStats>k__BackingField:
     _serializedList:
     - Key: 0
@@ -68,8 +68,8 @@ MonoBehaviour:
   <ResearchStats>k__BackingField:
     _serializedList:
     - Key: 11
-      Value: {fileID: 0}
+      Value: {fileID: 11400000, guid: 8703b439acd0c084c94a35de9937b722, type: 2}
     - Key: 10
-      Value: {fileID: 0}
+      Value: {fileID: 11400000, guid: 12aa8864edebee34ea35291b9ff9cf82, type: 2}
     - Key: 12
-      Value: {fileID: 0}
+      Value: {fileID: 11400000, guid: 1db79d4f1c11e1347b3d9871871b6aed, type: 2}
