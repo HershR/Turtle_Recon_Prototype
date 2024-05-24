@@ -17,31 +17,40 @@ public enum InteractableType
 
 public class ObsticleSpawner : MonoBehaviour
 {
+	// Initialize Enviornment Generator var
 	[SerializeField] public EnvironmentGenerator environmentGenerator;
+
 	[SerializeField] public SerializedDictionary<InteractableType, int> InteractableWeights; // Serves no purpose anymore
+
+	// Public dictionary mapping obsticle types types to game objects
 	[SerializeField] public SerializedDictionary<InteractableType, GameObject> InteractableObjects;
-	
+
+	// Initialize current env var
 	[SerializeField] public EnvironmentType CurrentEnviornment;
 
+	// Initialize spawn weight dictionaries for ALL enviornments
 	[SerializeField] public SerializedDictionary<InteractableType, int> NormalEnv;
 	[SerializeField] public SerializedDictionary<InteractableType, int> OilEnv;
 	[SerializeField] public SerializedDictionary<InteractableType, int> TrashEnv;
 	[SerializeField] public SerializedDictionary<InteractableType, int> CoralEnv;
+
+	// Create dictionary mapping enviornments to their respective spawn dicts
 	[SerializeField] private SerializedDictionary<EnvironmentType, SerializedDictionary<InteractableType, int>> EnvWeightDict =
 			new SerializedDictionary<EnvironmentType, SerializedDictionary<InteractableType, int>> { };
 
+	// Initialize spawn rate upgrades from player
+	[SerializeField] public StatSO tokenSpawnUpgrade;
+	[SerializeField] public StatSO kelpSpawnUpgrade;
+	[SerializeField] public StatSO jellyfishSpawnUpgrade;
+	[SerializeField] public StatSO dashSpawnUpgrade;
+	[SerializeField] public StatSO oilSpawnUpgrade;
+	[SerializeField] public StatSO trashSpawnUpgrade;
+	[SerializeField] public StatSO acidityUpgrade;
 
-	// We get env passed in
-	// From that enum, we get 
-
-	float timer = 0f;
+	float timer = 0f; // Spawn rate timer
 	private int totalWeight = 0;
+	// List of obsticles and their spawn weights (affected by player upgrades)
 	private List<(InteractableType, int)> objWeights = new List<(InteractableType, int)>{};
-
-    private void Awake()
-    {
-        // Get player wupgrade values
-    }
 
     private void Start()
 	{
@@ -100,8 +109,27 @@ public class ObsticleSpawner : MonoBehaviour
 		{
 			if (i > 0)
 			{
-				objWeights.Add((t, i + totalWeight));
-				totalWeight += i;
+				int weight = i;
+                switch (t)
+                {
+					case InteractableType.Tokens:
+						weight *= tokenSpawnUpgrade.Level;
+						break;
+					case InteractableType.JellyFish:
+						weight *= jellyfishSpawnUpgrade.Level * acidityUpgrade.Level;
+						break;
+					case InteractableType.Kelp:
+						weight *= kelpSpawnUpgrade.Level * acidityUpgrade.Level;
+						break;
+					case InteractableType.Trash:
+						weight /= trashSpawnUpgrade.Level;
+						break;
+					case InteractableType.Oil:
+						weight /= oilSpawnUpgrade.Level;
+						break;
+                }
+				objWeights.Add((t, weight + totalWeight));
+				totalWeight += weight;
 			}
 		}
 		Debug.Log("New Obsticle Spawn Rates: " + string.Join(", ", objWeights));
