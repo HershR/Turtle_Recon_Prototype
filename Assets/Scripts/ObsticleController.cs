@@ -7,40 +7,19 @@ public class ObsticleController : MonoBehaviour
     // Update is called once per frame
     float maxHeight;
     float maxWidth;
-    public InteractableType obsticle_type;
 
     // give it random movement on (x) similar to (gust of wind)
 
     private void Awake()
     {
-        // Height = 2 * Tan(0.5 * field_of_view) * distance;
-        // Recall aspect Ratio = 16:9
-        // Width =
-        // fov =
-        GameObject camera = GameObject.Find("Main Camera");
-        GameObject player = GameObject.Find("Player");
-        float fov = camera.GetComponent<Camera>().fieldOfView;
-        float dist = Vector3.Distance(camera.GetComponent<Transform>().transform.position, player.GetComponent<Transform>().transform.position);
-        dist = Mathf.Abs(camera.GetComponent<Transform>().transform.position.z - player.GetComponent<Transform>().transform.position.z);
-        maxHeight = Mathf.Abs(2 * Mathf.Tan(0.5f * fov) * dist * camera.transform.localScale.x) * 0.9f;
-        maxWidth = maxHeight * 1.78f;
-        // Debug.Log("MH: " + maxHeight);
-        // Debug.Log("MW: " + maxWidth);
-        transform.position = new Vector3(Random.Range(-1 * maxWidth, maxWidth) / transform.localScale.x,
-                                        Random.Range(-1 * maxHeight, maxHeight) / transform.localScale.y,
-                                        -1 * player.transform.position.z) + player.transform.position;
-        Debug.Log("X, Y: " + transform.position.x + ", " + transform.position.y);
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        pos.x = Mathf.Clamp01(pos.x);
-        pos.y = Mathf.Clamp01(pos.y);
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
-        transform.Rotate(new Vector3(0, 0, Random.Range(-180, 180)));
+        maxHeight = 0.9f;
+        maxWidth = 2;
+        gameObject.transform.localPosition = new Vector3(Random.Range(-1 * maxWidth, maxWidth), Random.Range(-1 * maxHeight, maxHeight), 0);
     }
 
     private void Start()
     {
         // gameObject.transform.rotation.eulerAngles.Set(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
-        Debug.Log("Ima "+ obsticle_type + " type obsticle");
     }
 
     void Update()
@@ -50,17 +29,12 @@ public class ObsticleController : MonoBehaviour
         //    gameObject.transform.rotation.eulerAngles.z + 1);
         
         transform.position += new Vector3(0, 0, -0.01f);
-        transform.Rotate(new Vector3(0, 0, 0.01f));
-        if (transform.position.z < Camera.main.transform.position.z)
-        {
-            Destroy(gameObject, 1f);
-        }
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         // Debug.Log(collision.gameObject.tag);
-
+        
         if (collision.gameObject.tag == "Despawner")
         {
             Debug.Log("Obsticle destoyed (went behind camera)");
@@ -70,12 +44,7 @@ public class ObsticleController : MonoBehaviour
         {
             return;
         }
-        var player = collision.gameObject.GetComponent<PlayerController>();
-        if (player != null)
-        {
-            player.OnCollision(this.gameObject);
-        }
-    
+        collision.gameObject.GetComponent<PlayerController>().OnCollision(this.gameObject);
         Destroy(this.gameObject);
         Debug.Log("You got hit");
     }

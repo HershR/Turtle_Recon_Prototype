@@ -3,17 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
 
-public enum InteractableType
-{
-	Trash,
-	Sharp,
-	Oil,
-	Wires,
-	Tokens,
-	Kelp,
-	JellyFish,
-	Dash
-}
 
 public class ObsticleSpawner : MonoBehaviour
 {
@@ -22,7 +11,17 @@ public class ObsticleSpawner : MonoBehaviour
 	[SerializeField] public SerializedDictionary<InteractableType, GameObject> InteractableObjects;
 
 	
-	
+	public enum InteractableType
+	{
+		Trash,
+		Sharp,
+		Oil,
+		Wires,
+		Tokens,
+		Kelp,
+		JellyFish,
+		Dash
+	}
 
 	// We get env passed in
 	// From that enum, we get 
@@ -60,8 +59,7 @@ public class ObsticleSpawner : MonoBehaviour
 			{
 				if (i > index)
 				{
-					GameObject new_obsticle = Instantiate(InteractableObjects[t], this.transform);
-					new_obsticle.GetComponent<ObsticleController>().obsticle_type = t;
+					Instantiate(InteractableObjects[t], this.transform);
 					Debug.Log("Spawned a " + t);
 					break;
 				}
