@@ -38,7 +38,12 @@ public class ObsticleSpawner : MonoBehaviour
 	private int totalWeight = 0;
 	private List<(InteractableType, int)> objWeights = new List<(InteractableType, int)>{};
 
-	private void Start()
+    private void Awake()
+    {
+        // Get player wupgrade values
+    }
+
+    private void Start()
 	{
 		// Get Current env
 		CurrentEnviornment = environmentGenerator.CurrentEnvironmentToSpawn;
@@ -102,5 +107,6 @@ public class ObsticleSpawner : MonoBehaviour
 		Debug.Log("New Obsticle Spawn Rates: " + string.Join(", ", objWeights));
 	}
 	// THIS IS WHERE ALL THE ENV DICTIONARIES WILL GO IF WE MAKE EM PRIVATE!!!!
+
  
 }
