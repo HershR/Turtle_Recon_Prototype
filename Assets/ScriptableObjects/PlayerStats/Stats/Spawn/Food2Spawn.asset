@@ -18,4 +18,4 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 0}
   description:
   - Increase the spawn rate of Jellyfish (restore 2x hearts)
-  levelCosts: 0000000000000000000000000000000000000000
+  levelCosts: 080000000d000000140000001900000028000000
