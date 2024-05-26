@@ -21,17 +21,21 @@ public class WorldCurver : MonoBehaviour
     public float minStrength { get; private set; } = -20f;
     public float maxStrength { get; private set; } = 20f;
 
+    private float causticSpeed = 0f;
+
 
 
     private int sidewaysStrengthID;
     private int backwardStrengthID;
     private int spiralStrengthID;
+    private int causticSpeedID;
 
     private void OnEnable()
     {
         sidewaysStrengthID = Shader.PropertyToID("_Sideways_strength");
         backwardStrengthID = Shader.PropertyToID("_Backwards_strength");
         spiralStrengthID = Shader.PropertyToID("_Spiral_strength");
+        causticSpeedID = Shader.PropertyToID("_Caustic_Speed");
     }
 
     void Update()
@@ -87,6 +91,14 @@ public class WorldCurver : MonoBehaviour
                 }
                 Shader.SetGlobalFloat(spiralStrengthID, newStrength);
             }
+            if (Shader.GetGlobalFloat(causticSpeedID) < causticSpeed)
+            {
+                Debug.Log($"Current Caustic Speed {Shader.GetGlobalFloat(causticSpeedID)}");
+                float currentSpeed = Shader.GetGlobalFloat(causticSpeedID);
+                float newSpeed = Mathf.Lerp(currentSpeed, causticSpeed, Time.deltaTime);
+                newSpeed = Mathf.Min(causticSpeed, newSpeed);
+                Shader.SetGlobalFloat(causticSpeedID, newSpeed);
+            }
         }
         else
         {
@@ -94,6 +106,12 @@ public class WorldCurver : MonoBehaviour
             Shader.SetGlobalFloat(backwardStrengthID, backwardsStrength);
             Shader.SetGlobalFloat(spiralStrengthID, spiralStrength);
         }
+    }
+
+    public void UpdateCausticSpeed(float newCausticSpeed)
+    {
+        causticSpeed = newCausticSpeed;
+        Debug.Log($"Caustic Speed: {causticSpeed}");
     }
 
     public void ResetStrenghts()
