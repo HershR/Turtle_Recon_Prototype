@@ -55,18 +55,20 @@ MonoBehaviour:
       - {fileID: 7838204840140552949, guid: c3be7f525e5d2f449b5816316aa0ac4e, type: 3}
     - Key: 1
       Value:
-      - {fileID: 1841702009910034312, guid: 31cc90cd91798114d93d892233fdecda, type: 3}
+      - {fileID: 7236155961674200435, guid: ab8aeb017645b4542867a8d145438c2a, type: 3}
+      - {fileID: 844134494074748373, guid: dc7b04559d3d7244ba8e1d4da414c304, type: 3}
     - Key: 2
       Value:
-      - {fileID: 1443618849267616458, guid: a225db6e1dd97aa4b81064bc7f4d2d92, type: 3}
+      - {fileID: 6603232865682820935, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      - {fileID: 3149620300410358771, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
     - Key: 3
       Value:
       - {fileID: 1053365615780273023, guid: 61c2cd6c5cc872d419023e140e5973f7, type: 3}
     - Key: 4
       Value:
       - {fileID: 6719016649828426457, guid: 4085099b7b665374fa183e61b352d873, type: 3}
-  <CurrentEnvironment>k__BackingField: 0
-  currentEnvironmentToSpawn: 0
+  currentEnvironment: 0
+  <CurrentEnvironmentToSpawn>k__BackingField: 1
   environmentSpeed: 20
   environmentTargetSpeed: 5
   minEnvironmentTime: 5
