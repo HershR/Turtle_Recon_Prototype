@@ -42,7 +42,6 @@ public class EnvironmentGenerator : MonoBehaviour
     private void Start()
     {
         CurrentEnvironmentToSpawn = EnvironmentType.Normal;
-        environmentTargetSpeed = environmentSpeed;
         environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
         Spawn(Vector3.zero);
     }
@@ -53,6 +52,7 @@ public class EnvironmentGenerator : MonoBehaviour
         {
             var newSpeed = environmentSpeed + speedDelta * Time.deltaTime;
             environmentSpeed = Mathf.Min(environmentTargetSpeed, newSpeed);
+            worldCurver.UpdateCausticSpeed(environmentSpeed);
         }
         if (environmentTimer < 0.0f)
         {
