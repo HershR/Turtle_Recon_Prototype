@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CurvyMaterialBlackSand
-  m_Shader: {fileID: -6465566751694194690, guid: 75da2e456731a3543940a0e5c7f25add, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ba99c990fc814764fb2b78580efa359b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
