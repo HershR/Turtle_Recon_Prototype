@@ -23,7 +23,7 @@ public class UpgradeDescriptionUI : MonoBehaviour
     private void Start()
     {
         upgradePurchaceButton.onClick.AddListener(BuyUpgrade);
-        totalTokensText.text = "Tokens: " + playerStatsSO.Tokens.ToString();
+        totalTokensText.text = playerStatsSO.Tokens.ToString();
         Init(StatType.Health);
     }
     public void Init(StatType type)
@@ -32,21 +32,17 @@ public class UpgradeDescriptionUI : MonoBehaviour
         statType = type;
         StatSO stat = playerStatsSO.GetStat(type);
         upgradeNameText.text = stat.Name;
-        upgradeDescriptionText.text = stat.GetDescription();
-        upgradeLevelText.text = "Lvl: " + stat.Level.ToString();
-        upgradeLevelSlider.value = stat.Level / (float)stat.MaxLevel;
-        upgradeCostText.text = stat.GetCost() >= 0 ? stat.GetCost().ToString() : "Max";
-        upgradePurchaceButton.interactable = playerStatsSO.IsUpgradable(type);
+        Refresh();
     }
 
     public void Refresh()
     {
-        totalTokensText.text = "Tokens: " + playerStatsSO.Tokens.ToString();
+        totalTokensText.text = playerStatsSO.Tokens.ToString();
         StatSO stat = playerStatsSO.GetStat(statType);
         upgradeDescriptionText.text = stat.GetDescription();
         upgradeLevelText.text = "Lvl: " + stat.Level.ToString();
         upgradeLevelSlider.value = stat.Level / (float)stat.MaxLevel;
-        upgradeCostText.text = stat.GetCost() >= 0 ? stat.GetCost().ToString() : "Max";
+        upgradeCostText.text = !stat.IsMaxLevel() ? stat.GetCost().ToString() : "Max";
         upgradePurchaceButton.interactable = playerStatsSO.IsUpgradable(statType);
     }
     private void BuyUpgrade()
