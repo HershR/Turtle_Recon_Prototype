@@ -13,10 +13,6 @@ PrefabInstance:
       value: BasiclEnv Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1280102152344295086, guid: 61c2cd6c5cc872d419023e140e5973f7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1280102152344295086, guid: 61c2cd6c5cc872d419023e140e5973f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -86,10 +82,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7272264138462433587, guid: 61c2cd6c5cc872d419023e140e5973f7, type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9111999997707206592, guid: 61c2cd6c5cc872d419023e140e5973f7, type: 3}
-      propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
