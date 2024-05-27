@@ -5,14 +5,16 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerStatsSO playerStats;
+
     private CharacterController controller;
     public float playerSpeed;
     public float maxSpeed;
-    public int health = 3;
-    public int maxHealth = 3;
-    public int dashes = 0;
-    public int maxDashes = 3;
-    public int tokenCount = 0;
+    public int health;
+    public int maxHealth;
+    public int dashes;
+    public int maxDashes;
+    public int tokenCount;
     public bool parry = false;
     public bool parrySucceed = false;
     public bool iFrames = false;
@@ -20,6 +22,13 @@ public class PlayerController : MonoBehaviour
     private bool screenBlur = false;
     private bool bleed = false;
     private bool slowed = false;
+
+    // Stat levels
+    private int healthLevel;
+    private int speedLevel;
+    private int dashLevel;
+    //private int dashRefillParryLevel;
+    //private int droneCollectionRateLevel;
 
     public TextMeshProUGUI livesText;
     private Color baseColor;
@@ -32,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         Canvas canvas = FindObjectOfType<Canvas>();
         controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
@@ -44,6 +53,23 @@ public class PlayerController : MonoBehaviour
         bleedColor = Color.Lerp(baseColor, Color.red, 1);
         oilColor = Color.Lerp(baseColor, Color.black, 0.75f);
         parryColor = Color.Lerp(baseColor, Color.cyan, 0.5f);
+
+        // Collect Stat levels.
+        healthLevel = playerStats.GetStat(StatType.Health).Level;
+        Debug.Log("Health Level: " + healthLevel);
+        speedLevel = playerStats.GetStat(StatType.Speed).Level;
+        Debug.Log("Speed Level: " + speedLevel);
+        dashLevel = playerStats.GetStat(StatType.Dash).Level;
+        Debug.Log("Dash Level: " + dashLevel);
+
+        // Initialize Player Stats
+        maxHealth = 3 + healthLevel;
+        health = maxHealth;
+        maxSpeed = 1 + speedLevel;
+        playerSpeed = maxSpeed;
+        maxDashes = 1 + dashLevel;
+        dashes = 0;
+        tokenCount = 0;
     }
 
     // Update is called once per frame
@@ -231,7 +257,7 @@ public class PlayerController : MonoBehaviour
         playerSpeed = 1;
         StartCoroutine(TakeDamage());
         yield return new WaitForSeconds(10);
-        playerSpeed = 5;
+        playerSpeed = maxSpeed;
         slowed = false;
     }
 
