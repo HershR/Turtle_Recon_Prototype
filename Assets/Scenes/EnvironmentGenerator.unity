@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 886707043}
-  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
+  m_IndirectSpecularColor: {r: 0.035196044, g: 0.64152414, b: 0.77695704, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &147850751
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433116973644899780, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149620300410358771, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      propertyPath: m_Name
+      value: Trash Floor 2 Curvy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
 --- !u!1001 &334752809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -984,6 +1041,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!1001 &1952622793
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093409993018077243, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603232865682820935, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
+      propertyPath: m_Name
+      value: Trash Floor 1 Curvy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
 --- !u!1001 &716823797008925741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1119,3 +1233,5 @@ SceneRoots:
   - {fileID: 1791896067}
   - {fileID: 1767416707}
   - {fileID: 1844270421}
+  - {fileID: 1952622793}
+  - {fileID: 147850751}
