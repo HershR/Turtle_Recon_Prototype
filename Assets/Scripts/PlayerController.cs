@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public int dashes;
     public int maxDashes;
     public int tokenCount;
+    public float parryCooldownStat;
     public bool parry = false;
     public bool parrySucceed = false;
     public bool iFrames = false;
@@ -27,8 +28,7 @@ public class PlayerController : MonoBehaviour
     private int healthLevel;
     private int speedLevel;
     private int dashLevel;
-    //private int dashRefillParryLevel;
-    //private int droneCollectionRateLevel;
+    private int parryCooldownLevel;
 
     public TextMeshProUGUI livesText;
     private Color baseColor;
@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
         Canvas canvas = FindObjectOfType<Canvas>();
         controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
-        livesText.text = "Lives Remaining: " + health;
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
         healColor = Color.Lerp(baseColor, Color.green, 0.5f);
@@ -61,15 +60,21 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Speed Level: " + speedLevel);
         dashLevel = playerStats.GetStat(StatType.Dash).Level;
         Debug.Log("Dash Level: " + dashLevel);
+        parryCooldownLevel = playerStats.GetStat(StatType.ParryCooldown).Level;
+        Debug.Log("Dash Level: " + dashLevel);
 
         // Initialize Player Stats
-        maxHealth = 3 + healthLevel;
+        maxHealth = 5 + healthLevel;
         health = maxHealth;
-        maxSpeed = 1 + speedLevel;
+        maxSpeed = 3 + (speedLevel * 2);
         playerSpeed = maxSpeed;
         maxDashes = 1 + dashLevel;
         dashes = 0;
+        parryCooldownStat = 3 - (0.5f * (float)parryCooldownLevel);
         tokenCount = 0;
+
+        // Set UI text
+        livesText.text = "Lives Remaining: " + health;
     }
 
     // Update is called once per frame
@@ -172,7 +177,7 @@ public class PlayerController : MonoBehaviour
         this.transform.rotation = initialRotation;
         //yield return new WaitForSeconds(parryDuration);
         if (parrySucceed == false) {
-            StartCoroutine(ParryCooldown(3));
+            StartCoroutine(ParryCooldown(parryCooldownStat));
         }
         else
         {
@@ -182,7 +187,7 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator ParryCooldown(int seconds)
+    IEnumerator ParryCooldown(float seconds)
     {
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
         parry = false;
