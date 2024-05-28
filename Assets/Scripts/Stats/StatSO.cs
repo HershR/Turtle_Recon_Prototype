@@ -45,6 +45,10 @@ public class StatSO : ScriptableObject
     {
         Level = 0;
     }
+    public bool IsMaxLevel()
+    {
+        return Level == MaxLevel;
+    }
     public override string ToString()
     {
         return $"StatSO {Name} : Level {Level}";
