@@ -31,18 +31,17 @@ public class PlayerController : MonoBehaviour
     private int parryCooldownLevel;
 
     public TextMeshProUGUI livesText;
-    private Color baseColor;
-    private Color damageColor;
-    private Color healColor;
-    private Color researchColor;
-    private Color bleedColor;
-    private Color oilColor;
-    private Color parryColor;
+    public Color baseColor;
+    public Color damageColor;
+    public Color healColor;
+    public Color researchColor;
+    public Color bleedColor;
+    public Color oilColor;
+    public Color parryColor;
 
     // Start is called before the first frame update
     void Start()
     {   
-        Canvas canvas = FindObjectOfType<Canvas>();
         controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
