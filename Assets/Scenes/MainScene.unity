@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035203554, g: 0.64125663, b: 0.7778496, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1547,24 +1547,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1301182935}
     - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: maxWidth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: minWidth
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: minHeight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: moveSpeed
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
-      propertyPath: tokenCollectionRate
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5054379811673952670, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: m_Name
