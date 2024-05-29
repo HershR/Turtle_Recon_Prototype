@@ -5,14 +5,17 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerStatsSO playerStats;
+
     private CharacterController controller;
     public float playerSpeed;
     public float maxSpeed;
-    public int health = 3;
-    public int maxHealth = 3;
-    public int dashes = 0;
-    public int maxDashes = 3;
-    public int tokenCount = 0;
+    public int health;
+    public int maxHealth;
+    public int dashes;
+    public int maxDashes;
+    public int tokenCount;
+    public float parryCooldownStat;
     public bool parry = false;
     public bool parrySucceed = false;
     public bool iFrames = false;
@@ -21,23 +24,27 @@ public class PlayerController : MonoBehaviour
     private bool bleed = false;
     private bool slowed = false;
 
+    // Stat levels
+    private int healthLevel;
+    private int speedLevel;
+    private int dashLevel;
+    private int parryCooldownLevel;
+
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI tokenText;
-    private Color baseColor;
-    private Color damageColor;
-    private Color healColor;
-    private Color researchColor;
-    private Color bleedColor;
-    private Color oilColor;
-    private Color parryColor;
+    public Color baseColor;
+    public Color damageColor;
+    public Color healColor;
+    public Color researchColor;
+    public Color bleedColor;
+    public Color oilColor;
+    public Color parryColor;
 
     // Start is called before the first frame update
     void Start()
-    {
-        Canvas canvas = FindObjectOfType<Canvas>();
+    {   
         controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
-        livesText.text = "Lives Remaining: " + health;
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
         healColor = Color.Lerp(baseColor, Color.green, 0.5f);
@@ -45,6 +52,29 @@ public class PlayerController : MonoBehaviour
         bleedColor = Color.Lerp(baseColor, Color.red, 1);
         oilColor = Color.Lerp(baseColor, Color.black, 0.75f);
         parryColor = Color.Lerp(baseColor, Color.cyan, 0.5f);
+
+        // Collect Stat levels.
+        healthLevel = playerStats.GetStat(StatType.Health).Level;
+        Debug.Log("Health Level: " + healthLevel);
+        speedLevel = playerStats.GetStat(StatType.Speed).Level;
+        Debug.Log("Speed Level: " + speedLevel);
+        dashLevel = playerStats.GetStat(StatType.Dash).Level;
+        Debug.Log("Dash Level: " + dashLevel);
+        parryCooldownLevel = playerStats.GetStat(StatType.ParryCooldown).Level;
+        Debug.Log("Dash Level: " + dashLevel);
+
+        // Initialize Player Stats
+        maxHealth = 3 + healthLevel;
+        health = maxHealth;
+        maxSpeed = 3 + (speedLevel * 2);
+        playerSpeed = maxSpeed;
+        maxDashes = 1 + dashLevel;
+        dashes = 0;
+        parryCooldownStat = 3 - (0.5f * (float)parryCooldownLevel);
+        tokenCount = 0;
+
+        // Set UI text
+        livesText.text = "Lives Remaining: " + health;
     }
 
     // Update is called once per frame
@@ -148,7 +178,7 @@ public class PlayerController : MonoBehaviour
         this.transform.rotation = initialRotation;
         //yield return new WaitForSeconds(parryDuration);
         if (parrySucceed == false) {
-            StartCoroutine(ParryCooldown(3));
+            StartCoroutine(ParryCooldown(parryCooldownStat));
         }
         else
         {
@@ -158,7 +188,7 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator ParryCooldown(int seconds)
+    IEnumerator ParryCooldown(float seconds)
     {
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
         parry = false;
@@ -233,7 +263,7 @@ public class PlayerController : MonoBehaviour
         playerSpeed = 1;
         StartCoroutine(TakeDamage());
         yield return new WaitForSeconds(10);
-        playerSpeed = 5;
+        playerSpeed = maxSpeed;
         slowed = false;
     }
 
