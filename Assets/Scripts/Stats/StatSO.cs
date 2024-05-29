@@ -57,4 +57,4 @@ public class StatSO : ScriptableObject
 
 
 //Differnt type of upgradeable stats
-public enum StatType { Health, Speed, Dash, DashRefillParry, DroneCollectionRate, Food1Spawn, Food2Spawn, DashRefillSpawn, TokenSpawn, DroneSpawn, OilResearch, TrashResearch, AcidityResearch };
+public enum StatType { Health, Speed, Dash, DashRefillParry, DroneCollectionRate, ParryCooldown, Food1Spawn, Food2Spawn, DashRefillSpawn, TokenSpawn, DroneSpawn, OilResearch, TrashResearch, AcidityResearch };
