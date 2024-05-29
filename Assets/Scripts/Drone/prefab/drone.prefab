@@ -374,14 +374,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upForce: 98.1
-  moveSpeed: 8
-  minHeight: -10
+  moveSpeed: 10
+  minHeight: 2
   maxHeight: 10
-  minWidth: -16
-  maxWidth: 16
+  minWidth: -20
+  maxWidth: 20
   timeDuration: 20
   tiltIntensity: 3
   droneRange: 1
+  tokenCollectionRate: 1
   player: {fileID: 0}
   stats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
 --- !u!54 &1868137741813266220

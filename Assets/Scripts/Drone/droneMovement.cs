@@ -21,10 +21,11 @@ public class DroneMovement : MonoBehaviour
     private bool isCollecting = false;
     public float tiltIntensity;
     public float droneRange;
-    private float wantedYRotation;
-    private float currentYRotation;
-    private float rotateAmount = 2.5f;
-    private float rotationYVelocity;
+    public int tokenCollectionRate;
+    // private float wantedYRotation;
+    // private float currentYRotation;
+    // private float rotateAmount = 2.5f;
+    // private float rotationYVelocity;
     
 
     [SerializeField] PlayerController player;
@@ -38,11 +39,12 @@ public class DroneMovement : MonoBehaviour
         timeRemaining = timeDuration;
         drone = GetComponent<Rigidbody>();
  
-        float x = Random.value > 0.5f ? Random.Range(1, 21) : Random.Range(-20, 0);
+        float x = Random.value > 0.5f ? -45 : 45;
+        float y = Random.Range(10, 15);
 
-        startPosition = new Vector3(x, 0, transform.position.z); 
+        startPosition = new Vector3(x, y, transform.position.z); 
         transform.position = startPosition;
-        targetPosition = new Vector3(0, 0, transform.position.z); 
+        targetPosition = new Vector3(0, 5, transform.position.z); 
         StartCoroutine(MoveDroneIntoView());
     }
 
@@ -101,18 +103,6 @@ public class DroneMovement : MonoBehaviour
         drone.rotation = Quaternion.Slerp(drone.rotation, targetRotation, Time.deltaTime * moveSpeed);
     }
 
-    // void Rotation() {
-    //     if (targetPosition.x < transform.position.x) {
-    //         wantedYRotation -= rotateAmount;
-    //     }
-    //     if (targetPosition.x > transform.position.x) {
-    //         wantedYRotation += rotateAmount;
-    //     }
-
-    //     currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
-    //     drone.rotation = Quaternion.Euler(new Vector3(1, currentYRotation, drone.rotation.z));
-    // }
-
     void OnTimerEnd()
     {
         if (isCollecting) {
@@ -153,9 +143,11 @@ public class DroneMovement : MonoBehaviour
     IEnumerator TokenCollection()
     {
         Debug.Log("Player in range of drone");
+        // Debug.Log("Player token count: " + player.tokenCount);
+        // Debug.Log("Drone token count: " + stats.Tokens);
         isCollecting = true;
-        player.tokenCount -= 1;
-        // stats.AddToken();
+        player.tokenCount -= tokenCollectionRate;
+        stats.AddTokens(tokenCollectionRate);
         yield return new WaitForSeconds(1);
         isCollecting = false;   
     }
@@ -166,5 +158,18 @@ public class DroneMovement : MonoBehaviour
         // To Do
         return;
     }
+
+    // void Rotation() {
+    //     if (targetPosition.x < transform.position.x) {
+    //         wantedYRotation -= rotateAmount;
+    //     }
+    //     if (targetPosition.x > transform.position.x) {
+    //         wantedYRotation += rotateAmount;
+    //     }
+
+    //     currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
+    //     drone.rotation = Quaternion.Euler(new Vector3(1, currentYRotation, drone.rotation.z));
+    // }
+
 
 }

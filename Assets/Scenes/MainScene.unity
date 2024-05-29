@@ -1521,6 +1521,10 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 2043554310}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: tokenCount
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1539,8 +1543,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1301182935}
     - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
+      propertyPath: maxWidth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
+      propertyPath: minWidth
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: minHeight
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064239902209676814, guid: e746f881748d3a147949e70e5c570880, type: 3}
+      propertyPath: tokenCollectionRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5054379811673952670, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: m_Name
@@ -1556,7 +1576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5579699372444814116, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5579699372444814116, guid: e746f881748d3a147949e70e5c570880, type: 3}
       propertyPath: m_LocalRotation.w
