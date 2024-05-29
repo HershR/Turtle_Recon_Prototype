@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool slowed = false;
 
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI tokenText;
     private Color baseColor;
     private Color damageColor;
     private Color healColor;
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
         }
+        
     }
 
     public void OnCollision(GameObject collider)
@@ -238,6 +240,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideToken()
     {
         tokenCount += 1;
+        tokenText.text = tokenCount.ToString();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
