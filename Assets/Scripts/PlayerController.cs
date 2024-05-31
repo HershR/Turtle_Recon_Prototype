@@ -64,7 +64,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash Level: " + dashLevel);
 
         // Initialize Player Stats
-        maxHealth = 3 + healthLevel;
+        // maxHealth = 3 + healthLevel;
+        maxHealth = 2 + healthLevel;
         health = maxHealth;
         maxSpeed = 3 + (speedLevel * 2);
         playerSpeed = maxSpeed;
