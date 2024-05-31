@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035203554, g: 0.64125663, b: 0.7778496, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -532,7 +532,7 @@ Transform:
   m_GameObject: {fileID: 992362386}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.01, z: 42.5}
+  m_LocalPosition: {x: 0, y: -7.01, z: 42.5}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -715,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639225481918593188, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 5639225481918593188, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1008,6 +1008,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1519213169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880459204372220537, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_Name
+      value: DroneSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcee493d47330af419f90e64bd394084, type: 3}
 --- !u!1 &1764152710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1568,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2043554310}
     - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: tokenCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
@@ -1532,6 +1593,7 @@ SceneRoots:
   - {fileID: 1896123094}
   - {fileID: 1161915737}
   - {fileID: 1367301219}
+  - {fileID: 1519213169}
   - {fileID: 1315351538}
   - {fileID: 53575704}
   - {fileID: 1948126615}
