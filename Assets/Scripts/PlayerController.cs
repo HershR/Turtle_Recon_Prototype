@@ -5,7 +5,13 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+<<<<<<< HEAD
+    // private CharacterController controller;
+=======
     public PlayerStatsSO playerStats;
+
+    private CharacterController controller;
+>>>>>>> master
     public float playerSpeed;
     public float maxSpeed;
     public int health;
@@ -39,7 +45,15 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+<<<<<<< HEAD
     {
+        Canvas canvas = FindObjectOfType<Canvas>();
+        // controller = gameObject.AddComponent<CharacterController>();
+
+=======
+    {   
+        controller = gameObject.AddComponent<CharacterController>();
+>>>>>>> master
         Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
