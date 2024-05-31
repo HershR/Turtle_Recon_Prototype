@@ -762,6 +762,7 @@ MonoBehaviour:
   - {fileID: 706437802}
   fullHeart: {fileID: 21300000, guid: e900904bed7ac674193b01a02ebe0e7b, type: 3}
   emptyHeart: {fileID: 21300000, guid: e857cd5caca8b4f4dbc6dfda3574cc7b, type: 3}
+  halfHeart: {fileID: 21300000, guid: cc3284a10b4bcc14486011cf9b5373d1, type: 3}
 --- !u!1 &706437800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1077,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -695.00006, y: 428}
+  m_AnchoredPosition: {x: -695.0001, y: 428}
   m_SizeDelta: {x: -1460, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989035510
