@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DroneMovement : MonoBehaviour
 {
-    public enum DroneState { Idle, Collecting, EnterExit}
+    public enum DroneState { Idle, Collecting, EnterExit }
 
     [SerializeField] private PlayerStatsSO stats;
-    
+
     public DroneState state;
-    
+
     Rigidbody rb;
     public float upForce;
     public float moveSpeed;
@@ -23,10 +23,10 @@ public class DroneMovement : MonoBehaviour
 
     public float timeDuration;
     private float timeRemaining;
-    
+
     public float tiltIntensity;
     public float droneRange;
-    
+
     public int tokenCollectionRate;
     // private float wantedYRotation;
     // private float currentYRotation;
@@ -48,39 +48,40 @@ public class DroneMovement : MonoBehaviour
         {
             Debug.LogError("Drone Could not find player");
         }
-        float z = transform.position.z;
+        float z = player.transform.position.z - Camera.main.transform.position.z;
         // Bottom-left corner
         Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
         // Top-right corner
         Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, z));
-        
-        minHeight = bottomLeft.y;
+
+        minHeight = Mathf.Max(bottomLeft.y, -6f);
         maxHeight = topRight.y;
         minWidth = bottomLeft.x;
         maxWidth = topRight.x;
-
+        //moveSpeed = player.maxSpeed;
         state = DroneState.EnterExit;
         timeRemaining = timeDuration;
-        rb = GetComponent<Rigidbody>();        
-        targetDestination = new Vector3(0, 5, transform.position.z);
-    }    
+        rb = GetComponent<Rigidbody>();
+        targetDestination = new Vector3((maxWidth + minWidth) / 2, (maxHeight + minHeight) / 2, transform.position.z);
+        Debug.Log($"Drone Target Dest: {targetDestination}");
+    }
 
     void Update()
     {
-        if (state == DroneState.EnterExit) {
-            MoveToPosition();
-            if(Vector3.Distance(transform.position, targetDestination) < 1f)
+        if (state == DroneState.EnterExit)
+        {
+            if (Vector3.Distance(transform.position, targetDestination) < 1f)
             {
                 UpdateTargetDestination();
                 state = DroneState.Idle;
             }
-            return; 
+            return;
         }
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            // Debug.Log("Time remaining: " + timeRemaining + " seconds");
-            if (Vector3.Distance(transform.position, targetDestination) < 3f || transform.position.y < -maxHeight || transform.position.y > maxHeight)
+            //Debug.Log("Time remaining: " + timeRemaining + " seconds");
+            if (Vector3.Distance(transform.position, targetDestination) < 1f)
             {
                 UpdateTargetDestination();
             }
@@ -89,14 +90,14 @@ public class DroneMovement : MonoBehaviour
         else
         {
             OnTimerEnd();
-        }        
+        }
     }
 
     void FixedUpdate()
     {
+        MoveToPosition();
         if (state != DroneState.EnterExit)
         {
-            MoveToPosition();
             AdjustTilt();
             // Rotation();
             AdjustUpwardForce();
@@ -107,18 +108,22 @@ public class DroneMovement : MonoBehaviour
     {
         Vector3 direction = (targetDestination - transform.position).normalized;
         rb.velocity = Vector3.SmoothDamp(rb.velocity, direction * moveSpeed, ref velocityDamp, 0.3f);
+        //transform.position = Vector3.Lerp(transform.position, targetDestination, moveSpeed * Time.deltaTime / 5f);
+        Debug.Log($"Drone moving to {targetDestination} ({direction})");
     }
 
     void AdjustUpwardForce()
     {
-        rb.AddForce(Vector3.up * upForce);
+        //rb.AddForce(Vector3.up * upForce);
     }
 
     void UpdateTargetDestination()
     {
         float x = Random.Range(minWidth, maxWidth);
         float y = Random.Range(minHeight, maxHeight);
+
         targetDestination = new Vector3(x, y, transform.position.z);
+        Debug.Log($"New Target Destination: {targetDestination}");
     }
 
     void AdjustTilt()
@@ -134,11 +139,11 @@ public class DroneMovement : MonoBehaviour
     void OnTimerEnd()
     {
         if (state == DroneState.EnterExit) { return; }
-        StopAllCoroutines();
         state = DroneState.EnterExit;
-        targetDestination = new Vector3(30, 0, transform.position.z);
-        MoveToPosition();
-        if (Vector3.Distance(transform.position, targetDestination) < 3f)
+        StopAllCoroutines();
+        targetDestination = new Vector3(maxWidth + 3f, maxHeight + 3f, transform.position.z);
+        moveSpeed = 20f;
+        if (Vector3.Distance(transform.position, targetDestination) < 1f)
         {
             Destroy(gameObject);
         }
@@ -153,17 +158,19 @@ public class DroneMovement : MonoBehaviour
 
     void NearPlayer()
     {
-        if(state != DroneState.Collecting)
+        if (state != DroneState.Idle)
         {
             return;
         }
         Vector3 turtlePos = player.transform.position;
         Vector3 dronePos = transform.position;
         Vector2 turtle = new Vector2(turtlePos.x, turtlePos.y);
-        Vector2 drone = new Vector2(dronePos.x / 8, dronePos.y / 8);
+        Vector2 drone = new Vector2(dronePos.x, dronePos.y);
         float distance = Vector2.Distance(turtle, drone);
+        //Debug.Log($"Drone Distance: {distance}");
         if (distance < droneRange && player.tokenCount > 0)
         {
+            state = DroneState.Collecting;
             StartCoroutine(TokenCollection());
         }
 
@@ -174,13 +181,12 @@ public class DroneMovement : MonoBehaviour
     IEnumerator TokenCollection()
     {
         Debug.Log("Player in range of drone");
-        state = DroneState.Collecting;
-        // Debug.Log("Player token count: " + player.tokenCount);
-        // Debug.Log("Drone token count: " + stats.Tokens);
+        Debug.Log("Player token count: " + player.tokenCount);
+        Debug.Log("Drone token count: " + stats.Tokens);
         player.tokenCount -= 1;
         stats.AddTokens(1);
         OnCollectToken();
-        yield return new WaitForSeconds(1f / (1f +  stats.GetStat(StatType.DroneCollectionRate).Level));
+        yield return new WaitForSeconds(1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level));
         state = DroneState.Idle;
     }
 
@@ -202,6 +208,11 @@ public class DroneMovement : MonoBehaviour
     //     currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
     //     drone.rotation = Quaternion.Euler(new Vector3(1, currentYRotation, drone.rotation.z));
     // }
-
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = state == DroneState.Collecting ? Color.green : Color.yellow;
+        Gizmos.DrawSphere(transform.position, droneRange);
+    }
 
 }

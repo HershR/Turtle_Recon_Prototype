@@ -8,8 +8,10 @@ public class DroneSpawner : MonoBehaviour
     [SerializeField] private GameObject dronePrefab;
     [SerializeField] private float baseSpawnRate = 60f;
     [SerializeField] private float levelModifier = 5f;
-    private float spawnRate;
-    private float spawnTimer;
+    
+    [Header("Timers")]
+    [SerializeField] private float spawnRate;
+    [SerializeField] private float spawnTimer;
     private GameObject activeDrone;
 
 
@@ -25,11 +27,11 @@ public class DroneSpawner : MonoBehaviour
         if(activeDrone != null) { return; }
         if(spawnTimer <= 0)
         {
-            float x = Random.value > 0.5f ? -45 : 45;
-            float y = Random.Range(10, 15);
+            float x = Random.value > 0.5f ? -20 : 20;
+            float y = Random.Range(5, 10);
             Vector3 spawnPosition = new Vector3(x, y, transform.position.z);
             activeDrone = Instantiate(dronePrefab, spawnPosition, Quaternion.identity);
-            spawnTimer = Random.Range(spawnTimer - 5f, spawnTimer + 5f);
+            spawnTimer = Random.Range(spawnRate - 5f, spawnRate + 5f);
         }
         else
         {
