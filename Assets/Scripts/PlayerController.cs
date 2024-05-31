@@ -5,10 +5,13 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+<<<<<<< HEAD
     public PlayerStatsSO playerStats;
 
     private CharacterController controller;
+=======
     // private CharacterController controller;
+>>>>>>> ObsticleSpawnerBranch3.0
     public float playerSpeed;
     public float maxSpeed;
     public int health;
@@ -42,12 +45,15 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+<<<<<<< HEAD
     {   
         controller = gameObject.AddComponent<CharacterController>();
+=======
     {
         Canvas canvas = FindObjectOfType<Canvas>();
         // controller = gameObject.AddComponent<CharacterController>();
 
+>>>>>>> ObsticleSpawnerBranch3.0
         Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
