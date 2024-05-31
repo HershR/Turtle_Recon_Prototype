@@ -47,4 +47,9 @@ public class PlayerStatsSO : ScriptableObject
         }
     }
 
+    public void AddTokens(int amount)
+    {
+        Tokens += amount;
+    }
+
 }

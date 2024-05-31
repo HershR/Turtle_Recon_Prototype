@@ -1294,6 +1294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8a604316e664b7389afde3b9da8db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
   playerSpeed: 5
   maxSpeed: 15
   health: 3
@@ -1301,10 +1302,18 @@ MonoBehaviour:
   dashes: 0
   maxDashes: 3
   tokenCount: 0
+  parryCooldownStat: 0
   parry: 0
   parrySucceed: 0
   iFrames: 0
   livesText: {fileID: 0}
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  damageColor: {r: 0, g: 0, b: 0, a: 0}
+  healColor: {r: 0, g: 0, b: 0, a: 0}
+  researchColor: {r: 0, g: 0, b: 0, a: 0}
+  bleedColor: {r: 0, g: 0, b: 0, a: 0}
+  oilColor: {r: 0, g: 0, b: 0, a: 0}
+  parryColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &4089427409852413802
 Animator:
   serializedVersion: 5
