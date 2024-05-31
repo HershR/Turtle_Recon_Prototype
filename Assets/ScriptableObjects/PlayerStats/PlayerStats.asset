@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbbf3a05aa3f0f499ca0e8c0db673c8, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  <Tokens>k__BackingField: 20
+  <Tokens>k__BackingField: 0
   Stats:
     _serializedList:
     - Key: 0
@@ -26,20 +26,20 @@ MonoBehaviour:
     - Key: 4
       Value: {fileID: 11400000, guid: 0f47a2606e55ae842a03cc8b37723cfb, type: 2}
     - Key: 5
-      Value: {fileID: 11400000, guid: 9a4bf990b0b2c4c4789aa11b64c392bc, type: 2}
+      Value: {fileID: 11400000, guid: fafd05858a261704fa3de8158779f36d, type: 2}
     - Key: 6
-      Value: {fileID: 11400000, guid: e49060976f588fa49be87b1abf5b5a4e, type: 2}
+      Value: {fileID: 11400000, guid: 9a4bf990b0b2c4c4789aa11b64c392bc, type: 2}
     - Key: 7
-      Value: {fileID: 11400000, guid: f39fe058c8e19854599da893b8a688bd, type: 2}
-    - Key: 8
-      Value: {fileID: 11400000, guid: 13d0159c81d0d0341a245c0ffd648432, type: 2}
+      Value: {fileID: 11400000, guid: e49060976f588fa49be87b1abf5b5a4e, type: 2}
     - Key: 9
-      Value: {fileID: 11400000, guid: 7dc672758a130da4aa2130ff262efd4c, type: 2}
+      Value: {fileID: 11400000, guid: 13d0159c81d0d0341a245c0ffd648432, type: 2}
     - Key: 10
-      Value: {fileID: 11400000, guid: 12aa8864edebee34ea35291b9ff9cf82, type: 2}
+      Value: {fileID: 11400000, guid: 7dc672758a130da4aa2130ff262efd4c, type: 2}
     - Key: 11
-      Value: {fileID: 11400000, guid: 8703b439acd0c084c94a35de9937b722, type: 2}
+      Value: {fileID: 11400000, guid: 12aa8864edebee34ea35291b9ff9cf82, type: 2}
     - Key: 12
+      Value: {fileID: 11400000, guid: 8703b439acd0c084c94a35de9937b722, type: 2}
+    - Key: 13
       Value: {fileID: 11400000, guid: 1db79d4f1c11e1347b3d9871871b6aed, type: 2}
   <PlayerStats>k__BackingField:
     _serializedList:
@@ -53,6 +53,8 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 4516013de5409344f97d0b7104e38f35, type: 2}
     - Key: 4
       Value: {fileID: 11400000, guid: 0f47a2606e55ae842a03cc8b37723cfb, type: 2}
+    - Key: 5
+      Value: {fileID: 11400000, guid: fafd05858a261704fa3de8158779f36d, type: 2}
   <SpawnStats>k__BackingField:
     _serializedList:
     - Key: 5
