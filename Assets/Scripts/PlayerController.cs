@@ -6,14 +6,9 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-<<<<<<< Updated upstream
-<<<<<<< HEAD
     public PlayerStatsSO playerStats;
 
     private CharacterController controller;
-=======
-    // private CharacterController controller;
->>>>>>> ObsticleSpawnerBranch3.0
     public float playerSpeed;
     public float maxSpeed;
     public int health;
@@ -50,15 +45,8 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-<<<<<<< HEAD
     {   
         controller = gameObject.AddComponent<CharacterController>();
-=======
-    {
-        Canvas canvas = FindObjectOfType<Canvas>();
-        // controller = gameObject.AddComponent<CharacterController>();
-
->>>>>>> ObsticleSpawnerBranch3.0
         Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
@@ -92,76 +80,19 @@ public class PlayerController : MonoBehaviour
         livesText.text = "Lives Remaining: " + health;
     }
 
-=======
-    private CharacterController controller;
-    public float playerSpeed = 100.0f;
-    public float maxSpeed = 150.0f;
-    public int health = 3;
-    public int maxHealth = 3;
-    public int dashes = 0;
-    public int maxDashes = 3;
-    public int tokenCount = 0;
-    public bool parry = false;
-    public bool iFrames = false;
-    private bool canParry = true;
-    float maxHeight;
-    float maxWidth;
-
-    public TextMeshProUGUI livesText;
-    private Color baseColor;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Canvas canvas = FindObjectOfType<Canvas>();
-        maxHeight = (canvas.planeDistance / 2) - 1;
-        maxWidth = canvas.planeDistance - 1;
-        Debug.Log("Height: " + maxHeight);
-        Debug.Log("Width: " + maxWidth);
-        controller = gameObject.AddComponent<CharacterController>();
-        Debug.Log(this.transform.localPosition.x);
-        livesText.text = "Lives Remaining: " + health;
-        baseColor = this.GetComponentInChildren<Renderer>().material.color;
-    }
-    
->>>>>>> Stashed changes
     // Update is called once per frame
     void Update()
     {
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-<<<<<<< Updated upstream
         if(move.magnitude > 1f)
         {
             move = move.normalized;
         }
-        transform.position += (move * Time.deltaTime * playerSpeed);
+        controller.Move(move * Time.deltaTime * playerSpeed);
         Vector3 pos = Camera.main.WorldToViewportPoint (transform.position);
 		pos.x = Mathf.Clamp01(pos.x);
 		pos.y = Mathf.Clamp01(pos.y);
 		transform.position = Camera.main.ViewportToWorldPoint(pos);
-=======
-        if (this.transform.localPosition.x > maxWidth && move[0] > 0)
-        {
-            move[0] = 0;
-            Debug.Log("out of bounds on X");
-        }
-        else if (this.transform.localPosition.x < -1 * maxWidth && move[0] < 0)
-        {
-            move[0] = 0;
-            Debug.Log("out of bounds on X");
-        }
-        if (this.transform.localPosition.y > maxHeight && move[1] > 0)
-        {
-            move[1] = 0;
-            Debug.Log("out of bounds on Y");
-        }
-        else if (this.transform.localPosition.y < -1 * maxHeight && move[1] < 0)
-        {
-            move[1] = 0;
-            Debug.Log("out of bounds on Y");
-        }
-        controller.Move(move * Time.deltaTime * playerSpeed);
->>>>>>> Stashed changes
 
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
@@ -170,34 +101,25 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollision(GameObject collider)
     {
-<<<<<<< Updated upstream
-        InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
-        if (parry && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp && obst_type != InteractableType.JellyFish))
-=======
         if (parry)
->>>>>>> Stashed changes
         {
             Debug.Log("Nice Parry!");
             Destroy(collider);
             StartCoroutine(SuccessfulParry());
             return;
         }
-<<<<<<< Updated upstream
-        else if (iFrames && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp && obst_type != InteractableType.JellyFish))
-=======
         else if (iFrames)
->>>>>>> Stashed changes
         {
             Debug.Log("In damage iFrames");
             Destroy(collider);
             return;
         }
-<<<<<<< Updated upstream
         else
         {
+            InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
             Debug.Log("You hit a " + obst_type);
             if (obst_type == InteractableType.Trash) // case for Trash
-            {
+            {   
                 Debug.Log("That's trash");
                 StartCoroutine(TakeDamage());
             }
@@ -226,21 +148,12 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("That's sharp");
                 StartCoroutine(CollideSharp());
             }
-            else if (obst_type == InteractableType.JellyFish) // case for jellyfish
-            {
-                Debug.Log("That's jellyfish");
-                // Add coroutine for jellyfish
-            }
-            else
+            else 
             {
                 Debug.Log("Error in finding collider type");
             }
             Destroy(collider);
         }
-=======
-        StartCoroutine(TakeDamage());
-        
->>>>>>> Stashed changes
     }
 
     public void OnDeath()
@@ -251,7 +164,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator PlayerParry()
     {
         Debug.Log("Player has parried");
-<<<<<<< Updated upstream
         float parryDuration = 0.5f;
         float passedTime = 0;
         Quaternion initialRotation = this.transform.rotation;
@@ -279,17 +191,6 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator ParryCooldown(float seconds)
-=======
-        parry = true;
-        this.GetComponentInChildren<Renderer>().material.color = new Color(255, 255, 255);
-        canParry = false;
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(ParryCooldown(3));
-        yield return null;
-    }
-
-    IEnumerator ParryCooldown(int seconds)
->>>>>>> Stashed changes
     {
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
         parry = false;
@@ -299,7 +200,6 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator SuccessfulParry()
-<<<<<<< Updated upstream
     {   
         parrySucceed = true;
         parry = false;
@@ -308,11 +208,6 @@ public class PlayerController : MonoBehaviour
         {
             dashes = dashes + 1;
         }
-=======
-    {
-        parry = false;
-        canParry = true;
->>>>>>> Stashed changes
         yield return null;
     }
 
@@ -326,16 +221,11 @@ public class PlayerController : MonoBehaviour
             OnDeath();
         }
         livesText.text = "Lives Remaining: " + health;
-<<<<<<< Updated upstream
         this.GetComponentInChildren<Renderer>().material.color = damageColor; // Swap to the damage color.
-=======
-        this.GetComponentInChildren<Renderer>().material.color = new Color(255, 0, 0);
->>>>>>> Stashed changes
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
         iFrames = false;
     }
-<<<<<<< Updated upstream
 
     IEnumerator CollectFood()
     {
@@ -387,6 +277,4 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
     }
-=======
->>>>>>> Stashed changes
 }
