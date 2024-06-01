@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("WIN");
             isGameOver = true;
-            gameWinUI?.SetActive(true);
+            //gameWinUI?.SetActive(true);
             return;
         }
         distance += generator.GetSpeed() * Time.deltaTime;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             player.transform.position = newPos;
             yield return new WaitForSeconds(0.01f);
         }
-        gameOverUI?.SetActive(true);
+        //gameOverUI?.SetActive(true);
     }
 
     private void TokenCollected()
