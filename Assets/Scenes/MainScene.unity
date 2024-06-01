@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
+  m_IndirectSpecularColor: {r: 0.035215516, g: 0.64123696, b: 0.77748823, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -227,6 +227,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736044348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
+  m_PrefabInstance: {fileID: 1161915737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5737869e53f6f84698dd3d215f9fc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &783204565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55330641944c6476b8f6423a9a052385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  environmentGenerator: {fileID: 736044348}
   InteractableWeights:
     _serializedList:
     - Key: 0
@@ -1248,6 +1260,88 @@ MonoBehaviour:
       Value: {fileID: 1928891561747924454, guid: 4493df0d3f8a341c59bbdcbdf886c61a, type: 3}
     - Key: 7
       Value: {fileID: 0}
+  CurrentEnviornment: 0
+  NormalEnv:
+    _serializedList:
+    - Key: 0
+      Value: 100
+    - Key: 1
+      Value: 100
+    - Key: 2
+      Value: 100
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 100
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 100
+    - Key: 7
+      Value: 0
+  OilEnv:
+    _serializedList:
+    - Key: 0
+      Value: 100
+    - Key: 1
+      Value: 100
+    - Key: 2
+      Value: 500
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 100
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 0
+    - Key: 7
+      Value: 0
+  TrashEnv:
+    _serializedList:
+    - Key: 0
+      Value: 500
+    - Key: 1
+      Value: 100
+    - Key: 2
+      Value: 200
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 50
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 10
+    - Key: 7
+      Value: 0
+  CoralEnv:
+    _serializedList:
+    - Key: 0
+      Value: 50
+    - Key: 1
+      Value: 50
+    - Key: 2
+      Value: 50
+    - Key: 3
+      Value: 0
+    - Key: 4
+      Value: 100
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 100
+    - Key: 7
+      Value: 0
+  EnvWeightDict:
+    _serializedList: []
+  tokenSpawnUpgrade: {fileID: 11400000, guid: 13d0159c81d0d0341a245c0ffd648432, type: 2}
+  kelpSpawnUpgrade: {fileID: 11400000, guid: 9a4bf990b0b2c4c4789aa11b64c392bc, type: 2}
+  jellyfishSpawnUpgrade: {fileID: 11400000, guid: e49060976f588fa49be87b1abf5b5a4e, type: 2}
+  dashSpawnUpgrade: {fileID: 11400000, guid: f39fe058c8e19854599da893b8a688bd, type: 2}
+  oilSpawnUpgrade: {fileID: 11400000, guid: 12aa8864edebee34ea35291b9ff9cf82, type: 2}
+  trashSpawnUpgrade: {fileID: 11400000, guid: 8703b439acd0c084c94a35de9937b722, type: 2}
+  acidityUpgrade: {fileID: 11400000, guid: 1db79d4f1c11e1347b3d9871871b6aed, type: 2}
 --- !u!4 &1896123094
 Transform:
   m_ObjectHideFlags: 0
