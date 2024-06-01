@@ -149,7 +149,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2611897636618389179, guid: cfcff3542225aec42853489299e06d27, type: 3}
+  m_Mesh: {fileID: 2611897636618389179, guid: b460092c95adae444a511f242ed2eee9, type: 3}
 --- !u!199 &2929637081917089424
 ParticleSystemRenderer:
   serializedVersion: 6
