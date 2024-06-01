@@ -181,10 +181,11 @@ public class DroneMovement : MonoBehaviour
     IEnumerator TokenCollection()
     {
         Debug.Log("Player in range of drone");
-        Debug.Log("Player token count: " + player.tokenCount);
-        Debug.Log("Drone token count: " + stats.Tokens);
+        //Debug.Log("Player token count: " + player.tokenCount);
+        //Debug.Log("Drone token count: " + stats.Tokens);
         player.tokenCount -= 1;
         stats.AddTokens(1);
+        player.onTokenBanked.Invoke();
         OnCollectToken();
         yield return new WaitForSeconds(1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level));
         state = DroneState.Idle;
