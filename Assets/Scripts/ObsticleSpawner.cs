@@ -50,7 +50,7 @@ public class ObsticleSpawner : MonoBehaviour
 	float timer = 0f; // Spawn rate timer
 	private int totalWeight = 0;
 	// List of obsticles and their spawn weights (affected by player upgrades)
-	private List<(InteractableType, int)> objWeights = new List<(InteractableType, int)>{};
+	private List<(InteractableType, int)> objWeights = new List<(InteractableType, int)>();
 
     private void Start()
 	{
@@ -67,6 +67,10 @@ public class ObsticleSpawner : MonoBehaviour
 		UpdateObsticleWeights();
 		Debug.Log("Total weight:" + totalWeight);
 		Debug.Log("(Objects, weights): " + objWeights);
+		for(int i = 0; i < objWeights.Count; i++)
+        {
+			Debug.Log(i + ": " + objWeights[i]);
+        }
 	}
 
 	void Update()
@@ -91,6 +95,8 @@ public class ObsticleSpawner : MonoBehaviour
 				{
 					if (w > index)
 					{
+						Debug.Log("About to spawn a: " + InteractableObjects[t]);
+						Debug.Log("at" + this.transform);
 						GameObject new_obsticle = Instantiate(InteractableObjects[t], this.transform);
 						new_obsticle.GetComponent<ObsticleController>().obsticle_type = t;
 						Debug.Log("Spawned a " + t);
@@ -113,19 +119,19 @@ public class ObsticleSpawner : MonoBehaviour
                 switch (t)
                 {
 					case InteractableType.Tokens:
-						weight *= tokenSpawnUpgrade.Level;
+						weight *= 1 + tokenSpawnUpgrade.Level;
 						break;
 					case InteractableType.JellyFish:
-						weight *= jellyfishSpawnUpgrade.Level * acidityUpgrade.Level;
+						weight *= 1 + jellyfishSpawnUpgrade.Level * acidityUpgrade.Level;
 						break;
 					case InteractableType.Kelp:
-						weight *= kelpSpawnUpgrade.Level * acidityUpgrade.Level;
+						weight *= 1 + kelpSpawnUpgrade.Level * acidityUpgrade.Level;
 						break;
 					case InteractableType.Trash:
-						weight /= trashSpawnUpgrade.Level;
+						weight /= 1 + trashSpawnUpgrade.Level;
 						break;
 					case InteractableType.Oil:
-						weight /= oilSpawnUpgrade.Level;
+						weight /= 1 + oilSpawnUpgrade.Level;
 						break;
                 }
 				objWeights.Add((t, weight + totalWeight));

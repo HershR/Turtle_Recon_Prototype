@@ -1019,7 +1019,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &1488893219 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4742481141674351129, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
@@ -1075,7 +1074,6 @@ CapsuleCollider:
   m_Height: 1.1050749
   m_Direction: 2
   m_Center: {x: 0.048598528, y: 0.14003193, z: -0.005926432}
-=======
 --- !u!1001 &1519213169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1133,7 +1131,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcee493d47330af419f90e64bd394084, type: 3}
->>>>>>> master
 --- !u!1 &1764152710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,7 +1306,7 @@ MonoBehaviour:
     - Key: 2
       Value: {fileID: 903353620541928659, guid: 4313ccf702344497e98f7173f631c5d1, type: 3}
     - Key: 3
-      Value: {fileID: 903353620541928659, guid: 6f46c39ed1ec34721b75601d968de1ed, type: 3}
+      Value: {fileID: 0}
     - Key: 4
       Value: {fileID: 1268078323957809874, guid: a3ffaf271f3934eaa84e9afd2ba983a1, type: 3}
     - Key: 5
@@ -1328,7 +1325,7 @@ MonoBehaviour:
     - Key: 2
       Value: 100
     - Key: 3
-      Value: 100
+      Value: 0
     - Key: 4
       Value: 100
     - Key: 5
@@ -1711,21 +1708,11 @@ PrefabInstance:
       propertyPath: livesText
       value: 
       objectReference: {fileID: 2043554310}
-<<<<<<< HEAD
     m_RemovedComponents:
     - {fileID: 1884849633388283527, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
     - {fileID: 7627436007639590421, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-=======
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: tokenCount
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
-    m_RemovedComponents: []
->>>>>>> master
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
