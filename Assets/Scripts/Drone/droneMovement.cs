@@ -63,7 +63,6 @@ public class DroneMovement : MonoBehaviour
         timeRemaining = timeDuration;
         rb = GetComponent<Rigidbody>();
         targetDestination = new Vector3((maxWidth + minWidth) / 2, (maxHeight + minHeight) / 2, transform.position.z);
-        Debug.Log($"Drone Target Dest: {targetDestination}");
     }
 
     void Update()
@@ -109,7 +108,7 @@ public class DroneMovement : MonoBehaviour
         Vector3 direction = (targetDestination - transform.position).normalized;
         rb.velocity = Vector3.SmoothDamp(rb.velocity, direction * moveSpeed, ref velocityDamp, 0.3f);
         //transform.position = Vector3.Lerp(transform.position, targetDestination, moveSpeed * Time.deltaTime / 5f);
-        Debug.Log($"Drone moving to {targetDestination} ({direction})");
+        //Debug.Log($"Drone moving to {targetDestination} ({direction})");
     }
 
     void AdjustUpwardForce()
@@ -123,7 +122,7 @@ public class DroneMovement : MonoBehaviour
         float y = Random.Range(minHeight, maxHeight);
 
         targetDestination = new Vector3(x, y, transform.position.z);
-        Debug.Log($"New Target Destination: {targetDestination}");
+        Debug.Log($"Drone New Target Destination: {targetDestination}");
     }
 
     void AdjustTilt()
