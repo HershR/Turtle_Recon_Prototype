@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class PlayerController : MonoBehaviour
     public Color bleedColor;
     public Color oilColor;
     public Color parryColor;
+
+    public UnityEvent onTokenCollect;
+    public UnityEvent onTokenBanked;
 
     // Start is called before the first frame update
     void Start()
@@ -268,6 +272,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideToken()
     {
         tokenCount += 1;
+        onTokenCollect.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
