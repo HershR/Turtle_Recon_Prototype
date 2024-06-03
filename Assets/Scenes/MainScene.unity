@@ -1299,18 +1299,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5005062476160122931, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: m_AABB.m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005062476160122931, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: m_AABB.m_Center.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005062476160122931, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: m_AABB.m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5376028930250457251, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1352,29 +1340,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: health
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: livesText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: maxHealth
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: tokenText
       value: 
       objectReference: {fileID: 2685079}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: tokenCount
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: playerStats
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
