@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ProgressTimer : MonoBehaviour
 {
+    [SerializeField] GameManager gameManager;
     public Slider progressBar;
-    public int timer;
 
     // Start is called before the first frame update
     // void Start()
@@ -17,7 +17,7 @@ public class ProgressTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float progress = Mathf.Clamp01(Time.timeSinceLevelLoad / timer);
+        float progress = Mathf.Clamp01(gameManager.gameTimeDelta / gameManager.gameWinTime);
         progressBar.value = progress;
     }
 }

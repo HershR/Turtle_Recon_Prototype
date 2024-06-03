@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private int parryCooldownLevel;
 
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI tokenText;
     public Color baseColor;
     public Color damageColor;
     public Color healColor;
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash Level: " + dashLevel);
 
         // Initialize Player Stats
-        maxHealth = 3 + healthLevel;
+        maxHealth = 2 + healthLevel;
         health = maxHealth;
         maxSpeed = 3 + (speedLevel * 2);
         playerSpeed = maxSpeed;
@@ -272,6 +273,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideToken()
     {
         tokenCount += 1;
+        tokenText.text = tokenCount.ToString();
         onTokenCollect.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
         yield return new WaitForSeconds(1);
