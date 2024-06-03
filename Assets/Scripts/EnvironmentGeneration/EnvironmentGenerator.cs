@@ -42,7 +42,6 @@ public class EnvironmentGenerator : MonoBehaviour
     private void Start()
     {
         CurrentEnvironmentToSpawn = EnvironmentType.Normal;
-        environmentTargetSpeed = environmentSpeed;
         environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
         Spawn(Vector3.zero);
     }
