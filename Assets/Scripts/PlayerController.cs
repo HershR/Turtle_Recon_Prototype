@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class PlayerController : MonoBehaviour
     private int parryCooldownLevel;
 
     public TextMeshProUGUI livesText;
-    public TextMeshProUGUI tokenText;
     public Color baseColor;
     public Color damageColor;
     public Color healColor;
@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     public Color bleedColor;
     public Color oilColor;
     public Color parryColor;
+
+    public UnityEvent onTokenCollect;
+    public UnityEvent onTokenBanked;
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +67,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash Level: " + dashLevel);
 
         // Initialize Player Stats
-        // maxHealth = 3 + healthLevel;
-        maxHealth = 2 + healthLevel;
+        maxHealth = 3 + healthLevel;
         health = maxHealth;
         maxSpeed = 3 + (speedLevel * 2);
         playerSpeed = maxSpeed;
@@ -95,7 +97,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
         }
-        
     }
 
     public void OnCollision(GameObject collider)
@@ -271,7 +272,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideToken()
     {
         tokenCount += 1;
-        tokenText.text = tokenCount.ToString();
+        onTokenCollect.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
