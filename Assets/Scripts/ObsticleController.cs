@@ -5,21 +5,18 @@ using UnityEngine;
 public class ObsticleController : MonoBehaviour
 {
     // Update is called once per frame
-    float maxHeight;
-    float maxWidth;
-    public InteractableType obsticle_type;
-
+    [SerializeField] public InteractableType obsticle_type;
+    [SerializeField] public float speed = 0;
     // give it random movement on (x) similar to (gust of wind)
-
+    [SerializeField] private float delZ;
     private void Awake()
     {
-
+        delZ = delZ = Camera.main.transform.position.z;
         Vector3 pos = Camera.main.WorldToViewportPoint(new Vector3(Random.Range(-1, 1), Random.Range(-0.5f, 1.5f), transform.position.z));
         pos.x = Mathf.Clamp01(pos.x);
         pos.y = Mathf.Clamp01(pos.y);
         transform.position = Camera.main.ViewportToWorldPoint(pos);
         Debug.Log("new obs coords: (X, Y): " + transform.position.x + ", " + transform.position.y);
-        // transform.Rotate(new Vector3(0, 0, Random.Range(-180, 180)));
     }
 
     private void Start()
@@ -30,10 +27,9 @@ public class ObsticleController : MonoBehaviour
 
     void Update()
     {
-
-        transform.position += new Vector3(0, 0, -0.01f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - Time.deltaTime * speed * 0.5f);
         transform.Rotate(new Vector3(0, 0, 0.01f));
-        if (transform.position.z < Camera.main.transform.position.z)
+        if (transform.position.z < delZ)
         {
             Destroy(gameObject, 1f);
         }
