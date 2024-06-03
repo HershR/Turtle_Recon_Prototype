@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private int dashLevel;
     private int parryCooldownLevel;
 
-    public TextMeshProUGUI livesText;
     public TextMeshProUGUI tokenText;
     public Color baseColor;
     public Color damageColor;
@@ -76,9 +75,8 @@ public class PlayerController : MonoBehaviour
         dashes = 0;
         parryCooldownStat = 3 - (0.5f * (float)parryCooldownLevel);
         tokenCount = 0;
+        tokenText.text = tokenCount.ToString();
 
-        // Set UI text
-        livesText.text = "Lives Remaining: " + health;
     }
 
     // Update is called once per frame
@@ -221,7 +219,6 @@ public class PlayerController : MonoBehaviour
         {
             OnDeath();
         }
-        livesText.text = "Lives Remaining: " + health;
         this.GetComponentInChildren<Renderer>().material.color = damageColor; // Swap to the damage color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
@@ -234,7 +231,6 @@ public class PlayerController : MonoBehaviour
         {
             health += 1;
         }
-        livesText.text = "Lives Remaining: " + health;
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
