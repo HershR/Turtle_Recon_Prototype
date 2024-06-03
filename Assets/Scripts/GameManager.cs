@@ -8,12 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnvironmentGenerator generator;
 
     [Header("Game over Related")]
-    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private Canvas gameOverUI;
     [SerializeField] Transform playerFinalTransform;
     
 
     [Header("Game Win Related")]
-    [SerializeField] private GameObject gameWinUI;
+    [SerializeField] private Canvas gameWinUI;
     [SerializeField] private float gameWinTime = 10f;
     [SerializeField] private float gameTimeDelta = 0f;
 
@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float distance = 0f;
     [field: SerializeField] public float tokensCollected { get; private set; } = 0f;
     [field: SerializeField] public float tokensDeposited { get; private set; } = 0f;
+
+    private float gameTime = 0f;
 
     private void OnEnable()
     {
@@ -84,5 +86,11 @@ public class GameManager : MonoBehaviour
     private void TokenBanked()
     {
         tokensDeposited += 1f;
+    }
+
+    // Method to get the current runtime
+    public float GetCurrentRuntime()
+    {
+        return gameTime;
     }
 }
