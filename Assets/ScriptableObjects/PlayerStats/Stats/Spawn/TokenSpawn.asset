@@ -17,5 +17,6 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Increase the spawn rate of Token
+  - Improve the features on the drone that provide data for research so that more
+    data can be gathered, which in turn increases how often you encounter tokens.
   levelCosts: 050000000a0000000f0000001400000019000000

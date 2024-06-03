@@ -17,5 +17,16 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Publish findings
+  - Develop mechanical skimming devices that collect oil, which is then transferred
+    to storage tanks for disposal or recovery.
+  - Research effective chemical dispersants to break up oil slicks into smaller droplets,
+    facilitating their natural dispersion and biodegradation.
+  - Collaborate with nonprofit organizations to research bioremediation techniques
+    that harness natural microbial processes to degrade oil contaminants in the marine
+    environment.
+  - Develop and deploy advanced sorbent materials designed to selectively absorb
+    and remove oil from the ocean surface.
+  - Collaborate with government agencies to research electrocoagulation systems that
+    utilize electrical currents to destabilize and aggregate oil droplets, facilitating
+    their removal through filtration or flotation processes.
   levelCosts: 0a000000140000001e0000002800000032000000

@@ -17,5 +17,14 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Publish findings
+  - Collaborate with the Ocean Cleanup nonprofit organization to develop mechanical
+    collection devices aimed at passively removing floating plastic debris.
+  - "Work with The Ocean Cleanup\u2019s Aerial Expedition to use drones and satellites
+    to survey the ocean and map debris, enabling targeting cleanup efforts."
+  - Research remotely operated vehicles (ROVs) with the Ocean Voyages Institute to
+    remove debris from deeper ocean layers.
+  - Design microplastic filtration technology to be integrated into existing ocean
+    infrastructure and prevent microplastics from entering the marine environment.
+  - Research biological degradation and remediation techniques that leverage natural
+    processes to break down and remove pollutants from the ocean.
   levelCosts: 0a000000140000001e0000002800000032000000

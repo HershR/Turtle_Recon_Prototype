@@ -17,5 +17,6 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Increase the chance the Token Collection Drone appears
+  - Research how to increase the production of drone units so that more drones can
+    be deployed into the ocean, allowing you to transfer data more often.
   levelCosts: 050000000a0000000f0000001400000019000000

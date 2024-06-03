@@ -17,5 +17,6 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - 
+  - For every increase in level, the cooldown before you can parry again is slightly
+    decreased.
   levelCosts: 00000000000000000000000000000000

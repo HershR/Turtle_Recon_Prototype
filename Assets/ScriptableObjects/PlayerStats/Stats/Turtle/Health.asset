@@ -17,5 +17,6 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Adds one additional heart on start
+  - For every increase in level, an extra half of a heart is added onto the base
+    lifespan.
   levelCosts: 050000000a0000000f0000001400000019000000

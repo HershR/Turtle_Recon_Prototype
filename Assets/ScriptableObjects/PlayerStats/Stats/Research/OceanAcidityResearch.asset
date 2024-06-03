@@ -17,5 +17,17 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Publish findings
+  - Convert research data into documents with concrete evidence on the damaging effects
+    of ocean acidification to convince government agencies to implement policies
+    on limiting carbon emissions.
+  - Explore methods to enhance ocean alkalinity as means of counteracting ocean acidification
+    by adding alkaline substances, such as magnesium, to seawater to increase its
+    buffering capacity and raise pH levels.
+  - Collaborate with the Blue Carbon Initiative program to restore and conserve coastal
+    ecosystems that sequester and store carbon as natural carbon sinks.
+  - Along with Project Vesta, investigate the feasibility of using volcanic rocks
+    and minerals to capture and mineralize CO2 in the ocean, forming stable carbonate
+    minerals that effectively remove carbon from the carbon cycle.
+  - Explore oceanic afforestation with the Climate Foundation on creating artificial
+    forests of seaweed to absorb CO2 from seawater and promote oceanic biodiversity.
   levelCosts: 0a000000140000001e0000002800000032000000
