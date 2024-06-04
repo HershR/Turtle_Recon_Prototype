@@ -24,16 +24,17 @@ public class HealthScript : MonoBehaviour
 
     void Start() {
         numHearts = player.health;
+        Debug.Log("HEARTY HEARTY HEAR: " + numHearts);
         healthLevel = playerStats.GetStat(StatType.Health).Level;
         switch(healthLevel) {
             case 1:
-                UpdateStretch(75);
+                UpdateStretch(90);
                 break;
             case 2:
-                UpdateStretch(150);
+                UpdateStretch(165);
                 break;
             case 3:
-                UpdateStretch(235);
+                UpdateStretch(250);
                 break;
             default:
                 break;
