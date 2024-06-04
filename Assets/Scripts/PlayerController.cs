@@ -148,6 +148,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("That's sharp");
                 StartCoroutine(CollideSharp());
             }
+            else if (obst_type == InteractableType.JellyFish) // case for jellyfish
+            {
+                Debug.Log("That's a jellyfish");
+                StartCoroutine(CollideJellyfish());
+            }
             else 
             {
                 Debug.Log("Error in finding collider type");
@@ -274,6 +279,18 @@ public class PlayerController : MonoBehaviour
         tokenCount += 1;
         onTokenCollect.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
+        yield return new WaitForSeconds(1);
+        this.GetComponentInChildren<Renderer>().material.color = baseColor;
+    }
+
+    IEnumerator CollideJellyfish()
+    {
+        if (health < maxHealth)
+        {
+            health += 2;
+        }
+        livesText.text = "Lives Remaining: " + health;
+        this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
     }
