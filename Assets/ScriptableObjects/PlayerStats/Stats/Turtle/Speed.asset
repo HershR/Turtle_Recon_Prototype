@@ -17,5 +17,15 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Increase your speed to avoid obstacles faster
-  levelCosts: 050000000a0000000f0000001400000019000000
+  - Research, design, and fasten a newly designed propulsion system with propellers
+    into the device attached to the underside of the shell, increasing your speed
+    and allowing you to avoid obstacles more quickly.
+  - "Research methods to streamline the device\u2019s shell to minimize drag and
+    improve hydrodynamic efficiency, reaching higher speeds than before."
+  - "Develop a more efficient higher-powered motor compatible with the device\u2019s
+    propulsion system to increase the thrust generated and achieve greater acceleration."
+  - Design and swap the propellers with better blades that optimize the pitch and
+    diameter of the propellers for enhanced performance.
+  - Swap the propellers for a new and improved jet propulsion system that is more
+    efficient and maneuverable to reach top speeds underwater.
+  levelCosts: 050000000a0000000f000000140000001e000000
