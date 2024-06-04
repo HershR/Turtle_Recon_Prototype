@@ -12,6 +12,7 @@ public class UpgradeCardUI : MonoBehaviour
     {
         upgradeDescriptionUI = FindObjectOfType<UpgradeDescriptionUI>();
         GetComponent<Button>().onClick.AddListener(OnSelect);
+        Debug.Log($"Set UpgradeSescriptionUI {upgradeDescriptionUI != false}");
     }
 
     public void OnSelect()

@@ -17,5 +17,6 @@ MonoBehaviour:
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
-  - Increase the collection rate of the Token Collection Drone
-  levelCosts: 050000000a0000000f0000001400000019000000
+  - Research how to improve the communication module inside the device to transfer
+    data faster and more efficiently.
+  levelCosts: 050000000a0000000f000000140000001e000000
