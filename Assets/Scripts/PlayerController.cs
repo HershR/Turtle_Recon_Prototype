@@ -6,6 +6,16 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AudioClip ParrySound;
+    [SerializeField] private AudioClip ParrySucceedSound;
+    [SerializeField] private AudioClip collectTokenSound;
+    [SerializeField] private AudioClip TrashHitSound;
+    [SerializeField] private AudioClip OilHitSound;
+    [SerializeField] private AudioClip SharpHitSound;
+    [SerializeField] private AudioClip WireHitSound;
+    [SerializeField] private AudioClip IAteAJellyfish;
+
+
     public PlayerStatsSO playerStats;
 
     private CharacterController controller;
@@ -120,6 +130,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("You hit a " + obst_type);
             if (obst_type == InteractableType.Trash) // case for Trash
             {   
+                SoundManager.instance.PlaySoundClip(TrashHitSound, transform, 1f);
                 Debug.Log("That's trash");
                 StartCoroutine(TakeDamage());
             }
@@ -136,6 +147,7 @@ public class PlayerController : MonoBehaviour
             else if (obst_type == InteractableType.Tokens) // Case for token
             {
                 Debug.Log("That's a token");
+                //SoundManager.instance.PlaySoundClip(collectTokenSound, transform, 1f);
                 StartCoroutine(CollideToken());
             }
             else if (obst_type == InteractableType.Kelp) // Case for food
@@ -175,6 +187,7 @@ public class PlayerController : MonoBehaviour
         parry = true;
         canParry = false;
         this.GetComponentInChildren<Renderer>().material.color = parryColor; // Swap to parry color.
+        SoundManager.instance.PlaySoundClip(ParrySound, transform, 1f);
         // SPIIIIIIIIIIIIIINNNNN
         while (passedTime < parryDuration)
         {
@@ -206,6 +219,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SuccessfulParry()
     {   
+        SoundManager.instance.PlaySoundClip(ParrySucceedSound, transform, 1f);
         parrySucceed = true;
         parry = false;
         canParry = true;
@@ -234,6 +248,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollectFood()
     {
+        SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
         if (health < maxHealth)
         {
             health += 1;
@@ -246,6 +261,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideOil()
     {
+        SoundManager.instance.PlaySoundClip(OilHitSound, transform, 1f);
         screenBlur = true;
         StartCoroutine(TakeDamage());
         this.GetComponentInChildren<Renderer>().material.color = oilColor; // Swap to oil color.
@@ -256,6 +272,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideSharp()
     {
+        SoundManager.instance.PlaySoundClip(SharpHitSound, transform, 1f);
         bleed = true;
         StartCoroutine(TakeDamage());
         this.GetComponentInChildren<Renderer>().material.color = bleedColor; // Flash to bleed color.
@@ -266,6 +283,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideWire()
     {
+        SoundManager.instance.PlaySoundClip(WireHitSound, transform, 1f);
         slowed = true;
         playerSpeed = 1;
         StartCoroutine(TakeDamage());
@@ -276,6 +294,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideToken()
     {
+        SoundManager.instance.PlaySoundClip(collectTokenSound, transform, 1f);
         tokenCount += 1;
         onTokenCollect.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
@@ -285,10 +304,14 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideJellyfish()
     {
-        if (health < maxHealth)
+        if (health + 1 < maxHealth)
         {
             health += 2;
+        } else if (health < maxHealth)
+        {
+            health += 1;
         }
+        SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
         livesText.text = "Lives Remaining: " + health;
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
