@@ -1631,10 +1631,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1161915738}
     - target: {fileID: 8199921648123512706, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
-      propertyPath: gameWinTime
-      value: 6000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8199921648123512706, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
       propertyPath: playerFinalTransform
       value: 
       objectReference: {fileID: 2062260784}

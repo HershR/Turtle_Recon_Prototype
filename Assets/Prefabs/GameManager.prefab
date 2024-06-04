@@ -49,7 +49,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   playerFinalTransform: {fileID: 0}
   gameWinUI: {fileID: 0}
-  gameWinTime: 10
+  gameWinTime: 600
   gameTimeDelta: 0
   distance: 0
   <tokensCollected>k__BackingField: 0
