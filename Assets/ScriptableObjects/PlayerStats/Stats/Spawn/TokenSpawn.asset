@@ -19,4 +19,4 @@ MonoBehaviour:
   description:
   - Improve the features on the drone that provide data for research so that more
     data can be gathered, which in turn increases how often you encounter tokens.
-  levelCosts: 050000000a0000000f0000001400000019000000
+  levelCosts: 0a0000000f00000014000000190000001e000000
