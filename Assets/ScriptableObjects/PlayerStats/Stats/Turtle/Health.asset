@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Max Health
   <Level>k__BackingField: 0
-  <MaxLevel>k__BackingField: 3
+  <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
   - For every increase in level, an extra half of a heart is added onto the base
