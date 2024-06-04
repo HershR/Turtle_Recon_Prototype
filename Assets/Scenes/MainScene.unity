@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203554, g: 0.64125663, b: 0.7778496, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -247,6 +247,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bce0bb40b82a4d41bd7c3c06903403e, type: 3}
+--- !u!1 &241688297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241688299}
+  - component: {fileID: 241688298}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &241688298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241688297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0673ef50b00624f45a7fbe165f6e373b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundObject: {fileID: 5600718837033230458, guid: fd356789e1330374bb05f5c2d342b9de, type: 3}
+--- !u!4 &241688299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241688297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -67.08055, y: -35.513298, z: 192.35507}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &425885445
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246014943}
   - component: {fileID: 1246014942}
+  - component: {fileID: 1246014944}
   m_Layer: 0
   m_Name: '%$ Header'
   m_TagString: Untagged
@@ -772,6 +818,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1246014944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246014941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0673ef50b00624f45a7fbe165f6e373b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundObject: {fileID: 0}
 --- !u!114 &1281905962 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
@@ -1197,6 +1256,38 @@ PrefabInstance:
       propertyPath: tokenText
       value: 
       objectReference: {fileID: 2685079}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: ParrySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 635b75fc98f122143bc0b05daec4a6a7, type: 3}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: OilHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 16f980440170f2249995753292ce11bc, type: 3}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: WireHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28daa7a33b6674c4688ed1f410cf7e53, type: 3}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: SharpHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f0ee9df26ea753c4bae11e812380f359, type: 3}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: TrashHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 81c48d2757850df4881782b777844cb1, type: 3}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: IAteAJellyfish
+      value: 
+      objectReference: {fileID: 8300000, guid: 4903132e6d246a747b05208a0bbee795, type: 3}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: ParrySucceedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c8f1b1d4aa0ef0641860c165d3f4636d, type: 3}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: collectTokenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1486,6 +1577,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 6343455238611065369}
+  - {fileID: 241688299}
   - {fileID: 1246014943}
   - {fileID: 836110370}
   - {fileID: 425885447}

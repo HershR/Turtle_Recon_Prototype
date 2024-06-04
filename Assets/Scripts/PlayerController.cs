@@ -308,7 +308,6 @@ public class PlayerController : MonoBehaviour
             health += 1;
         }
         SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
-        livesText.text = "Lives Remaining: " + health;
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
