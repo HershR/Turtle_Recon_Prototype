@@ -8,12 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnvironmentGenerator generator;
 
     [Header("Game over Related")]
-    [SerializeField] private Canvas gameOverUI;
+    [SerializeField] private GameObject gameOverUI;
     [SerializeField] Transform playerFinalTransform;
     
 
     [Header("Game Win Related")]
-    [SerializeField] private Canvas gameWinUI;
+    [SerializeField] private GameObject gameWinUI;
     [SerializeField] private float gameWinTime = 10f;
     [SerializeField] private float gameTimeDelta = 0f;
 
@@ -43,7 +43,10 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        if(player.health <= 0)
+
+        gameTime += Time.deltaTime; // Increment the runtime
+
+        if (player.health <= 0)
         {
             Debug.Log("Loose");
             isGameOver = true;
@@ -59,7 +62,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("WIN");
             isGameOver = true;
-            //gameWinUI?.SetActive(true);
+            gameWinUI?.SetActive(true);
             return;
         }
         distance += generator.GetSpeed() * Time.deltaTime;
@@ -76,7 +79,10 @@ public class GameManager : MonoBehaviour
             player.transform.position = newPos;
             yield return new WaitForSeconds(0.01f);
         }
-        //gameOverUI?.SetActive(true);
+        gameOverUI?.SetActive(true);
+
+        // update runtime display when game is over
+        UpdateLoseScreenUI();
     }
 
     private void TokenCollected()
@@ -92,5 +98,14 @@ public class GameManager : MonoBehaviour
     public float GetCurrentRuntime()
     {
         return gameTime;
+    }
+
+    private void UpdateLoseScreenUI()
+    {
+        UIScreens uiScreens = gameOverUI.GetComponent<UIScreens>();
+        if (uiScreens != null)
+        {
+            uiScreens.UpdateDisplay(GetCurrentRuntime(), tokensCollected, tokensDeposited);
+        }
     }
 }

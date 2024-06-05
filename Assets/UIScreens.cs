@@ -10,9 +10,9 @@ public class UIScreens : MonoBehaviour
     public TextMeshProUGUI runtimeText;
     public TextMeshProUGUI tokensCollectedText;
     public TextMeshProUGUI tokensBankedText;
-    
+
     // Update is called once per frame
-    void Update()
+    public void UpdateDisplay(float runtime, float tokensCollected, float tokensBanked)
     {
         if (gameManager != null)
         {
