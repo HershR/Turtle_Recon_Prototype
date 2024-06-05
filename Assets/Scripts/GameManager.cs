@@ -124,4 +124,10 @@ public class GameManager : MonoBehaviour
             Debug.LogError("UIScreens component not found on gameOverUI");
         }
     }
+
+    // show the win screen
+    private void ShowWinScreen()
+    {
+        gameWinUI.gameObject.SetActive(true);
+    }
 }
