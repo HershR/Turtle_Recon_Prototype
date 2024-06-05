@@ -1294,6 +1294,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8a604316e664b7389afde3b9da8db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParrySound: {fileID: 8300000, guid: 635b75fc98f122143bc0b05daec4a6a7, type: 3}
+  ParrySucceedSound: {fileID: 8300000, guid: c8f1b1d4aa0ef0641860c165d3f4636d, type: 3}
+  collectTokenSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
+  TrashHitSound: {fileID: 8300000, guid: 81c48d2757850df4881782b777844cb1, type: 3}
+  OilHitSound: {fileID: 8300000, guid: 16f980440170f2249995753292ce11bc, type: 3}
+  SharpHitSound: {fileID: 8300000, guid: f0ee9df26ea753c4bae11e812380f359, type: 3}
+  WireHitSound: {fileID: 8300000, guid: 28daa7a33b6674c4688ed1f410cf7e53, type: 3}
+  IAteAJellyfish: {fileID: 8300000, guid: 4903132e6d246a747b05208a0bbee795, type: 3}
   playerStats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
   playerSpeed: 5
   maxSpeed: 15
@@ -1306,7 +1314,6 @@ MonoBehaviour:
   parry: 0
   parrySucceed: 0
   iFrames: 0
-  tokenText: {fileID: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   damageColor: {r: 0, g: 0, b: 0, a: 0}
   healColor: {r: 0, g: 0, b: 0, a: 0}
