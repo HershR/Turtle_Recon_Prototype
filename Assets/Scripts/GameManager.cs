@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("WIN");
             isGameOver = true;
-            gameWinUI?.SetActive(true);
+            gameWinUI.gameObject.SetActive(true);
             return;
         }
         distance += generator.GetSpeed() * Time.deltaTime;
@@ -79,19 +79,30 @@ public class GameManager : MonoBehaviour
             player.transform.position = newPos;
             yield return new WaitForSeconds(0.01f);
         }
-        gameOverUI?.SetActive(true);
+        Debug.Log("Game Over UI Active");
+        gameOverUI.gameObject.SetActive(true);
 
+        Debug.Log("Runtime: " + gameTime);
+        Debug.Log("Tokens Collected: " + tokensCollected);
+        Debug.Log("Tokens Banked: " + tokensDeposited);
+
+        Debug.Log("Before calling UpdateLoseScreenUI");
         // update runtime display when game is over
         UpdateLoseScreenUI();
+        Debug.Log("After calling UpdateLoseScreenUI");
+
     }
 
     private void TokenCollected()
     {
         tokensCollected += 1;
+        Debug.Log("Token Collected. Total: " + tokensCollected);
+
     }
     private void TokenBanked()
     {
         tokensDeposited += 1f;
+        Debug.Log("Token Banked. Total: " + tokensDeposited);
     }
 
     // Method to get the current runtime
@@ -102,10 +113,15 @@ public class GameManager : MonoBehaviour
 
     private void UpdateLoseScreenUI()
     {
+        Debug.Log("Calling UpdateDisplay on UIScreens");
         UIScreens uiScreens = gameOverUI.GetComponent<UIScreens>();
         if (uiScreens != null)
         {
             uiScreens.UpdateDisplay(GetCurrentRuntime(), tokensCollected, tokensDeposited);
+        }
+        else
+        {
+            Debug.LogError("UIScreens component not found on gameOverUI");
         }
     }
 }
