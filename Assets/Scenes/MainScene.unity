@@ -1360,6 +1360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5247929482809389655, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 497
+      objectReference: {fileID: 0}
     - target: {fileID: 5871262262033407326, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_SizeDelta.x
       value: -118.3995
