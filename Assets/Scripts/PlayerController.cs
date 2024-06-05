@@ -53,9 +53,13 @@ public class PlayerController : MonoBehaviour
     public UnityEvent onTokenBanked;
     public UnityEvent onDamageTaken;
 
+    public GameObject volControler;
+    private bool volViewable = false;
+
     // Start is called before the first frame update
     void Awake()
-    {   
+    {
+        
         controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
@@ -103,6 +107,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            volControler.SetActive(!volViewable);
+            volViewable = !volViewable;
         }
     }
 
