@@ -161,6 +161,7 @@ public class DroneMovement : MonoBehaviour
         {
             return;
         }
+        state = DroneState.Collecting;
         Vector3 turtlePos = player.transform.position;
         Vector3 dronePos = transform.position;
         Vector2 turtle = new Vector2(turtlePos.x, turtlePos.y);
@@ -169,8 +170,11 @@ public class DroneMovement : MonoBehaviour
         //Debug.Log($"Drone Distance: {distance}");
         if (distance < droneRange && player.tokenCount > 0)
         {
-            state = DroneState.Collecting;
             StartCoroutine(TokenCollection());
+        }
+        else
+        {
+            state = DroneState.Idle;
         }
 
     }

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     public float playerSpeed;
     public float maxSpeed;
-    public int health;
+    public float health;
     public int maxHealth;
     public int dashes;
     public int maxDashes;
@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private int dashLevel;
     private int parryCooldownLevel;
 
-    public TextMeshProUGUI livesText;
     public Color baseColor;
     public Color damageColor;
     public Color healColor;
@@ -42,11 +41,12 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent onTokenCollect;
     public UnityEvent onTokenBanked;
+    public UnityEvent onDamageTaken;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        // controller = gameObject.AddComponent<CharacterController>();
+    void Awake()
+    {   
+        controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash Level: " + dashLevel);
 
         // Initialize Player Stats
-        maxHealth = 3 + healthLevel;
+        maxHealth = 1 + healthLevel;
         health = maxHealth;
         maxSpeed = 3 + (speedLevel * 2);
         playerSpeed = maxSpeed;
@@ -75,9 +75,6 @@ public class PlayerController : MonoBehaviour
         dashes = 0;
         parryCooldownStat = 3 - (0.5f * (float)parryCooldownLevel);
         tokenCount = 0;
-
-        // Set UI text
-        livesText.text = "Lives Remaining: " + health;
     }
 
     // Update is called once per frame
@@ -212,16 +209,16 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator TakeDamage()
+    IEnumerator TakeDamage(float amount = 1f)
     {
         canParry = true;
         iFrames = true;
-        health -= 1;
+        health -= amount;
+        onDamageTaken.Invoke();
         if (health <= 0)
         {
             OnDeath();
         }
-        livesText.text = "Lives Remaining: " + health;
         this.GetComponentInChildren<Renderer>().material.color = damageColor; // Swap to the damage color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
@@ -234,7 +231,6 @@ public class PlayerController : MonoBehaviour
         {
             health += 1;
         }
-        livesText.text = "Lives Remaining: " + health;
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
