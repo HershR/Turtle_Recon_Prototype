@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent onTokenCollect;
     public UnityEvent onTokenBanked;
-    public UnityEvent onDamageTaken;
+    public UnityEvent onHealthChange;
 
     public GameObject volControler;
     private bool volViewable = false;
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
         canParry = true;
         iFrames = true;
         health -= amount;
-        onDamageTaken.Invoke();
+        onHealthChange.Invoke();
         if (health <= 0)
         {
             OnDeath();
@@ -254,6 +254,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollectFood()
     {
         SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
+        onHealthChange.Invoke();
         if (health < maxHealth)
         {
             health += 1;

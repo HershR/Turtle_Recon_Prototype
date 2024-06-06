@@ -862,6 +862,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1315351537}
     - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
+      propertyPath: maxEnvironmentTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
+      propertyPath: minEnvironmentTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: postProcessingManager
       value: 
       objectReference: {fileID: 1202781940}
@@ -1390,6 +1398,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6511190432061652717, guid: 643184d7d1f76d045ba231ca008fa51a, type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301429331285778191, guid: 643184d7d1f76d045ba231ca008fa51a, type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3838851154402495691, guid: 643184d7d1f76d045ba231ca008fa51a, type: 3}
@@ -1504,10 +1520,6 @@ PrefabInstance:
     - target: {fileID: 2880459204372220537, guid: fcee493d47330af419f90e64bd394084, type: 3}
       propertyPath: m_Name
       value: DroneSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 2953896239994830878, guid: fcee493d47330af419f90e64bd394084, type: 3}
-      propertyPath: baseSpawnRate
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
