@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Win Related")]
     [SerializeField] private GameObject gameWinUI;
-    [SerializeField] private float gameWinTime = 10f;
-    [SerializeField] private float gameTimeDelta = 0f;
+    [SerializeField] public float gameWinTime = 10f;
+    [SerializeField] public float gameTimeDelta = 0f;
 
     private bool isGameOver = false;
 

@@ -19,7 +19,7 @@ public class DroneSpawner : MonoBehaviour
     {
         spawnRate = baseSpawnRate - droneSpawnRate.Level * levelModifier;
         spawnRate = Mathf.Max(10f, spawnRate);
-        spawnTimer = Random.Range(spawnTimer - 5f, spawnTimer + 5f);
+        spawnTimer = Random.Range(spawnRate - 5f, spawnRate + 5f);
     }
 
     private void Update()

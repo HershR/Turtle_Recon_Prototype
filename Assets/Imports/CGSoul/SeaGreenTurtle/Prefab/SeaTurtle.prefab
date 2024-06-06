@@ -207,7 +207,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 8029743232352607863}
   m_AABB:
-    m_Center: {x: 0.03148231, y: 0.15722582, z: 0.024062037}
+    m_Center: {x: 0, y: 0.2, z: 0}
     m_Extent: {x: 0.61647844, y: 0.22714946, z: 0.52889454}
   m_DirtyAABB: 0
 --- !u!136 &1884849633388283527
@@ -1297,16 +1297,16 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
   playerSpeed: 5
   maxSpeed: 15
-  health: 3
-  maxHealth: 3
+  health: 1
+  maxHealth: 5
   dashes: 0
   maxDashes: 3
-  tokenCount: 0
+  tokenCount: 20
   parryCooldownStat: 0
   parry: 0
   parrySucceed: 0
   iFrames: 0
-  livesText: {fileID: 0}
+  tokenText: {fileID: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   damageColor: {r: 0, g: 0, b: 0, a: 0}
   healColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1314,6 +1314,15 @@ MonoBehaviour:
   bleedColor: {r: 0, g: 0, b: 0, a: 0}
   oilColor: {r: 0, g: 0, b: 0, a: 0}
   parryColor: {r: 0, g: 0, b: 0, a: 0}
+  onTokenCollect:
+    m_PersistentCalls:
+      m_Calls: []
+  onTokenBanked:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamageTaken:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &4089427409852413802
 Animator:
   serializedVersion: 5

@@ -39,7 +39,7 @@ public class UpgradeDescriptionUI : MonoBehaviour
     {
         totalTokensText.text = playerStatsSO.Tokens.ToString();
         StatSO stat = playerStatsSO.GetStat(statType);
-        upgradeDescriptionText.text = stat.GetDescription();
+        upgradeDescriptionText.text = !stat.IsMaxLevel() ? stat.GetDescription() : "Completed";
         upgradeLevelText.text = "Lvl: " + stat.Level.ToString();
         upgradeLevelSlider.value = stat.Level / (float)stat.MaxLevel;
         upgradeCostText.text = !stat.IsMaxLevel() ? stat.GetCost().ToString() : "Max";
