@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Time.timeScale = volViewable ? 1:0;
             volControler.SetActive(!volViewable);
             volViewable = !volViewable;
         }
