@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4737298264553829762}
   - component: {fileID: 1929987644289643895}
   - component: {fileID: 2649433053279960743}
-  - component: {fileID: 8626917902856592315}
+  - component: {fileID: 8204556800355681851}
   m_Layer: 0
   m_Name: WireObsticle
   m_TagString: Untagged
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obsticle_type: 3
+  speed: 0
+  delZ: 0
 --- !u!54 &2649433053279960743
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,8 +128,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8626917902856592315
-MeshCollider:
+--- !u!135 &8204556800355681851
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,7 +146,6 @@ MeshCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7121584756871417403, guid: 0a05d94b014a24bdeb78ee3ade63e116, type: 3}
+  serializedVersion: 3
+  m_Radius: 0.004583481
+  m_Center: {x: 0.000039204722, y: -0.000089770416, z: 0.00005147676}

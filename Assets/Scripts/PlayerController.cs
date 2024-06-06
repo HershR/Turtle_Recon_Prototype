@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerStatsSO playerStats;
 
-    private CharacterController controller;
     public float playerSpeed;
     public float maxSpeed;
     public float health;
@@ -46,7 +45,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {   
-        controller = gameObject.AddComponent<CharacterController>();
         Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
