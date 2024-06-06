@@ -7,6 +7,7 @@ public class DroneMovement : MonoBehaviour
     public enum DroneState { Idle, Collecting, EnterExit }
 
     [SerializeField] private PlayerStatsSO stats;
+    [SerializeField] private AudioClip TokenDepositSound;
 
     public DroneState state;
 
@@ -186,6 +187,7 @@ public class DroneMovement : MonoBehaviour
         Debug.Log("Player in range of drone");
         //Debug.Log("Player token count: " + player.tokenCount);
         //Debug.Log("Drone token count: " + stats.Tokens);
+        SoundManager.instance.PlaySoundClip(TokenDepositSound, transform, 1f);
         player.tokenCount -= 1;
         stats.AddTokens(1);
         player.onTokenBanked.Invoke();

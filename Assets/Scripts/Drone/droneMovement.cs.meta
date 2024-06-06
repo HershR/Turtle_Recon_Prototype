@@ -3,7 +3,9 @@ guid: c968b03a3d37f504b83160522e6e3106
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - stats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
+  - TokenDepositSound: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

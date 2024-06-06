@@ -3,7 +3,10 @@ guid: ce8a604316e664b7389afde3b9da8db7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - collectTokenSound: {fileID: 8300000, guid: fb1109cba332cc84782ffaa6ee62a1cf, type: 3}
+  - playerStats: {instanceID: 0}
+  - livesText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

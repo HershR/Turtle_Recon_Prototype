@@ -219,13 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
+  TokenDepositSound: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
   state: 0
   upForce: 98.1
   moveSpeed: 5
-  minHeight: 0
-  maxHeight: 0
-  minWidth: 0
-  maxWidth: 0
   timeDuration: 20
   tiltIntensity: 3
   droneRange: 1
