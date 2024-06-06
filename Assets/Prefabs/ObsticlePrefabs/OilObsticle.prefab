@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obsticle_type: 2
+  speed: 0
+  delZ: 0
 --- !u!54 &2649433053279960743
 Rigidbody:
   m_ObjectHideFlags: 0

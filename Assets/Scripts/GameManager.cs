@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         player.enabled = false;
         //move player off screen
+        UpdateLoseScreenUI();
         gameOverUI.gameObject.SetActive(true);
         while(player.transform.position.z > Camera.main.transform.position.z)
         {
@@ -79,13 +80,6 @@ public class GameManager : MonoBehaviour
             player.transform.position = newPos;
             yield return new WaitForEndOfFrame();
         }
-
-        Debug.Log("Runtime: " + gameTimeDelta);
-        Debug.Log("Tokens Collected: " + tokensCollected);
-        Debug.Log("Tokens Banked: " + tokensDeposited);
-
-        UpdateLoseScreenUI();
-
     }
 
     private void TokenCollected()
