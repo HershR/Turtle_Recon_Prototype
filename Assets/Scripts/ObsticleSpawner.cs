@@ -99,6 +99,8 @@ public class ObsticleSpawner : MonoBehaviour
 						Debug.Log("About to spawn a: " + InteractableObjects[t] + " at " + this.transform.position);
 						GameObject new_obsticle = Instantiate(InteractableObjects[t], this.transform);
 						new_obsticle.GetComponent<ObsticleController>().obsticle_type = t;
+						new_obsticle.GetComponent<ObsticleController>().speed += environmentGenerator.GetSpeed();
+						Debug.Log("env speed: " + environmentGenerator.GetSpeed());
 						Debug.Log("Spawned a " + t);
 						break;
 					}
