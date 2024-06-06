@@ -1795,10 +1795,6 @@ PrefabInstance:
       propertyPath: volControler
       value: 
       objectReference: {fileID: 579581630}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: ParrySucceedSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 7d12c47a90b36bd41b172495539e8514, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
