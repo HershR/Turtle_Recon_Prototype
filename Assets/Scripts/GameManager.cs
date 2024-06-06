@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
     [SerializeField] EnvironmentGenerator generator;
+    [SerializeField] ObsticleSpawner spawner;
 
     [Header("Game over Related")]
     [SerializeField] private GameObject gameOverUI;
@@ -22,8 +23,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float distance = 0f;
     [field: SerializeField] public float tokensCollected { get; private set; } = 0f;
     [field: SerializeField] public float tokensDeposited { get; private set; } = 0f;
-
-    private float gameTime = 0f;
 
     private void OnEnable()
     {
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        gameTime += Time.deltaTime; // Increment the runtime
+        distance += generator.GetSpeed() * Time.deltaTime;
 
         if (player.health <= 0)
         {
@@ -53,7 +52,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine("GameOver");
             return;
 
-        }        
+        }
         if (gameTimeDelta < gameWinTime)
         {
             gameTimeDelta += Time.deltaTime;
@@ -61,35 +60,31 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("WIN");
+            spawner.gameObject.SetActive(false);
             isGameOver = true;
             gameWinUI.gameObject.SetActive(true);
             return;
         }
-        distance += generator.GetSpeed() * Time.deltaTime;
     }
 
     private IEnumerator GameOver()
     {
         player.enabled = false;
         //move player off screen
+        gameOverUI.gameObject.SetActive(true);
         while(player.transform.position.z > Camera.main.transform.position.z)
         {
             Vector3 currentPos = player.transform.position;
             Vector3 newPos = Vector3.MoveTowards(currentPos, playerFinalTransform.position, Time.deltaTime * player.playerSpeed);
             player.transform.position = newPos;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForEndOfFrame();
         }
-        Debug.Log("Game Over UI Active");
-        gameOverUI.gameObject.SetActive(true);
 
-        Debug.Log("Runtime: " + gameTime);
+        Debug.Log("Runtime: " + gameTimeDelta);
         Debug.Log("Tokens Collected: " + tokensCollected);
         Debug.Log("Tokens Banked: " + tokensDeposited);
 
-        Debug.Log("Before calling UpdateLoseScreenUI");
-        // update runtime display when game is over
         UpdateLoseScreenUI();
-        Debug.Log("After calling UpdateLoseScreenUI");
 
     }
 
@@ -105,29 +100,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("Token Banked. Total: " + tokensDeposited);
     }
 
-    // Method to get the current runtime
-    public float GetCurrentRuntime()
-    {
-        return gameTime;
-    }
 
     private void UpdateLoseScreenUI()
     {
         Debug.Log("Calling UpdateDisplay on UIScreens");
-        UIScreens uiScreens = gameOverUI.GetComponent<UIScreens>();
+        GameOverScreenUI uiScreens = gameOverUI.GetComponent<GameOverScreenUI>();
         if (uiScreens != null)
         {
-            uiScreens.UpdateDisplay(GetCurrentRuntime(), tokensCollected, tokensDeposited);
+            uiScreens.UpdateDisplay(gameTimeDelta, gameWinTime, tokensCollected, tokensDeposited);
         }
         else
         {
             Debug.LogError("UIScreens component not found on gameOverUI");
         }
-    }
-
-    // show the win screen
-    private void ShowWinScreen()
-    {
-        gameWinUI.gameObject.SetActive(true);
     }
 }
