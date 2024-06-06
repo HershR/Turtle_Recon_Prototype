@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParrySound: {fileID: 8300000, guid: 635b75fc98f122143bc0b05daec4a6a7, type: 3}
-  ParrySucceedSound: {fileID: 8300000, guid: c8f1b1d4aa0ef0641860c165d3f4636d, type: 3}
+  ParrySucceedSound: {fileID: 8300000, guid: 7d12c47a90b36bd41b172495539e8514, type: 3}
   collectTokenSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
   TrashHitSound: {fileID: 8300000, guid: 81c48d2757850df4881782b777844cb1, type: 3}
   OilHitSound: {fileID: 8300000, guid: 16f980440170f2249995753292ce11bc, type: 3}
@@ -1351,6 +1351,7 @@ MonoBehaviour:
   onDamageTaken:
     m_PersistentCalls:
       m_Calls: []
+  volControler: {fileID: 0}
 --- !u!1 &4957214787730041026
 GameObject:
   m_ObjectHideFlags: 0
