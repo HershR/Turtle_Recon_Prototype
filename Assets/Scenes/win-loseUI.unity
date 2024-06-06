@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035196725, g: 0.6414828, b: 0.7775074, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1607,6 +1607,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lose-Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 2563793445649841374, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5000130648825170146, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1788,6 +1792,10 @@ PrefabInstance:
     - target: {fileID: 8676259107482789715, guid: 7832d175d56a743b7a8c6a446eb65a41, type: 3}
       propertyPath: m_Name
       value: Win-Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8676259107482789715, guid: 7832d175d56a743b7a8c6a446eb65a41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
