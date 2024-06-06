@@ -96,12 +96,12 @@ public class ObsticleSpawner : MonoBehaviour
 				{
 					if (w > index)
 					{
-						Debug.Log("About to spawn a: " + InteractableObjects[t] + " at " + this.transform.position);
+						//Debug.Log("About to spawn a: " + InteractableObjects[t] + " at " + this.transform.position);
 						GameObject new_obsticle = Instantiate(InteractableObjects[t], this.transform);
 						new_obsticle.GetComponent<ObsticleController>().obsticle_type = t;
 						new_obsticle.GetComponent<ObsticleController>().speed += environmentGenerator.GetSpeed();
-						Debug.Log("env speed: " + environmentGenerator.GetSpeed());
-						Debug.Log("Spawned a " + t);
+						//Debug.Log("env speed: " + environmentGenerator.GetSpeed());
+						//Debug.Log("Spawned a " + t);
 						break;
 					}
 				}
@@ -140,7 +140,7 @@ public class ObsticleSpawner : MonoBehaviour
 				totalWeight += weight;
 			}
 		}
-		Debug.Log("New Obsticle Spawn Rates: " + string.Join(", ", objWeights));
+		//Debug.Log("New Obsticle Spawn Rates: " + string.Join(", ", objWeights));
 	}
 	// THIS IS WHERE ALL THE ENV DICTIONARIES WILL GO IF WE MAKE EM PRIVATE!!!!
 
