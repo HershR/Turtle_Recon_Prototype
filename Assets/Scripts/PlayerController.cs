@@ -6,6 +6,16 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AudioClip ParrySound;
+    [SerializeField] private AudioClip ParrySucceedSound;
+    [SerializeField] private AudioClip collectTokenSound;
+    [SerializeField] private AudioClip TrashHitSound;
+    [SerializeField] private AudioClip OilHitSound;
+    [SerializeField] private AudioClip SharpHitSound;
+    [SerializeField] private AudioClip WireHitSound;
+    [SerializeField] private AudioClip IAteAJellyfish;
+
+
     public PlayerStatsSO playerStats;
 
     public float playerSpeed;
@@ -41,6 +51,9 @@ public class PlayerController : MonoBehaviour
     public UnityEvent onTokenCollect;
     public UnityEvent onTokenBanked;
     public UnityEvent onDamageTaken;
+
+    public GameObject volControler;
+    private bool volViewable = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -93,6 +106,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            volControler.SetActive(!volViewable);
+            volViewable = !volViewable;
+        }
     }
 
     public void OnCollision(GameObject collider)
@@ -116,6 +134,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("You hit a " + obst_type);
             if (obst_type == InteractableType.Trash) // case for Trash
             {   
+                SoundManager.instance.PlaySoundClip(TrashHitSound, transform, 1f);
                 Debug.Log("That's trash");
                 StartCoroutine(TakeDamage());
             }
@@ -132,6 +151,7 @@ public class PlayerController : MonoBehaviour
             else if (obst_type == InteractableType.Tokens) // Case for token
             {
                 Debug.Log("That's a token");
+                //SoundManager.instance.PlaySoundClip(collectTokenSound, transform, 1f);
                 StartCoroutine(CollideToken());
             }
             else if (obst_type == InteractableType.Kelp) // Case for food
@@ -143,6 +163,11 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("That's sharp");
                 StartCoroutine(CollideSharp());
+            }
+            else if (obst_type == InteractableType.JellyFish) // case for jellyfish
+            {
+                Debug.Log("That's a jellyfish");
+                StartCoroutine(CollideJellyfish());
             }
             else 
             {
@@ -166,6 +191,7 @@ public class PlayerController : MonoBehaviour
         parry = true;
         canParry = false;
         this.GetComponentInChildren<Renderer>().material.color = parryColor; // Swap to parry color.
+        SoundManager.instance.PlaySoundClip(ParrySound, transform, 1f);
         // SPIIIIIIIIIIIIIINNNNN
         while (passedTime < parryDuration)
         {
@@ -197,6 +223,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SuccessfulParry()
     {   
+        SoundManager.instance.PlaySoundClip(ParrySucceedSound, transform, 1f);
         parrySucceed = true;
         parry = false;
         canParry = true;
@@ -225,6 +252,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollectFood()
     {
+        SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
         if (health < maxHealth)
         {
             health += 1;
@@ -236,6 +264,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideOil()
     {
+        SoundManager.instance.PlaySoundClip(OilHitSound, transform, 1f);
         screenBlur = true;
         StartCoroutine(TakeDamage());
         this.GetComponentInChildren<Renderer>().material.color = oilColor; // Swap to oil color.
@@ -246,6 +275,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideSharp()
     {
+        SoundManager.instance.PlaySoundClip(SharpHitSound, transform, 1f);
         bleed = true;
         StartCoroutine(TakeDamage());
         this.GetComponentInChildren<Renderer>().material.color = bleedColor; // Flash to bleed color.
@@ -256,6 +286,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideWire()
     {
+        SoundManager.instance.PlaySoundClip(WireHitSound, transform, 1f);
         slowed = true;
         playerSpeed = 1;
         StartCoroutine(TakeDamage());
@@ -266,9 +297,25 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideToken()
     {
+        SoundManager.instance.PlaySoundClip(collectTokenSound, transform, 1f);
         tokenCount += 1;
         onTokenCollect.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
+        yield return new WaitForSeconds(1);
+        this.GetComponentInChildren<Renderer>().material.color = baseColor;
+    }
+
+    IEnumerator CollideJellyfish()
+    {
+        if (health + 1 < maxHealth)
+        {
+            health += 2;
+        } else if (health < maxHealth)
+        {
+            health += 1;
+        }
+        SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
+        this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
     }
