@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("SoundFXS")]
     [SerializeField] private AudioClip ParrySound;
     [SerializeField] private AudioClip ParrySucceedSound;
     [SerializeField] private AudioClip collectTokenSound;
@@ -16,7 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip IAteAJellyfish;
 
 
-    public PlayerStatsSO playerStats;
+    [SerializeField] private PlayerStatsSO playerStats;
+
+    [SerializeField] private CanvasGroup blurCanvas;
 
     public float playerSpeed;
     public float maxSpeed;
@@ -254,10 +257,10 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollectFood()
     {
         SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
-        onHealthChange.Invoke();
         if (health < maxHealth)
         {
             health += 1;
+            onHealthChange.Invoke();
         }
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
@@ -267,19 +270,34 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideOil()
     {
         SoundManager.instance.PlaySoundClip(OilHitSound, transform, 1f);
+        StartCoroutine(TakeDamage(1f));
+        if (screenBlur) 
+        { 
+            StopCoroutine(BlurScreen()); 
+        }
+        StartCoroutine(BlurScreen());
+        yield return null;
+    }
+    IEnumerator BlurScreen()
+    {
         screenBlur = true;
-        StartCoroutine(TakeDamage());
+        blurCanvas.alpha = 1f;
         this.GetComponentInChildren<Renderer>().material.color = oilColor; // Swap to oil color.
-        yield return new WaitForSeconds(5);
-        screenBlur = false;
+        yield return new WaitForSeconds(2f);
+        while (blurCanvas.alpha > 0f)
+        {
+            blurCanvas.alpha -= (1f * Time.deltaTime) / 3f;
+            yield return new WaitForEndOfFrame();
+        }
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
+        screenBlur = false;
     }
 
     IEnumerator CollideSharp()
     {
         SoundManager.instance.PlaySoundClip(SharpHitSound, transform, 1f);
         bleed = true;
-        StartCoroutine(TakeDamage());
+        StartCoroutine(TakeDamage(2f));
         this.GetComponentInChildren<Renderer>().material.color = bleedColor; // Flash to bleed color.
         yield return new WaitForSeconds(20);
         bleed = false;
@@ -309,13 +327,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator CollideJellyfish()
     {
-        if (health + 1 < maxHealth)
-        {
-            health += 2;
-        } else if (health < maxHealth)
-        {
-            health += 1;
-        }
+        health = Mathf.Min(maxHealth, health + 2);
+        onHealthChange.Invoke();
         SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
