@@ -49,7 +49,7 @@ public class DroneMovement : MonoBehaviour
         {
             Debug.LogError("Drone Could not find player");
         }
-        float z = player.transform.position.z - Camera.main.transform.position.z;
+        float z = Camera.main.transform.position.z;
         // Bottom-left corner
         Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
         // Top-right corner

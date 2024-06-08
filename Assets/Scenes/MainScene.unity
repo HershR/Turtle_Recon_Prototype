@@ -228,6 +228,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5492551997196079269, guid: 0bce0bb40b82a4d41bd7c3c06903403e, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 913584752}
+    - target: {fileID: 5492551997196079269, guid: 0bce0bb40b82a4d41bd7c3c06903403e, type: 3}
       propertyPath: environmentGenerator
       value: 
       objectReference: {fileID: 1161915738}
@@ -331,10 +335,6 @@ PrefabInstance:
     - target: {fileID: 5000130648825170146, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5887451870601867436, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -593,7 +593,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 700
+  far clip plane: 100
   field of view: 90
   orthographic: 0
   orthographic size: 5
@@ -621,7 +621,7 @@ Transform:
   m_GameObject: {fileID: 836110367}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1009,6 +1009,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f000f0c2363c45842999b278f05cbee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1197210537 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2953896239994830878, guid: fcee493d47330af419f90e64bd394084, type: 3}
+  m_PrefabInstance: {fileID: 1519213169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b195dd6247dc794ea55049ce2b3dc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1202781940 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2835489951763499814, guid: 643184d7d1f76d045ba231ca008fa51a, type: 3}
@@ -1293,7 +1304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1404418053121792117, guid: fcee493d47330af419f90e64bd394084, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1542,6 +1553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinScreenUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4193611223201818128, guid: cad127b0e66614211a2e79e0c3fbcb54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1570,11 +1585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5376028930250457251, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5376028930250457251, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5376028930250457251, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1750,6 +1765,14 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 1425827319}
+    - target: {fileID: 8199921648123512706, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
+      propertyPath: droneSpawner
+      value: 
+      objectReference: {fileID: 1197210537}
+    - target: {fileID: 8199921648123512706, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
+      propertyPath: obstacleSpawner
+      value: 
+      objectReference: {fileID: 759796559}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

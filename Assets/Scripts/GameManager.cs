@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
     [SerializeField] EnvironmentGenerator generator;
-    [SerializeField] ObsticleSpawner spawner;
+    [SerializeField] ObsticleSpawner obstacleSpawner;
+    [SerializeField] DroneSpawner droneSpawner;
 
     [Header("Game over Related")]
     [SerializeField] private GameObject gameOverUI;
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Loose");
             isGameOver = true;
-            StartCoroutine("GameOver");
+            StartCoroutine(GameLose());
             return;
 
         }
@@ -63,20 +64,27 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("WIN");
-            spawner.gameObject.SetActive(false);
-            isGameOver = true;
+            obstacleSpawner.gameObject.SetActive(false);
+            OnGameOver();
             gameWinUI.gameObject.SetActive(true);
             return;
         }
     }
 
-    private IEnumerator GameOver()
+    private void OnGameOver()
+    {
+        isGameOver = true;
+        droneSpawner.RecallDone();
+    }
+
+    private IEnumerator GameLose()
     {
         player.enabled = false;
         //move player off screen
         UpdateLoseScreenUI();
         gameOverUI.gameObject.SetActive(true);
-        while(player.transform.position.z > Camera.main.transform.position.z)
+        //generator.SetTargetSpeed(0f);
+        while (player.transform.position.z > Camera.main.transform.position.z)
         {
             Vector3 currentPos = player.transform.position;
             Vector3 newPos = Vector3.MoveTowards(currentPos, playerFinalTransform.position, Time.deltaTime * player.playerSpeed);

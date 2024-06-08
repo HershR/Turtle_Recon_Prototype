@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         // Initialize Player Stats
         maxHealth = 1 + healthLevel;
         health = maxHealth;
-        maxSpeed = 3 + (speedLevel * 2);
+        maxSpeed = 3 + 2 * playerStats.GetStat(StatType.Speed).Level / playerStats.GetStat(StatType.Speed).MaxLevel;
         playerSpeed = maxSpeed;
         maxDashes = 1 + dashLevel;
         dashes = 0;
@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player has parried");
         float parryDuration = 0.5f;
         float passedTime = 0;
-        Quaternion initialRotation = this.transform.rotation;
+        //Quaternion initialRotation = this.transform.rotation;
         parry = true;
         canParry = false;
         this.GetComponentInChildren<Renderer>().material.color = parryColor; // Swap to parry color.
@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
             passedTime += Time.deltaTime;
             yield return null;
         }
-        this.transform.rotation = initialRotation;
+        this.transform.rotation = Quaternion.identity;
         //yield return new WaitForSeconds(parryDuration);
         if (parrySucceed == false) {
             StartCoroutine(ParryCooldown(parryCooldownStat));

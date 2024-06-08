@@ -17,8 +17,10 @@ public enum InteractableType
 
 public class ObsticleSpawner : MonoBehaviour
 {
+	[SerializeField] private GameManager gameManager;
+
 	// Initialize Enviornment Generator var
-	[SerializeField] public EnvironmentGenerator environmentGenerator;
+	[SerializeField] private EnvironmentGenerator environmentGenerator;
 
 	[SerializeField] public SerializedDictionary<InteractableType, int> InteractableWeights; // Serves no purpose anymore
 
@@ -40,13 +42,18 @@ public class ObsticleSpawner : MonoBehaviour
 			new SerializedDictionary<EnvironmentType, SerializedDictionary<InteractableType, int>> { };
 
 	// Initialize spawn rate upgrades from player
-	[SerializeField] public StatSO tokenSpawnUpgrade;
-	[SerializeField] public StatSO kelpSpawnUpgrade;
-	[SerializeField] public StatSO jellyfishSpawnUpgrade;
-	[SerializeField] public StatSO dashSpawnUpgrade;
-	[SerializeField] public StatSO oilSpawnUpgrade;
-	[SerializeField] public StatSO trashSpawnUpgrade;
-	[SerializeField] public StatSO acidityUpgrade;
+	[SerializeField] private StatSO tokenSpawnUpgrade;
+	[SerializeField] private StatSO kelpSpawnUpgrade;
+	[SerializeField] private StatSO jellyfishSpawnUpgrade;
+	[SerializeField] private StatSO dashSpawnUpgrade;
+	[SerializeField] private StatSO oilSpawnUpgrade;
+	[SerializeField] private StatSO trashSpawnUpgrade;
+	[SerializeField] private StatSO acidityUpgrade;
+
+	private float minHeight;
+	private float maxHeight;
+	private float minWidth;
+	private float maxWidth;
 
 	float timer = 0f; // Spawn rate timer
 	private int totalWeight = 0;
@@ -72,6 +79,16 @@ public class ObsticleSpawner : MonoBehaviour
 		{
 			Debug.Log(i + ": " + objWeights[i]);
 		}
+		float z = Camera.main.transform.position.z;
+		// Bottom-left corner
+		Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
+		// Top-right corner
+		Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, z));
+
+		minHeight = Mathf.Max(bottomLeft.y, -6f);
+		maxHeight = topRight.y;
+		minWidth = bottomLeft.x;
+		maxWidth = topRight.x;
 	}
 
 	void Update()
@@ -82,7 +99,7 @@ public class ObsticleSpawner : MonoBehaviour
 			Debug.Log("New enviornemnt: " + CurrentEnviornment);
 			UpdateObsticleWeights();
 		}
-		if (timer <= 3f)
+		if (timer <= 3f / (1 + gameManager.gameTimeDelta / 60))
 		{
 			timer += Time.deltaTime;
 		}
@@ -97,15 +114,19 @@ public class ObsticleSpawner : MonoBehaviour
 					if (w > index)
 					{
 						//Debug.Log("About to spawn a: " + InteractableObjects[t] + " at " + this.transform.position);
-						GameObject new_obsticle = Instantiate(InteractableObjects[t], this.transform);
-						new_obsticle.GetComponent<ObsticleController>().obsticle_type = t;
-						new_obsticle.GetComponent<ObsticleController>().speed += environmentGenerator.GetSpeed();
+						GameObject new_obsticle = Instantiate(InteractableObjects[t], transform);
+						float x = Random.Range(minWidth, maxWidth);
+						float y = Random.Range(minHeight, maxHeight);
+						Vector3 start_position = new Vector3(x, y, new_obsticle.transform.position.z);
+						new_obsticle.transform.position = start_position;
+                        ObsticleController obsticleController = new_obsticle.GetComponent<ObsticleController>();
+                        obsticleController.obsticle_type = t;
+						obsticleController.speed += environmentGenerator.GetSpeed();
 						//Debug.Log("env speed: " + environmentGenerator.GetSpeed());
 						//Debug.Log("Spawned a " + t);
 						break;
 					}
 				}
-				Debug.Log("obsticle spawned");
 			}
 
 		}
