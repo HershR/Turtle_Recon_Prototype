@@ -48,9 +48,15 @@ public class EnvironmentGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (environmentSpeed < environmentTargetSpeed)
+        if (environmentSpeed != environmentTargetSpeed)
         {
-            var newSpeed = environmentSpeed + speedDelta * Time.deltaTime;
+            float sign = environmentSpeed < environmentTargetSpeed ? 1f : -1f;
+            var newSpeed = environmentSpeed + sign * speedDelta * Time.deltaTime;
+            
+            if(Mathf.Abs(environmentSpeed - environmentTargetSpeed) < 0.01)
+            {
+                newSpeed = environmentTargetSpeed;
+            }
             environmentSpeed = Mathf.Min(environmentTargetSpeed, newSpeed);
         }
         if (environmentTimer < 0.0f)
@@ -85,6 +91,8 @@ public class EnvironmentGenerator : MonoBehaviour
         }
     }
 
+    
+
     private void InitEnvironmentWeights()
     {
         environmentWeights = new SerializedDictionary<EnvironmentType, float>();
@@ -108,13 +116,9 @@ public class EnvironmentGenerator : MonoBehaviour
         int index = Random.Range(0, environments[CurrentEnvironmentToSpawn].Count);
         GameObject prefabToSpawn = environments[CurrentEnvironmentToSpawn][index];
         GameObject spawned = Instantiate(prefabToSpawn, transform.position + offset, Quaternion.identity);
+        spawned.transform.parent = transform;
         EnvironmentController environmentController = spawned.GetComponent<EnvironmentController>();
-        environmentController.Init(this);
-        //if (CurrentEnvironmentToSpawn == EnvironmentType.Transition)
-        //{
-        //    worldCurver.ResetStrenghts();
-        //    return;
-        //}        
+        environmentController.Init(this);       
     }
 
     public float GetSpeed()
@@ -124,5 +128,9 @@ public class EnvironmentGenerator : MonoBehaviour
     public void TriggerEnvironmentChange(EnvironmentType type)
     {
         postProcessingManager.SwitchEnvironment(type);
+    }
+    public void SetTargetSpeed(float targetSpeed)
+    {
+        environmentTargetSpeed = targetSpeed;
     }
 }

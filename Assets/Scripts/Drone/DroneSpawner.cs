@@ -19,7 +19,7 @@ public class DroneSpawner : MonoBehaviour
     {
         spawnRate = baseSpawnRate - droneSpawnRate.Level * levelModifier;
         spawnRate = Mathf.Max(10f, spawnRate);
-        spawnTimer = Random.Range(spawnRate - 5f, spawnRate + 5f);
+        spawnTimer = spawnRate;
     }
 
     private void Update()
@@ -31,11 +31,18 @@ public class DroneSpawner : MonoBehaviour
             float y = Random.Range(5, 10);
             Vector3 spawnPosition = new Vector3(x, y, transform.position.z);
             activeDrone = Instantiate(dronePrefab, spawnPosition, Quaternion.identity);
-            spawnTimer = Random.Range(spawnRate - 5f, spawnRate + 5f);
+            spawnTimer = Random.Range(spawnRate, spawnRate * 2);
         }
         else
         {
             spawnTimer -= Time.deltaTime;
+        }
+    }
+    public void RecallDone()
+    {
+        if(activeDrone != null)
+        {
+            activeDrone.GetComponent<DroneMovement>().EndTimer();
         }
     }
 

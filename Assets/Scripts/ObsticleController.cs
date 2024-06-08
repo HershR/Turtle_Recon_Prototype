@@ -11,12 +11,12 @@ public class ObsticleController : MonoBehaviour
     [SerializeField] private float delZ;
     private void Awake()
     {
-        delZ = delZ = Camera.main.transform.position.z;
-        Vector3 pos = Camera.main.WorldToViewportPoint(new Vector3(Random.Range(-1, 1), Random.Range(-0.5f, 1.5f), transform.position.z));
-        pos.x = Mathf.Clamp01(pos.x);
-        pos.y = Mathf.Clamp01(pos.y);
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
-        Debug.Log("new obs coords: (X, Y): " + transform.position.x + ", " + transform.position.y);
+        //delZ = delZ = Camera.main.transform.position.z;
+        //Vector3 pos = Camera.main.WorldToViewportPoint(new Vector3(Random.Range(-1, 1), Random.Range(-0.5f, 1.5f), transform.position.z));
+        //pos.x = Mathf.Clamp01(pos.x);
+        //pos.y = Mathf.Clamp01(pos.y);
+        //transform.position = Camera.main.ViewportToWorldPoint(pos);
+        //Debug.Log("new obs coords: (X, Y): " + transform.position.x + ", " + transform.position.y);
     }
 
     private void Start()
