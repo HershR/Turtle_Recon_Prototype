@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerController player;
+    [SerializeField] public PlayerController player;
     [SerializeField] EnvironmentGenerator generator;
     [SerializeField] ObsticleSpawner obstacleSpawner;
     [SerializeField] DroneSpawner droneSpawner;

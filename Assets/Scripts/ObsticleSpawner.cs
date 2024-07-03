@@ -117,6 +117,12 @@ public class ObsticleSpawner : MonoBehaviour
 						GameObject new_obsticle = Instantiate(InteractableObjects[t], transform);
 						float x = Random.Range(minWidth, maxWidth);
 						float y = Random.Range(minHeight, maxHeight);
+						if(i % 2 == 0)
+                        {
+							x = gameManager.player.gameObject.transform.position.x;
+							y = gameManager.player.gameObject.transform.position.y;
+
+						}
 						Vector3 start_position = new Vector3(x, y, new_obsticle.transform.position.z);
 						new_obsticle.transform.position = start_position;
                         ObsticleController obsticleController = new_obsticle.GetComponent<ObsticleController>();
