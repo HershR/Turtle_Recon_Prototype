@@ -50,6 +50,8 @@ public class ObsticleSpawner : MonoBehaviour
 	[SerializeField] private StatSO trashSpawnUpgrade;
 	[SerializeField] private StatSO acidityUpgrade;
 
+	[SerializeField] private PlayerController player;
+
 	private float minHeight;
 	private float maxHeight;
 	private float minWidth;
@@ -89,6 +91,9 @@ public class ObsticleSpawner : MonoBehaviour
 		maxHeight = topRight.y;
 		minWidth = bottomLeft.x;
 		maxWidth = topRight.x;
+
+		// Get player
+		player = gameManager.player;
 	}
 
 	void Update()
@@ -119,8 +124,8 @@ public class ObsticleSpawner : MonoBehaviour
 						float y = Random.Range(minHeight, maxHeight);
 						if(i % 2 == 0)
                         {
-							x = gameManager.player.gameObject.transform.position.x;
-							y = gameManager.player.gameObject.transform.position.y;
+							x = player.gameObject.transform.position.x;
+							y = player.gameObject.transform.position.y;
 
 						}
 						Vector3 start_position = new Vector3(x, y, new_obsticle.transform.position.z);
