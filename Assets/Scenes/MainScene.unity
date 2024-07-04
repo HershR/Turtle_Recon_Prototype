@@ -1810,10 +1810,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 836110369}
-    - target: {fileID: 2634299913042861443, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3000753084830031789, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1822,42 +1818,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUICanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3480646297874445583, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3490847022255389031, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1175798689}
-    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -1531.1666
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -980.9999
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -817.1833
-      objectReference: {fileID: 0}
-    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 459.49994
-      objectReference: {fileID: 0}
-    - target: {fileID: 5247929482809389655, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 497
-      objectReference: {fileID: 0}
-    - target: {fileID: 5871262262033407326, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -118.3995
-      objectReference: {fileID: 0}
-    - target: {fileID: 5871262262033407326, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 39.4884
-      objectReference: {fileID: 0}
     - target: {fileID: 6953412814366815440, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
