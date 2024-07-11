@@ -17,7 +17,7 @@ public enum InteractableType
 
 public class ObsticleSpawner : MonoBehaviour
 {
-	[SerializeField] private GameManager gameManager;
+	[SerializeField] public GameManager gameManager;
 
 	// Initialize Enviornment Generator var
 	[SerializeField] private EnvironmentGenerator environmentGenerator;
@@ -71,7 +71,6 @@ public class ObsticleSpawner : MonoBehaviour
 		EnvWeightDict.Add(EnvironmentType.OilField, OilEnv);
 		EnvWeightDict.Add(EnvironmentType.CoralReef, CoralEnv);
 		EnvWeightDict.Add(EnvironmentType.TrashField, TrashEnv);
-		UpdateObsticleWeights();
 
 		// Fill dict with env values (make ur own dict)
 		UpdateObsticleWeights();
