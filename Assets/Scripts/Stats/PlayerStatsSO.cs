@@ -41,7 +41,7 @@ public class PlayerStatsSO : ScriptableObject
     [ContextMenu("Reset Stats to 0")]
     public void ResetAllStats()
     {
-        Tokens = 0;
+        Tokens = 10;
         foreach(StatSO stat in Stats.Values)
         {
             stat.ResetLevel();
