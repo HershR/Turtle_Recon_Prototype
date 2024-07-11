@@ -857,14 +857,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1315351537}
     - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: maxEnvironmentTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: minEnvironmentTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
       propertyPath: postProcessingManager
       value: 
       objectReference: {fileID: 1202781940}
