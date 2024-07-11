@@ -1766,10 +1766,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1425827319}
     - target: {fileID: 8199921648123512706, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
-      propertyPath: gameWinTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8199921648123512706, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
       propertyPath: droneSpawner
       value: 
       objectReference: {fileID: 1197210537}
