@@ -190,7 +190,7 @@ public class DroneMovement : MonoBehaviour
         SoundManager.instance.PlaySoundClip(TokenDepositSound, transform, 1f);
         player.tokenCount -= 1;
         stats.AddTokens(1);
-        player.onTokenBanked.Invoke();
+        player.onTokenBanked?.Invoke();
         OnCollectToken();
         yield return new WaitForSeconds(1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level));
         state = DroneState.Idle;

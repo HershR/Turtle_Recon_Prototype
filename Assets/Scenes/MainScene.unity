@@ -1649,6 +1649,10 @@ PrefabInstance:
       value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 8035394099643321010, guid: 178b66e8d8858b24a9b11f59ae677cf9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035394099643321010, guid: 178b66e8d8858b24a9b11f59ae677cf9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1658,7 +1662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8035394099643321010, guid: 178b66e8d8858b24a9b11f59ae677cf9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8035394099643321010, guid: 178b66e8d8858b24a9b11f59ae677cf9, type: 3}
       propertyPath: m_LocalRotation.w
