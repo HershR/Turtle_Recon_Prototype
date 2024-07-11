@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
             player.transform.position = newPos;
             yield return new WaitForEndOfFrame();
         }
+        Destroy(player.gameObject);
     }
 
     private void TokenCollected()
