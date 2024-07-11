@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Game over Related")]
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] Transform playerFinalTransform;
-    
+
 
     [Header("Game Win Related")]
     [SerializeField] private GameObject gameWinUI;
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         if (player.health <= 0)
         {
             Debug.Log("Loose");
-            isGameOver = true;
+            OnGameOver();
             StartCoroutine(GameLose());
             return;
 
@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("WIN");
-            obstacleSpawner.gameObject.SetActive(false);
             OnGameOver();
             gameWinUI.gameObject.SetActive(true);
             return;
@@ -75,11 +74,14 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         droneSpawner.RecallDone();
+        player.enabled = false;
+        obstacleSpawner.enabled = false;
+        droneSpawner.enabled = false;
+        //generator.enabled = false;
     }
 
     private IEnumerator GameLose()
     {
-        player.enabled = false;
         //move player off screen
         UpdateLoseScreenUI();
         gameOverUI.gameObject.SetActive(true);
