@@ -51,9 +51,9 @@ public class PlayerController : MonoBehaviour
     public Color oilColor;
     public Color parryColor;
 
-    public UnityEvent onTokenCollect;
-    public UnityEvent onTokenBanked;
-    public UnityEvent onHealthChange;
+    public UnityAction onTokenCollect;
+    public UnityAction onTokenBanked;
+    public UnityAction onHealthChange;
 
     public GameObject volControler;
     private bool volViewable = false;
@@ -91,6 +91,13 @@ public class PlayerController : MonoBehaviour
         tokenCount = 0;
     }
 
+    private void OnDisable()
+    {
+        onHealthChange = null;
+        onTokenBanked = null;
+        onTokenCollect = null;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -119,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollision(GameObject collider)
     {
+        if(enabled == false) return;
         InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
         if (parry && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp && obst_type != InteractableType.JellyFish))
         {
@@ -319,7 +327,7 @@ public class PlayerController : MonoBehaviour
     {
         SoundManager.instance.PlaySoundClip(collectTokenSound, transform, 1f);
         tokenCount += 1;
-        onTokenCollect.Invoke();
+        onTokenCollect?.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
@@ -328,7 +336,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideJellyfish()
     {
         health = Mathf.Min(maxHealth, health + 2);
-        onHealthChange.Invoke();
+        onHealthChange?.Invoke();
         SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);

@@ -12,15 +12,15 @@ public class TokenScriptUI : MonoBehaviour
 
     private void OnEnable()
     {
-        player.onTokenCollect.AddListener(UpdateText);
-        player.onTokenBanked.AddListener(UpdateText);
+        player.onTokenCollect += UpdateText;
+        player.onTokenBanked += UpdateText;
     }
 
 
     private void OnDisable()
     {
-        player.onTokenCollect.RemoveListener(UpdateText);
-        player.onTokenBanked.RemoveListener(UpdateText);
+        player.onTokenCollect -= UpdateText;
+        player.onTokenBanked -= UpdateText;
     }
     private void UpdateText()
     {

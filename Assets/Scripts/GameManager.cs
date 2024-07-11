@@ -27,14 +27,14 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        player.onTokenCollect.AddListener(TokenCollected);
-        player.onTokenBanked.AddListener(TokenBanked);
+        player.onTokenCollect += TokenCollected;
+        player.onTokenBanked += TokenBanked;
     }
 
     private void OnDisable()
     {
-        player.onTokenCollect.RemoveListener(TokenCollected);
-        player.onTokenBanked.RemoveListener(TokenBanked);
+        player.onTokenCollect -= TokenCollected;
+        player.onTokenBanked -= TokenBanked;
     }
     private void Awake()
     {
@@ -93,6 +93,7 @@ public class GameManager : MonoBehaviour
             player.transform.position = newPos;
             yield return new WaitForEndOfFrame();
         }
+        Destroy(player.gameObject);
     }
 
     private void TokenCollected()
