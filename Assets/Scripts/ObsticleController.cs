@@ -23,6 +23,7 @@ public class ObsticleController : MonoBehaviour
     {
         // gameObject.transform.rotation.eulerAngles.Set(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
         Debug.Log("Ima " + obsticle_type + " type obsticle");
+        
     }
 
     void Update()
@@ -38,6 +39,7 @@ public class ObsticleController : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         Debug.Log(collision.gameObject.name);
+        PlayerController playerScript = collision.GetComponent<PlayerController>();
 
         if (collision.gameObject.tag == "Despawner")
         {
@@ -49,7 +51,6 @@ public class ObsticleController : MonoBehaviour
             return;
         }
 
-        PlayerController playerScript = collision.GetComponent<PlayerController>();
         if (playerScript != null)
         {
             playerScript.OnCollision(this.gameObject);
