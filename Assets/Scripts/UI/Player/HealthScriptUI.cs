@@ -21,12 +21,12 @@ public class HealthScriptUI : MonoBehaviour
 
     private void OnEnable()
     {
-        player.onHealthChange.AddListener(UpdateHearts);
+        player.onHealthChange += UpdateHearts;
     }
 
     private void OnDisable()
     {
-        player.onHealthChange.RemoveListener(UpdateHearts);
+        player.onHealthChange -= UpdateHearts;
     }
 
     void Start() {

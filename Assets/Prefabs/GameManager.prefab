@@ -47,10 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   generator: {fileID: 0}
+  obstacleSpawner: {fileID: 0}
+  droneSpawner: {fileID: 0}
   gameOverUI: {fileID: 0}
   playerFinalTransform: {fileID: 7484810571463590800}
   gameWinUI: {fileID: 0}
-  gameWinTime: 600
+  gameWinTime: 360
   gameTimeDelta: 0
   distance: 0
   <tokensCollected>k__BackingField: 0
