@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035215516, g: 0.64123696, b: 0.77748823, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203554, g: 0.64125663, b: 0.7778496, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -792,6 +792,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1044622540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2424038765116196007, guid: fb4b853d99e0246499745fa8a5e81488, type: 3}
+  m_PrefabInstance: {fileID: 1175798688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1161915737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -992,19 +997,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2424038765116196007, guid: fb4b853d99e0246499745fa8a5e81488, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1175798690}
   m_SourcePrefab: {fileID: 100100000, guid: fb4b853d99e0246499745fa8a5e81488, type: 3}
 --- !u!114 &1175798689 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3761776511162649555, guid: fb4b853d99e0246499745fa8a5e81488, type: 3}
   m_PrefabInstance: {fileID: 1175798688}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1044622540}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f000f0c2363c45842999b278f05cbee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1175798690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044622540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a6ecbd24097a7428ad58146fa93d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volController: {fileID: 579581630}
 --- !u!114 &1197210537 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2953896239994830878, guid: fcee493d47330af419f90e64bd394084, type: 3}
@@ -2011,6 +2032,10 @@ PrefabInstance:
     - target: {fileID: 4062720952454305318, guid: a88dba0531c694a4ca4c5a091129308e, type: 3}
       propertyPath: m_Name
       value: InkCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062720952454305318, guid: a88dba0531c694a4ca4c5a091129308e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -55,9 +55,6 @@ public class PlayerController : MonoBehaviour
     public UnityAction onTokenBanked;
     public UnityAction onHealthChange;
 
-    public GameObject volControler;
-    private bool volViewable = false;
-
     // Start is called before the first frame update
     void Awake()
     {   
@@ -83,7 +80,7 @@ public class PlayerController : MonoBehaviour
         // Initialize Player Stats
         maxHealth = 1 + healthLevel;
         health = maxHealth;
-        maxSpeed = 3 + 2 * playerStats.GetStat(StatType.Speed).Level / playerStats.GetStat(StatType.Speed).MaxLevel;
+        maxSpeed = 3 + playerStats.GetStat(StatType.Speed).Level / playerStats.GetStat(StatType.Speed).MaxLevel;
         playerSpeed = maxSpeed;
         maxDashes = 1 + dashLevel;
         dashes = 0;
@@ -115,12 +112,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale = volViewable ? 1:0;
-            volControler.SetActive(!volViewable);
-            volViewable = !volViewable;
         }
     }
 
