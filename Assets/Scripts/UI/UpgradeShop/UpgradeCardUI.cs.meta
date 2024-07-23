@@ -3,7 +3,8 @@ guid: 0991ac585a6955640915372f1966c716
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - BuyUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class UpgradeCardUI : MonoBehaviour
 {
     [SerializeField] private StatType type;
-    
+    [SerializeField] private AudioClip SelectUpgradeSound;
     private UpgradeDescriptionUI upgradeDescriptionUI;
 
     private void Awake()
@@ -17,6 +17,7 @@ public class UpgradeCardUI : MonoBehaviour
 
     public void OnSelect()
     {
+        SoundManager.instance.PlaySoundClip(SelectUpgradeSound, transform, 1f);
         upgradeDescriptionUI.Init(type);
     }
 }
