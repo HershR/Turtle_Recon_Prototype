@@ -17,6 +17,7 @@ public class UpgradeDescriptionUI : MonoBehaviour
 
     [SerializeField] private Slider upgradeLevelSlider;
     [SerializeField] private Button upgradePurchaceButton;
+    [SerializeField] private AudioClip BuySound;
 
     private StatType statType;
 
@@ -48,6 +49,7 @@ public class UpgradeDescriptionUI : MonoBehaviour
     private void BuyUpgrade()
     {
         Debug.Log($"Buy Upgrade: {System.Enum.GetName(typeof(StatType), statType)}");
+        SoundManager.instance.PlaySoundClip(BuySound, transform, 1f);
         playerStatsSO.UpgradeStat(statType);
         Refresh();
     }
