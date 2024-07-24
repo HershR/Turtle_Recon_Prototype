@@ -340,6 +340,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8127938752832304491, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
+      propertyPath: m_text
+      value: Uh oh, looks like you lost all your hearts. No worries though, we saved
+        you in the nick of time and your efforts have not been in vain. You can head
+        on over to the research vessel to heal up and get some upgrades while you're
+        at it. See you there!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
