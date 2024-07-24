@@ -340,6 +340,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7321577531329773067, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
+      propertyPath: PlaySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
     - target: {fileID: 8127938752832304491, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
       propertyPath: m_text
       value: Uh oh, looks like you lost all your hearts. No worries though, we saved
