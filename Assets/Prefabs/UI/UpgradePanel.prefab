@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &580510650403806784
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 10
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &689052904956666138
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &964181212067477211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 5
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &1674227315787457915
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1324,7 @@ GameObject:
   - component: {fileID: 1092367882479843229}
   - component: {fileID: 5575293817913693206}
   - component: {fileID: 7366263400099579789}
+  - component: {fileID: 5541888310027291559}
   m_Layer: 5
   m_Name: UpgradePanel
   m_TagString: Untagged
@@ -1388,6 +1393,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &5541888310027291559
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886755799248228668}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1961854579612222862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,7 +2174,6 @@ GameObject:
   - component: {fileID: 8282083796836794748}
   - component: {fileID: 3958424582342741927}
   - component: {fileID: 5814118616058412891}
-  - component: {fileID: 2205924811828195281}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -2258,9 +2283,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2205924811828195281}
-        m_TargetAssemblyTypeName: PlayButtonUI, Assembly-CSharp
-        m_MethodName: LoadPlayScene
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneLoadingManager, Assembly-CSharp
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2270,18 +2295,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2205924811828195281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2626258090005590710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 079a1ac2f3f263547bcc4cf8daf5ff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2630658109125041458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,6 +2924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &4924550733450025791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,6 +3030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 8
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &5146233369602561977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,6 +3514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 13
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &5407191934727038566
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,6 +3695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 12
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &5758552282214912321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3882,6 +3899,7 @@ MonoBehaviour:
   upgradeCostText: {fileID: 8119962907877954666}
   upgradeLevelSlider: {fileID: 3636296558282766117}
   upgradePurchaceButton: {fileID: 5358844555458652768}
+  BuySound: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
 --- !u!1 &5821202182751712401
 GameObject:
   m_ObjectHideFlags: 0
@@ -4327,7 +4345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -353}
+  m_AnchoredPosition: {x: 365, y: -353}
   m_SizeDelta: {x: 200, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5419615378311540720
@@ -4395,6 +4413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &6961970480722509462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5041,6 +5060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &7683970280148334708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5576,6 +5596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 11
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &8111004445246586259
 GameObject:
   m_ObjectHideFlags: 0
@@ -5681,6 +5702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 6
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &8180691771211040425
 GameObject:
   m_ObjectHideFlags: 0
@@ -5786,6 +5808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 7
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &8268971049543829174
 GameObject:
   m_ObjectHideFlags: 0
@@ -6194,6 +6217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 9
+  SelectUpgradeSound: {fileID: 8300000, guid: ffbfbc141e39c784d80cf42f66776234, type: 3}
 --- !u!1 &8789092402503155207
 GameObject:
   m_ObjectHideFlags: 0
