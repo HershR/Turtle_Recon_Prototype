@@ -1666,22 +1666,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
---- !u!4 &1226613200932413018
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7474385557662976572}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5343825806975194243}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2353843427756968945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1783,6 +1767,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9de929f4591d9145b665502d66b0439, type: 3}
+--- !u!1001 &4073116273753409802
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917450505777041371, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130689113614611586, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 439471002}
+    - target: {fileID: 7915370750085484090, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+      propertyPath: m_Name
+      value: SceneLoadingManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
 --- !u!1001 &5192278468995610152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1848,21 +1893,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 178b66e8d8858b24a9b11f59ae677cf9, type: 3}
---- !u!4 &5343825806975194243
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8430514290693442317}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1226613200932413018}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6343455238611065369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1948,35 +1978,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
---- !u!1 &7474385557662976572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1226613200932413018}
-  m_Layer: 0
-  m_Name: SceneManagerNested
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &7800658423601857015
+--- !u!114 &7800658423601857015 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7130689113614611586, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
+  m_PrefabInstance: {fileID: 4073116273753409802}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8430514290693442317}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3615cfd0dbf9e540936ea812c90f545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 439471002}
 --- !u!1001 &8032219179684932887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2110,23 +2122,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
---- !u!1 &8430514290693442317
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5343825806975194243}
-  - component: {fileID: 7800658423601857015}
-  m_Layer: 0
-  m_Name: SceneLoadingManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!225 &8512744583187478687 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 8527183278440853387, guid: a88dba0531c694a4ca4c5a091129308e, type: 3}
@@ -2245,7 +2240,7 @@ SceneRoots:
   - {fileID: 1162554884}
   - {fileID: 1175798688}
   - {fileID: 346334714}
-  - {fileID: 1226613200932413018}
+  - {fileID: 4073116273753409802}
   - {fileID: 1246014943}
   - {fileID: 836110370}
   - {fileID: 425885447}
