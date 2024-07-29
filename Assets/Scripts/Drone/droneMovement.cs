@@ -7,15 +7,18 @@ public class DroneMovement : MonoBehaviour
     public enum DroneState { Idle, Collecting, EnterExit }
 
     [SerializeField] private PlayerStatsSO stats;
-    [SerializeField] private AudioClip TokenDepositSound;
+    [SerializeField] private AudioClip tokenDepositSound;
+    [SerializeField] private GameObject tokenVisualPrefab;
+    [SerializeField] private Vector3 topRight;
 
     public DroneState state;
-
-    Rigidbody rb;
-    public float upForce;
     public float moveSpeed;
-    private Vector3 velocityDamp;
+    public float upForce;
 
+
+    private Rigidbody rb;
+    private Vector3 startPos;
+    private Vector3 velocityDamp;
     private Vector3 targetDestination;
     private float minHeight;
     private float maxHeight;
@@ -50,19 +53,18 @@ public class DroneMovement : MonoBehaviour
             Debug.LogError("Drone Could not find player");
         }
         float z = Camera.main.transform.position.z;
-        // Bottom-left corner
-        Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
-        // Top-right corner
-        Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, z));
+        Vector3 topLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
+        Vector3 bottomRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, z));
+        minHeight = Mathf.Max(topLeft.y, -6f);
+        maxHeight = bottomRight.y;
+        minWidth = topLeft.x;
+        maxWidth = bottomRight.x;
 
-        minHeight = Mathf.Max(bottomLeft.y, -6f);
-        maxHeight = topRight.y;
-        minWidth = bottomLeft.x;
-        maxWidth = topRight.x;
         //moveSpeed = player.maxSpeed;
         state = DroneState.EnterExit;
         timeRemaining = timeDuration;
         rb = GetComponent<Rigidbody>();
+        startPos = transform.position;
         targetDestination = new Vector3((maxWidth + minWidth) / 2, (maxHeight + minHeight) / 2, transform.position.z);
     }
 
@@ -89,7 +91,19 @@ public class DroneMovement : MonoBehaviour
         }
         else
         {
-            OnTimerEnd();
+            if (Vector3.Distance(transform.position, startPos) < 1f)
+            {
+                Destroy(gameObject);
+            }
+            if(state != DroneState.EnterExit)
+            {
+                state = DroneState.EnterExit;
+                targetDestination = startPos;
+                moveSpeed = 20f;
+                StopAllCoroutines();
+                return;
+
+            }
         }
     }
 
@@ -123,7 +137,7 @@ public class DroneMovement : MonoBehaviour
         float y = Random.Range(minHeight, maxHeight);
 
         targetDestination = new Vector3(x, y, transform.position.z);
-        Debug.Log($"Drone New Target Destination: {targetDestination}");
+        //Debug.Log($"Drone New Target Destination: {targetDestination}");
     }
 
     void AdjustTilt()
@@ -136,24 +150,10 @@ public class DroneMovement : MonoBehaviour
         rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, Time.deltaTime * moveSpeed);
     }
 
-    void OnTimerEnd()
-    {
-        if (state == DroneState.EnterExit) { return; }
-        state = DroneState.EnterExit;
-        StopAllCoroutines();
-        targetDestination = new Vector3(maxWidth + 3f, maxHeight + 3f, transform.position.z);
-        moveSpeed = 20f;
-        if (Vector3.Distance(transform.position, targetDestination) < 1f)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     // End timer early
     public void EndTimer()
     {
         timeRemaining = 0;
-        OnTimerEnd();
     }
 
     void NearPlayer()
@@ -185,24 +185,24 @@ public class DroneMovement : MonoBehaviour
     IEnumerator TokenCollection()
     {
         Debug.Log("Player in range of drone");
-        //Debug.Log("Player token count: " + player.tokenCount);
-        //Debug.Log("Drone token count: " + stats.Tokens);
-        SoundManager.instance.PlaySoundClip(TokenDepositSound, transform, 1f);
-        player.tokenCount -= 1;
-        stats.AddTokens(1);
-        player.onTokenBanked?.Invoke();
         OnCollectToken();
         yield return new WaitForSeconds(1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level));
         state = DroneState.Idle;
     }
 
     // Collect token, add visual / sound feedback
-    void OnCollectToken()
+    private void OnCollectToken()
     {
-        // To Do
+        var visual = Instantiate(tokenVisualPrefab, transform.position, Quaternion.identity);
+        visual.GetComponent<TokenCollectVisual>().Init(topRight);
+        player.tokenCount -= 1;
+        //Debug.Log("Player token count: " + player.tokenCount);
+        stats.AddTokens(1);
+        //Debug.Log("Drone token count: " + stats.Tokens);
+        player.onTokenBanked?.Invoke();
+        SoundManager.instance.PlaySoundClip(tokenDepositSound, transform, 1f);
         return;
     }
-
     // void Rotation() {
     //     if (targetPosition.x < transform.position.x) {
     //         wantedYRotation -= rotateAmount;
