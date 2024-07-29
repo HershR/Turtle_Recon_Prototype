@@ -17,9 +17,9 @@ namespace TabSystemUI
 
         public void Add(TabButton tabButton)
         {
+            buttons.Add(tabButton);
             if(selectedTab == null)
             {
-                buttons.Add(tabButton);
                 OnTabSelected(tabButton);
             }
         }
@@ -39,11 +39,14 @@ namespace TabSystemUI
         }
         public void OnTabSelected(TabButton tabButton)
         {
-            selectedTab = tabButton;
-            ResetTabs();
-            tabButton.SetBGColor(tabActive);
-            SoundManager.instance.PlaySoundClip(selectTabSound, transform, 1f);
-            TabSelectAction(tabButton);
+            if (tabButton != selectedTab) 
+            {
+                selectedTab = tabButton;
+                ResetTabs();
+                tabButton.SetBGColor(tabActive);
+                SoundManager.instance.PlaySoundClip(selectTabSound, transform, 1f);
+                TabSelectAction(tabButton);
+            }
         }
 
         protected virtual void TabSelectAction(TabButton tabButton)
