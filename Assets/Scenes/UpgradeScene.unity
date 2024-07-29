@@ -4348,10 +4348,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1374168383595802099, guid: 2abc5cf7ab31bd047a9e6f9fab66f7f5, type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1886755799248228668, guid: 2abc5cf7ab31bd047a9e6f9fab66f7f5, type: 3}
       propertyPath: m_Name
       value: UpgradePanel
@@ -4463,10 +4459,6 @@ PrefabInstance:
     - target: {fileID: 5715369001723015550, guid: 2abc5cf7ab31bd047a9e6f9fab66f7f5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -380
-      objectReference: {fileID: 0}
-    - target: {fileID: 5814118616058412891, guid: 2abc5cf7ab31bd047a9e6f9fab66f7f5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6772539487244540009, guid: 2abc5cf7ab31bd047a9e6f9fab66f7f5, type: 3}
       propertyPath: m_AnchorMax.y
