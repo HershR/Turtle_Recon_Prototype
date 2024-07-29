@@ -21,7 +21,11 @@ public class SceneLoadingManager : MonoBehaviour
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.Store));
         //StartCoroutine(GetSceneLoadProgress());
     }
-
+    
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
     //public IEnumerator GetSceneLoadProgress()
     //{

@@ -1898,6 +1898,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3317400489777061851, guid: e85aca6d707e7624ca137bc9389f783e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7800658423601857015}
     - target: {fileID: 4101963135936730807, guid: e85aca6d707e7624ca137bc9389f783e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -2399,9 +2403,9 @@ SceneRoots:
   - {fileID: 53575704}
   - {fileID: 9056798825719923916}
   - {fileID: 8032219179684932887}
-  - {fileID: 2835818377374642954}
   - {fileID: 1888431808}
   - {fileID: 257431863}
+  - {fileID: 2835818377374642954}
   - {fileID: 2353843427756968945}
   - {fileID: 783204568}
   - {fileID: 1465403514}
