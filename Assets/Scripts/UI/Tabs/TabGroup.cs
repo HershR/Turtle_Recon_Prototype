@@ -12,16 +12,23 @@ namespace TabSystemUI
         public Color tabActive;
         public AudioClip selectTabSound;
 
-        [SerializeField] private List<TabButton> buttons = new List<TabButton>();
-        [SerializeField] private TabButton selectedTab;
+        protected TabButton[] buttons;
+        protected TabButton selectedTab;
 
-        public void Add(TabButton tabButton)
+        private void OnEnable()
         {
-            buttons.Add(tabButton);
-            if(selectedTab == null)
+            if (buttons != null)
             {
-                OnTabSelected(tabButton);
+                var tabButton = buttons[0];
+                selectedTab = tabButton;
+                ResetTabs();
+                tabButton.SetBGColor(tabActive);
+                TabSelectAction(tabButton);
             }
+        }
+        private void Awake()
+        {
+            buttons = GetComponentsInChildren<TabButton>();
         }
         public void OnTabEnter(TabButton tabButton)
         {

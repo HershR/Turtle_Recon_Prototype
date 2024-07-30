@@ -1,11 +1,9 @@
+using System;
 using TabSystemUI;
+using UnityEngine;
 public class UpgradePanelTabGroup : TabGroup
 {
-    private UpgradeDescriptionUI upgradeDescriptionUI;
-    private void Awake()
-    {
-        upgradeDescriptionUI = FindAnyObjectByType<UpgradeDescriptionUI>();
-    }
+    [SerializeField] private UpgradeDescriptionUI upgradeDescriptionUI;
     protected override void TabSelectAction(TabSystemUI.TabButton tabButton)
     {
         if(tabButton is UpgradeCardUI card)

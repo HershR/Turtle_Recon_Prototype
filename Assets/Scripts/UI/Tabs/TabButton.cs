@@ -12,7 +12,6 @@ namespace TabSystemUI
         private void Start()
         {
             tabGroup = GetComponentInParent<TabGroup>();
-            tabGroup.Add(this);
         }
         public void SetBGColor(Color color)
         {
