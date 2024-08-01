@@ -10,7 +10,10 @@ public class PlayerStatsSO : ScriptableObject
      Holds the Players Total Money
      and Holds the Players Stat Levels in a Dict<StatType, StatSO>
      */
-    [field: SerializeField] public int Tokens { get; private set; } = 0;
+    [field: SerializeField] public string Name { get; private set; }
+    [field: SerializeField] public int Tokens { get; private set; } = 10;
+
+    [Header("Stats")]
     [SerializeField] private SerializedDictionary<StatType, StatSO> Stats;
     [field: SerializeField] public SerializedDictionary<StatType, StatSO> PlayerStats { get; private set; }
     [field: SerializeField] public SerializedDictionary<StatType, StatSO> SpawnStats { get; private set; }
@@ -41,13 +44,17 @@ public class PlayerStatsSO : ScriptableObject
     [ContextMenu("Reset Stats to 0")]
     public void ResetAllStats()
     {
+        Name = "";
         Tokens = 10;
         foreach(StatSO stat in Stats.Values)
         {
             stat.ResetLevel();
         }
     }
-
+    public void SetPlayerName(string name)
+    {
+        Name = name;
+    }
     public void AddTokens(int amount)
     {
         Tokens += amount;
