@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035196044, g: 0.64152414, b: 0.77695704, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -252,14 +252,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 781378468172395902, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 7800658423601857015}
-    - target: {fileID: 2519584259416889418, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 7800658423601857015}
     - target: {fileID: 2563793445649841374, guid: 92714d24f7ce84dc6adaa5178da22993, type: 3}
       propertyPath: m_Name
       value: LoseScreenUI
@@ -1562,10 +1554,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3490163858968497565, guid: cad127b0e66614211a2e79e0c3fbcb54, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 7800658423601857015}
     - target: {fileID: 4193611223201818128, guid: cad127b0e66614211a2e79e0c3fbcb54, type: 3}
       propertyPath: m_Name
       value: WinScreenUI
@@ -1898,10 +1886,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3317400489777061851, guid: e85aca6d707e7624ca137bc9389f783e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 7800658423601857015}
     - target: {fileID: 4101963135936730807, guid: e85aca6d707e7624ca137bc9389f783e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -2138,17 +2122,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ade5eebeb76e9047ade2b04e7bcd40f, type: 3}
---- !u!114 &7800658423601857015 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7130689113614611586, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
-  m_PrefabInstance: {fileID: 4073116273753409802}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3615cfd0dbf9e540936ea812c90f545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8032219179684932887
 PrefabInstance:
   m_ObjectHideFlags: 0

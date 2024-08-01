@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7084736016822965680}
     - target: {fileID: 5357662315460719141, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -264,3 +268,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3317967800501316389, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
   m_PrefabInstance: {fileID: 7522212615777349295}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7084736016822965680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 735860646158596895, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+  m_PrefabInstance: {fileID: 7522212615777349295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98206a3f078632443b7e48244cc40f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
