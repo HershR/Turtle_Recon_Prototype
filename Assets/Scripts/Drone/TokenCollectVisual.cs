@@ -4,7 +4,7 @@ public class TokenCollectVisual : MonoBehaviour
 {
     private Vector3 targetPos;
     private bool targetSet;
-    private float speed = 10f;
+    private float speed = 20f;
 
     public void Init(Vector3 targetPos)
     {
