@@ -5,11 +5,12 @@ using UnityEngine;
 public class NewPlayerSetup : MonoBehaviour
 {
     [SerializeField] private PlayerStatsSO playerStatsSO;
-    private string playerName;
+    [SerializeField] private string playerName;
     public void SetName(string name) { playerName = name; }
 
     public void CreatePlayer()
     {
+        //create new highscore entry
         playerStatsSO.ResetAllStats();
         playerStatsSO.SetPlayerName(playerName);
     }

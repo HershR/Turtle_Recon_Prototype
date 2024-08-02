@@ -195,9 +195,45 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 7084736016822965680}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleVolumeControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VolumeControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074856040068067700, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5357662315460719141, guid: 563c270d4935d4e778ae0f61b9ee71c6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

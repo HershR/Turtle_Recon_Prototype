@@ -15,7 +15,7 @@ public class VolumeControl : MonoBehaviour
             ToggleVolumeControl();
         }
     }
-    void ToggleVolumeControl()
+    public void ToggleVolumeControl()
     {
         volViewable = !volViewable;
         volController.SetActive(volViewable);
