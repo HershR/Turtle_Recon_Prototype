@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public enum SceneIndexes { Game = 0, Store = 1 };
 public class SceneLoadingManager : MonoBehaviour
 {
+
     public GameObject loadingScreen;
     private List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
     public void LoadGame()
@@ -26,7 +27,6 @@ public class SceneLoadingManager : MonoBehaviour
     {
         Application.Quit();
     }
-
     //public IEnumerator GetSceneLoadProgress()
     //{
     //    for (int i = 0; i < scenesLoading.Count; i++)
