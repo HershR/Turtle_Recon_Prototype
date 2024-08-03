@@ -43,6 +43,7 @@ public class TutorialManager : GameManager
         TutorialState = "wait for Player Move";
         var playerStartPos = player.transform.position;
         //Trigger dialogue
+        Debug.Log("Use WASD to move");
         //wait for player to move
         while (player.transform.position == playerStartPos)
         {
@@ -56,7 +57,8 @@ public class TutorialManager : GameManager
         obstacleSpawner.gameObject.SetActive(true);
         playerHUD.ToggleTokenUI(true);
         //Trigger dialogue
-        //collect 10 coins
+        Debug.Log("Collect Research tokens, the more the better");
+        //collect 5 coins
         while (TokensCollected < 5)
         {
             yield return null;
@@ -66,6 +68,9 @@ public class TutorialManager : GameManager
     {
         TutorialState = "wait to Depo 5 Coin";
         //Trigger dialogue
+        Debug.Log("Here is the Research Collection Drone!\n" +
+            "Stay in its range 1 second to deposit your research.\n" +
+            "But do be quick, the drone wont stay forever.");
         droneSpawner.SpawnDrone(30f);
         //wait to deposit coins
         while (TokensDeposited < 5 && droneSpawner.isDroneActive)
@@ -79,6 +84,10 @@ public class TutorialManager : GameManager
         generator.OverrideEnvironment(EnvironmentType.TrashField);
         TutorialState = "Try Parry";
         //Trigger dialogue
+        Debug.Log("Watch out for the incoming trash!" +
+            "You can press the 'Space Bar' to parry trash." +
+            "However, if you miss time it, you will take damage, and your parry will go on cool down." +
+            "Your parry cool down resets if you do a successful parry");
         //wait to trigger parry key
         while (player.parrySucceed == false)
         {
