@@ -22,7 +22,7 @@ public class ObsticleController : MonoBehaviour
     private void Start()
     {
         // gameObject.transform.rotation.eulerAngles.Set(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
-        Debug.Log("Ima " + obsticle_type + " type obsticle");
+        //Debug.Log("Ima " + obsticle_type + " type obsticle");
         
     }
 

@@ -7,15 +7,18 @@ public class DroneMovement : MonoBehaviour
     public enum DroneState { Idle, Collecting, EnterExit }
 
     [SerializeField] private PlayerStatsSO stats;
-    [SerializeField] private AudioClip TokenDepositSound;
+    [SerializeField] private AudioClip tokenDepositSound;
+    [SerializeField] private GameObject tokenVisualPrefab;
+    [SerializeField] private Vector3 topRight;
 
     public DroneState state;
-
-    Rigidbody rb;
-    public float upForce;
     public float moveSpeed;
-    private Vector3 velocityDamp;
+    public float upForce;
 
+
+    private Rigidbody rb;
+    private Vector3 startPos;
+    private Vector3 velocityDamp;
     private Vector3 targetDestination;
     private float minHeight;
     private float maxHeight;
@@ -28,7 +31,8 @@ public class DroneMovement : MonoBehaviour
     public float tiltIntensity;
     public float droneRange;
 
-    public int tokenCollectionRate;
+    private float tokenCollectionRate;
+    private float tokenCollectionTimer = 0f;
     // private float wantedYRotation;
     // private float currentYRotation;
     // private float rotateAmount = 2.5f;
@@ -36,6 +40,7 @@ public class DroneMovement : MonoBehaviour
 
 
     private PlayerController player;
+    public DroneRangeIndicator rangeIndicator;
 
     void Awake()
     {
@@ -44,25 +49,25 @@ public class DroneMovement : MonoBehaviour
 
     void Start()
     {
+        tokenCollectionRate = 1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level);
         player = FindAnyObjectByType<PlayerController>();
         if (player == null)
         {
             Debug.LogError("Drone Could not find player");
         }
         float z = Camera.main.transform.position.z;
-        // Bottom-left corner
-        Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
-        // Top-right corner
-        Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, z));
+        Vector3 topLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
+        Vector3 bottomRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, z));
+        minHeight = Mathf.Max(topLeft.y, -6f);
+        maxHeight = bottomRight.y;
+        minWidth = topLeft.x;
+        maxWidth = bottomRight.x;
 
-        minHeight = Mathf.Max(bottomLeft.y, -6f);
-        maxHeight = topRight.y;
-        minWidth = bottomLeft.x;
-        maxWidth = topRight.x;
         //moveSpeed = player.maxSpeed;
         state = DroneState.EnterExit;
         timeRemaining = timeDuration;
         rb = GetComponent<Rigidbody>();
+        startPos = transform.position;
         targetDestination = new Vector3((maxWidth + minWidth) / 2, (maxHeight + minHeight) / 2, transform.position.z);
     }
 
@@ -80,18 +85,61 @@ public class DroneMovement : MonoBehaviour
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            //Debug.Log("Time remaining: " + timeRemaining + " seconds");
             if (Vector3.Distance(transform.position, targetDestination) < 1f)
             {
                 UpdateTargetDestination();
             }
-            NearPlayer();
+            if (state == DroneState.Idle)
+            {
+                if (PlayerInRange())
+                {
+                    rangeIndicator.UpdateColor(Color.green, Color.green);
+                    state = DroneState.Collecting;
+                    return;
+                }
+            }
+            else if (state == DroneState.Collecting)
+            {
+                if (!PlayerInRange())
+                {
+                    rangeIndicator.UpdateColor(Color.red, Color.red);
+                    state = DroneState.Idle;
+                    return;
+                }
+                if (player.tokenCount > 0)
+                {
+                    if (tokenCollectionTimer > tokenCollectionRate)
+                    {
+                        TokenCollect();
+                        tokenCollectionTimer = 0;
+                        return;
+                    }
+                    if(player.tokenCount > 0)
+                    {
+                        tokenCollectionTimer += Time.deltaTime;
+                    }
+                }
+            }
         }
         else
         {
-            OnTimerEnd();
+            if (Vector3.Distance(transform.position, startPos) < 1f)
+            {
+                Destroy(gameObject);
+            }
+            if (state != DroneState.EnterExit)
+            {
+                state = DroneState.EnterExit;
+                targetDestination = startPos;
+                moveSpeed = 20f;
+                StopAllCoroutines();
+                return;
+
+            }
         }
     }
+
+
 
     void FixedUpdate()
     {
@@ -123,7 +171,7 @@ public class DroneMovement : MonoBehaviour
         float y = Random.Range(minHeight, maxHeight);
 
         targetDestination = new Vector3(x, y, transform.position.z);
-        Debug.Log($"Drone New Target Destination: {targetDestination}");
+        //Debug.Log($"Drone New Target Destination: {targetDestination}");
     }
 
     void AdjustTilt()
@@ -136,64 +184,37 @@ public class DroneMovement : MonoBehaviour
         rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, Time.deltaTime * moveSpeed);
     }
 
-    void OnTimerEnd()
-    {
-        if (state == DroneState.EnterExit) { return; }
-        state = DroneState.EnterExit;
-        StopAllCoroutines();
-        targetDestination = new Vector3(maxWidth + 3f, maxHeight + 3f, transform.position.z);
-        moveSpeed = 20f;
-        if (Vector3.Distance(transform.position, targetDestination) < 1f)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     // End timer early
     public void EndTimer()
     {
         timeRemaining = 0;
-        OnTimerEnd();
     }
-
-    void NearPlayer()
+    private bool PlayerInRange()
     {
-        if (state != DroneState.Idle)
-        {
-            return;
-        }
-        state = DroneState.Collecting;
         Vector3 turtlePos = player.transform.position;
         Vector3 dronePos = transform.position;
         Vector2 turtle = new Vector2(turtlePos.x, turtlePos.y);
         Vector2 drone = new Vector2(dronePos.x, dronePos.y);
         float distance = Vector2.Distance(turtle, drone);
-        //Debug.Log($"Drone Distance: {distance}");
-        if (distance < droneRange && player.tokenCount > 0)
+        if (distance < droneRange)
         {
-            StartCoroutine(TokenCollection());
+            Debug.Log("Player in range of drone");
+            return true;
         }
-        else
-        {
-            state = DroneState.Idle;
-        }
-
+        return false;
     }
 
-    // Every second, collect one token from player and update total tokens
-    // in player stats
-    IEnumerator TokenCollection()
+    // Collect token, add visual / sound feedback
+    private void TokenCollect()
     {
-        Debug.Log("Player in range of drone");
-        //Debug.Log("Player token count: " + player.tokenCount);
-        //Debug.Log("Drone token count: " + stats.Tokens);
-        SoundManager.instance.PlaySoundClip(TokenDepositSound, transform, 1f);
+        var visual = Instantiate(tokenVisualPrefab, transform.position, Quaternion.identity);
+        visual.GetComponent<TokenCollectVisual>().Init(topRight);
         player.tokenCount -= 1;
         stats.AddTokens(1);
         player.onTokenBanked?.Invoke();
-        OnCollectToken();
-        yield return new WaitForSeconds(1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level));
-        state = DroneState.Idle;
+        SoundManager.instance.PlaySoundClip(tokenDepositSound, transform, 1f);
+        //Debug.Log("Player token count: " + player.tokenCount);
+        //Debug.Log("Drone token count: " + stats.Tokens);
     }
 
     // Collect token, add visual / sound feedback
@@ -202,7 +223,6 @@ public class DroneMovement : MonoBehaviour
         // To Do
         return;
     }
-
     // void Rotation() {
     //     if (targetPosition.x < transform.position.x) {
     //         wantedYRotation -= rotateAmount;

@@ -1351,6 +1351,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2880459204372220537, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 2880459204372220537, guid: fcee493d47330af419f90e64bd394084, type: 3}
       propertyPath: m_Name
       value: DroneSpawner
       objectReference: {fileID: 0}
