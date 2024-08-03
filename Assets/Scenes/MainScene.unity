@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035196044, g: 0.64152414, b: 0.77695704, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1347,6 +1347,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2880459204372220537, guid: fcee493d47330af419f90e64bd394084, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 2880459204372220537, guid: fcee493d47330af419f90e64bd394084, type: 3}
       propertyPath: m_Name
       value: DroneSpawner
