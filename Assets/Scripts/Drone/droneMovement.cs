@@ -114,7 +114,10 @@ public class DroneMovement : MonoBehaviour
                         tokenCollectionTimer = 0;
                         return;
                     }
-                    tokenCollectionTimer += Time.deltaTime;
+                    if(player.tokenCount > 0)
+                    {
+                        tokenCollectionTimer += Time.deltaTime;
+                    }
                 }
             }
         }
