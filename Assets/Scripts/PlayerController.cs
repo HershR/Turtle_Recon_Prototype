@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
         canParry = true;
         iFrames = true;
         health -= amount;
-        onHealthChange.Invoke();
+        onHealthChange?.Invoke();
         if (health <= 0)
         {
             OnDeath();
@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
         if (health < maxHealth)
         {
             health += 1;
-            onHealthChange.Invoke();
+            onHealthChange?.Invoke();
         }
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);

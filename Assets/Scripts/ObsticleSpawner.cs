@@ -173,6 +173,7 @@ public class ObsticleSpawner : MonoBehaviour
 		}
 		//Debug.Log("New Obsticle Spawn Rates: " + string.Join(", ", objWeights));
 	}
+
 	// THIS IS WHERE ALL THE ENV DICTIONARIES WILL GO IF WE MAKE EM PRIVATE!!!!
 
 

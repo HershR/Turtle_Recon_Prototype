@@ -8,12 +8,12 @@ public class DroneSpawner : MonoBehaviour
     [SerializeField] private GameObject dronePrefab;
     [SerializeField] private float baseSpawnRate = 60f;
     [SerializeField] private float levelModifier = 5f;
-    
+
     [Header("Timers")]
     [SerializeField] private float spawnRate;
     [SerializeField] private float spawnTimer;
     private GameObject activeDrone;
-
+    public bool isDroneActive => activeDrone != null;
 
     private void Start()
     {
@@ -24,8 +24,8 @@ public class DroneSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(activeDrone != null) { return; }
-        if(spawnTimer <= 0)
+        if (activeDrone != null) { return; }
+        if (spawnTimer <= 0)
         {
             float x = Random.value > 0.5f ? -20 : 20;
             float y = Random.Range(5, 10);
@@ -38,13 +38,25 @@ public class DroneSpawner : MonoBehaviour
             spawnTimer -= Time.deltaTime;
         }
     }
+    //Manually spawn drone
+    public void SpawnDrone(float activeTime = 30f)
+    {
+        if (activeDrone == null)
+        {
+            float x = -20;
+            float y = 5;
+            Vector3 spawnPosition = new Vector3(x, y, transform.position.z);
+            activeDrone = Instantiate(dronePrefab, spawnPosition, Quaternion.identity);
+            return;
+        }
+    }
+    //Manually Recall drone
     public void RecallDone()
     {
-        if(activeDrone != null)
+        if (activeDrone != null)
         {
             activeDrone.GetComponent<DroneMovement>().EndTimer();
         }
     }
-
 
 }
