@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float gameWinTime = 10f;
     [SerializeField] public float gameTimeDelta = 0f;
 
-    protected bool isGameOver = false;
-
+    [Header("Player Related")]
     [SerializeField] protected float distance = 0f;
-    [field: SerializeField] public float tokensCollected { get; private set; } = 0f;
-    [field: SerializeField] public float tokensDeposited { get; private set; } = 0f;
+    [field: SerializeField] public float TokensCollected { get; private set; } = 0f;
+    [field: SerializeField] public float TokensDeposited { get; private set; } = 0f;
+    protected bool isGameOver = false;
 
     private void OnEnable()
     {
@@ -98,14 +98,14 @@ public class GameManager : MonoBehaviour
 
     private void TokenCollected()
     {
-        tokensCollected += 1;
-        Debug.Log("Token Collected. Total: " + tokensCollected);
+        TokensCollected += 1;
+        Debug.Log("Token Collected. Total: " + TokensCollected);
 
     }
     private void TokenBanked()
     {
-        tokensDeposited += 1f;
-        Debug.Log("Token Banked. Total: " + tokensDeposited);
+        TokensDeposited += 1f;
+        Debug.Log("Token Banked. Total: " + TokensDeposited);
     }
 
 
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         GameOverScreenUI uiScreens = gameOverUI.GetComponent<GameOverScreenUI>();
         if (uiScreens != null)
         {
-            uiScreens.UpdateDisplay(gameTimeDelta, gameWinTime, tokensCollected, tokensDeposited);
+            uiScreens.UpdateDisplay(gameTimeDelta, gameWinTime, TokensCollected, TokensDeposited);
         }
         else
         {

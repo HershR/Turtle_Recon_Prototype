@@ -474,7 +474,7 @@ MonoBehaviour:
   <tokensCollected>k__BackingField: 0
   <tokensDeposited>k__BackingField: 0
   playerHUD: {fileID: 1237538863}
-  TutorialState: NoStarted
+  TutorialState: Not Started
 --- !u!1001 &346334714
 PrefabInstance:
   m_ObjectHideFlags: 0

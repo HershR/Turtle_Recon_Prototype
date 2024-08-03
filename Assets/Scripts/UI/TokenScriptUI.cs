@@ -30,6 +30,6 @@ public class TokenScriptUI : MonoBehaviour
     private IEnumerator UpdateTextDelay()
     {
         yield return new WaitForSeconds(0.01f);
-        tokenText.text = $"{player.tokenCount}|{gameManager.tokensDeposited}";
+        tokenText.text = $"{player.tokenCount}|{gameManager.TokensDeposited}";
     }
 }

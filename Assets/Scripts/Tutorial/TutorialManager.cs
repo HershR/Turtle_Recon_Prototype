@@ -5,6 +5,7 @@ using UnityEngine;
 public class TutorialManager : GameManager
 {
     [SerializeField] PlayerHUDController playerHUD;
+    [Header("Debug")]
     public string TutorialState = "Not Started";
     private void Start()
     {
@@ -28,16 +29,13 @@ public class TutorialManager : GameManager
 
     public IEnumerator TutorialSequence()
     {
-        //Make player Move
         yield return StartCoroutine(PlayerMove());
-        //Make player collect coin
         yield return StartCoroutine(PlayerCollectCoin());
-        //Make player deposit coin
         yield return StartCoroutine(PlayerDepositCoin());
-        //Make player Parry
         yield return StartCoroutine(PlayerParry());
-        //kill player -> Store Tutorial?
         yield return StartCoroutine(KillPlayer());
+        SceneTransitionManager.instance.LoadStore();
+
     }
 
     private IEnumerator PlayerMove()
@@ -59,7 +57,7 @@ public class TutorialManager : GameManager
         playerHUD.ToggleTokenUI(true);
         //Trigger dialogue
         //collect 10 coins
-        while (tokensCollected < 5)
+        while (TokensCollected < 5)
         {
             yield return null;
         }
@@ -70,7 +68,7 @@ public class TutorialManager : GameManager
         //Trigger dialogue
         droneSpawner.SpawnDrone(30f);
         //wait to deposit coins
-        while (tokensDeposited < 5 && droneSpawner.isDroneActive)
+        while (TokensDeposited < 5 && droneSpawner.isDroneActive)
         {
             yield return null;
         }
@@ -94,6 +92,7 @@ public class TutorialManager : GameManager
         player.health = player.maxHealth;
         playerHUD.ToggleHealthUI(true);
         gameTimeDelta = 300f;
+        //spawn lot of trash or giant trash?
         while (player.health > 0)
         {
             yield return null;

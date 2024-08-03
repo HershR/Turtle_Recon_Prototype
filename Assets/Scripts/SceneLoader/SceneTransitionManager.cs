@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public enum SceneIndexes { Title = 0, Game = 1, Store = 2, Quit = 3 };
+public enum SceneIndexes { Title = 0, Game = 1, Store = 2, Tutorial = 3, Quit = -1};
 public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager instance;
