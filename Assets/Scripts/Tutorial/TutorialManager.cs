@@ -70,7 +70,7 @@ public class TutorialManager : GameManager
         //Trigger dialogue
         Debug.Log("Here is the Research Collection Drone!\n" +
             "Stay in its range 1 second to deposit your research.\n" +
-            "But do be quick, the drone wont stay forever.");
+            "But do be quick, the drone won't stay forever.");
         droneSpawner.SpawnDrone(30f);
         //wait to deposit coins
         while (TokensDeposited < 5 && droneSpawner.isDroneActive)
