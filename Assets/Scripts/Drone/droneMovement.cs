@@ -36,6 +36,7 @@ public class DroneMovement : MonoBehaviour
 
 
     private PlayerController player;
+    public DroneRangeIndicator rangeIndicator;
 
     void Awake()
     {
@@ -187,12 +188,14 @@ public class DroneMovement : MonoBehaviour
         Debug.Log("Player in range of drone");
         //Debug.Log("Player token count: " + player.tokenCount);
         //Debug.Log("Drone token count: " + stats.Tokens);
+        rangeIndicator.UpdateColor(Color.green, Color.green);
         SoundManager.instance.PlaySoundClip(TokenDepositSound, transform, 1f);
         player.tokenCount -= 1;
         stats.AddTokens(1);
         player.onTokenBanked?.Invoke();
         OnCollectToken();
         yield return new WaitForSeconds(1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level));
+        rangeIndicator.UpdateColor(Color.red, Color.red);
         state = DroneState.Idle;
     }
 
