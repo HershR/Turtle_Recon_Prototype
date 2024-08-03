@@ -221,14 +221,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
-  TokenDepositSound: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
+  tokenDepositSound: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
+  tokenVisualPrefab: {fileID: 1268078323957809874, guid: b18b5f03299469642b90cdffb3dc5bfc, type: 3}
+  topRight: {x: 15, y: 9, z: 8}
   state: 0
-  upForce: 98.1
   moveSpeed: 5
+  upForce: 98.1
   timeDuration: 20
   tiltIntensity: 3
   droneRange: 1
-  tokenCollectionRate: 1
   rangeIndicator: {fileID: 6251719621041716563}
 --- !u!54 &6500403628352727678
 Rigidbody:
