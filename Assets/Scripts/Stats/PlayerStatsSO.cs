@@ -44,7 +44,7 @@ public class PlayerStatsSO : ScriptableObject
     [ContextMenu("Reset Stats to 0")]
     public void ResetAllStats()
     {
-        Name = "";
+        Name = "Player";
         Tokens = 10;
         foreach(StatSO stat in Stats.Values)
         {

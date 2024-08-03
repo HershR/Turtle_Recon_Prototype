@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip IAteAJellyfish;
 
 
-    [SerializeField] private PlayerStatsSO playerStats;
+    [field: SerializeField] public PlayerStatsSO playerStats { get; private set; }
 
     [SerializeField] private CanvasGroup blurCanvas;
 

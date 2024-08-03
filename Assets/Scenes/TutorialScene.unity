@@ -1803,9 +1803,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8512744583187478687}
     - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: c321f36d561574d4f843d060ba077438, type: 2}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: volControler
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: <playerStats>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: c321f36d561574d4f843d060ba077438, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

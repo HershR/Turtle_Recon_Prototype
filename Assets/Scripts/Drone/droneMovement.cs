@@ -6,7 +6,7 @@ public class DroneMovement : MonoBehaviour
 {
     public enum DroneState { Idle, Collecting, EnterExit }
 
-    [SerializeField] private PlayerStatsSO stats;
+    [SerializeField] private StatSO droneCollectionRateStat;
     [SerializeField] private AudioClip tokenDepositSound;
     [SerializeField] private GameObject tokenVisualPrefab;
     [SerializeField] private Vector3 topRight;
@@ -49,7 +49,7 @@ public class DroneMovement : MonoBehaviour
 
     void Start()
     {
-        tokenCollectionRate = 1f / (1f + stats.GetStat(StatType.DroneCollectionRate).Level);
+        tokenCollectionRate = 1f / (1f + droneCollectionRateStat.Level);
         player = FindAnyObjectByType<PlayerController>();
         if (player == null)
         {
@@ -210,11 +210,10 @@ public class DroneMovement : MonoBehaviour
         var visual = Instantiate(tokenVisualPrefab, transform.position, Quaternion.identity);
         visual.GetComponent<TokenCollectVisual>().Init(topRight);
         player.tokenCount -= 1;
-        stats.AddTokens(1);
+        player.playerStats.AddTokens(1);
         player.onTokenBanked?.Invoke();
         SoundManager.instance.PlaySoundClip(tokenDepositSound, transform, 1f);
         //Debug.Log("Player token count: " + player.tokenCount);
-        //Debug.Log("Drone token count: " + stats.Tokens);
     }
 
     // Collect token, add visual / sound feedback

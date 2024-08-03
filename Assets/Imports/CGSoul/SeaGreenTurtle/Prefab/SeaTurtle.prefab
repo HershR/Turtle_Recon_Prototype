@@ -1323,7 +1323,8 @@ MonoBehaviour:
   SharpHitSound: {fileID: 8300000, guid: f0ee9df26ea753c4bae11e812380f359, type: 3}
   WireHitSound: {fileID: 8300000, guid: 28daa7a33b6674c4688ed1f410cf7e53, type: 3}
   IAteAJellyfish: {fileID: 8300000, guid: 4903132e6d246a747b05208a0bbee795, type: 3}
-  playerStats: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
+  <playerStats>k__BackingField: {fileID: 11400000, guid: 8f773524923ab624fb5cf23bd5d04dc4, type: 2}
+  blurCanvas: {fileID: 0}
   playerSpeed: 5
   maxSpeed: 15
   health: 1
@@ -1342,16 +1343,6 @@ MonoBehaviour:
   bleedColor: {r: 0, g: 0, b: 0, a: 0}
   oilColor: {r: 0, g: 0, b: 0, a: 0}
   parryColor: {r: 0, g: 0, b: 0, a: 0}
-  onTokenCollect:
-    m_PersistentCalls:
-      m_Calls: []
-  onTokenBanked:
-    m_PersistentCalls:
-      m_Calls: []
-  onDamageTaken:
-    m_PersistentCalls:
-      m_Calls: []
-  volControler: {fileID: 0}
 --- !u!1 &4957214787730041026
 GameObject:
   m_ObjectHideFlags: 0
