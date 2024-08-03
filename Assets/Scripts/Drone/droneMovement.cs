@@ -40,6 +40,7 @@ public class DroneMovement : MonoBehaviour
 
 
     private PlayerController player;
+    public DroneRangeIndicator rangeIndicator;
 
     void Awake()
     {
@@ -92,6 +93,7 @@ public class DroneMovement : MonoBehaviour
             {
                 if (PlayerInRange())
                 {
+                    rangeIndicator.UpdateColor(Color.green, Color.green);
                     state = DroneState.Collecting;
                     return;
                 }
@@ -100,6 +102,7 @@ public class DroneMovement : MonoBehaviour
             {
                 if (!PlayerInRange())
                 {
+                    rangeIndicator.UpdateColor(Color.red, Color.red);
                     state = DroneState.Idle;
                     return;
                 }
@@ -192,6 +195,7 @@ public class DroneMovement : MonoBehaviour
         float distance = Vector2.Distance(turtle, drone);
         if (distance < droneRange)
         {
+            Debug.Log("Player in range of drone");
             return true;
         }
         return false;
@@ -206,6 +210,14 @@ public class DroneMovement : MonoBehaviour
         stats.AddTokens(1);
         player.onTokenBanked?.Invoke();
         SoundManager.instance.PlaySoundClip(tokenDepositSound, transform, 1f);
+        //Debug.Log("Player token count: " + player.tokenCount);
+        //Debug.Log("Drone token count: " + stats.Tokens);
+    }
+
+    // Collect token, add visual / sound feedback
+    void OnCollectToken()
+    {
+        // To Do
         return;
     }
     // void Rotation() {
