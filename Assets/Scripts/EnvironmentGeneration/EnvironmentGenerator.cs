@@ -6,19 +6,17 @@ using System;
 using Random = UnityEngine.Random;
 using System.Linq;
 
-public enum EnvironmentType { Normal, OilField, TrashField, CoralReef, Transition }
+public enum EnvironmentType { Normal, OilField, TrashField, CoralReef, Transition, None }
 public class EnvironmentGenerator : MonoBehaviour
 {
     [SerializeField] private PlayerStatsSO playerStats;
-    
-    [SerializedDictionary("Environment Type", "Weights")]    
+
+    [SerializedDictionary("Environment Type", "Weights")]
     [SerializeField] private SerializedDictionary<EnvironmentType, float> environmentWeights;
-    
+
     [SerializedDictionary("Environment Type", "Prefabs")]
     [SerializeField] private SerializedDictionary<EnvironmentType, List<GameObject>> environments;
 
-    [SerializeField] private EnvironmentType currentEnvironment;
-    
     [field: SerializeField] public EnvironmentType CurrentEnvironmentToSpawn { get; private set; }
 
     //[SerializeField] private Queue<GameObject> environmentSpawnQueue;
@@ -33,6 +31,8 @@ public class EnvironmentGenerator : MonoBehaviour
 
     [SerializeField] private WorldCurver worldCurver;
     [SerializeField] private PostProcessingManager postProcessingManager;
+
+    private bool overrideEnvironment = false;
 
     private void Awake()
     {
@@ -52,8 +52,8 @@ public class EnvironmentGenerator : MonoBehaviour
         {
             float sign = environmentSpeed < environmentTargetSpeed ? 1f : -1f;
             var newSpeed = environmentSpeed + sign * speedDelta * Time.deltaTime;
-            
-            if(Mathf.Abs(environmentSpeed - environmentTargetSpeed) < 0.01)
+
+            if (Mathf.Abs(environmentSpeed - environmentTargetSpeed) < 0.01)
             {
                 newSpeed = environmentTargetSpeed;
             }
@@ -66,7 +66,6 @@ public class EnvironmentGenerator : MonoBehaviour
             {
                 CurrentEnvironmentToSpawn = EnvironmentType.Transition;
                 environmentTimer = Random.Range(minEnvironmentTime / 3, maxEnvironmentTime / 3);
-                //postProcessingManager.SwitchEnvironment(EnvironmentType.Normal);
             }
             else
             {
@@ -81,27 +80,28 @@ public class EnvironmentGenerator : MonoBehaviour
                     }
                 }
                 environmentTimer = Random.Range(minEnvironmentTime, maxEnvironmentTime);
-                //postProcessingManager.SwitchEnvironment(currentEnvironmentToSpawn);
             }
             Debug.Log($"Change Env from {oldEnv} to {CurrentEnvironmentToSpawn}");
         }
         else
         {
-            environmentTimer -= Time.deltaTime;
+            if (overrideEnvironment == false)
+            {
+                environmentTimer -= Time.deltaTime;
+            }
         }
     }
 
-    
+
 
     private void InitEnvironmentWeights()
     {
         environmentWeights = new SerializedDictionary<EnvironmentType, float>();
         float totalWeight = 100f;
-        
+
         //60% chance to get a differnt env
         //20% chance or any
-        float baseWeight = 60f / (Enum.GetValues(typeof(EnvironmentType)).Length - 2); //exclude transition and basic
-
+        float baseWeight = 20f * (environments.Count - 2);
         float oilWeight = baseWeight - (baseWeight * playerStats.GetStat(StatType.OilResearch).Level / playerStats.GetStat(StatType.OilResearch).MaxLevel);
         float trashWeight = baseWeight - (baseWeight * playerStats.GetStat(StatType.TrashResearch).Level / playerStats.GetStat(StatType.TrashResearch).MaxLevel);
         float coralWeight = baseWeight - (baseWeight * playerStats.GetStat(StatType.AcidityResearch).Level / playerStats.GetStat(StatType.AcidityResearch).MaxLevel);
@@ -118,9 +118,18 @@ public class EnvironmentGenerator : MonoBehaviour
         GameObject spawned = Instantiate(prefabToSpawn, transform.position + offset, Quaternion.identity);
         spawned.transform.parent = transform;
         EnvironmentController environmentController = spawned.GetComponent<EnvironmentController>();
-        environmentController.Init(this);       
+        environmentController.Init(this);
     }
-
+    public void OverrideEnvironment(EnvironmentType type)
+    {
+        overrideEnvironment = true;
+        CurrentEnvironmentToSpawn = type;
+    }
+    public void RevertOverride()
+    {
+        overrideEnvironment = false;
+        environmentTimer = 1f;
+    }
     public float GetSpeed()
     {
         return environmentSpeed;

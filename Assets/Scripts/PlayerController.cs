@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {   
-        Debug.Log(this.transform.localPosition.x);
         baseColor = this.GetComponentInChildren<Renderer>().material.color;
         damageColor = Color.Lerp(baseColor, Color.red, 0.5f);
         healColor = Color.Lerp(baseColor, Color.green, 0.5f);
@@ -69,12 +68,12 @@ public class PlayerController : MonoBehaviour
 
         // Collect Stat levels.
         healthLevel = playerStats.GetStat(StatType.Health).Level;
-        Debug.Log("Health Level: " + healthLevel);
         speedLevel = playerStats.GetStat(StatType.Speed).Level;
-        Debug.Log("Speed Level: " + speedLevel);
         dashLevel = playerStats.GetStat(StatType.Dash).Level;
-        Debug.Log("Dash Level: " + dashLevel);
         parryCooldownLevel = playerStats.GetStat(StatType.ParryCooldown).Level;
+        Debug.Log("Health Level: " + healthLevel);
+        Debug.Log("Speed Level: " + speedLevel);
+        Debug.Log("Dash Level: " + dashLevel);
         Debug.Log("Dash Level: " + dashLevel);
 
         // Initialize Player Stats
@@ -242,7 +241,7 @@ public class PlayerController : MonoBehaviour
         canParry = true;
         iFrames = true;
         health -= amount;
-        onHealthChange.Invoke();
+        onHealthChange?.Invoke();
         if (health <= 0)
         {
             OnDeath();
@@ -259,7 +258,7 @@ public class PlayerController : MonoBehaviour
         if (health < maxHealth)
         {
             health += 1;
-            onHealthChange.Invoke();
+            onHealthChange?.Invoke();
         }
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);

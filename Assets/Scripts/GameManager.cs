@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public PlayerController player;
-    [SerializeField] EnvironmentGenerator generator;
-    [SerializeField] ObsticleSpawner obstacleSpawner;
-    [SerializeField] DroneSpawner droneSpawner;
+    [SerializeField] protected EnvironmentGenerator generator;
+    [SerializeField] protected ObsticleSpawner obstacleSpawner;
+    [SerializeField] protected DroneSpawner droneSpawner;
 
     [Header("Game over Related")]
     [SerializeField] private GameObject gameOverUI;
@@ -19,11 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float gameWinTime = 10f;
     [SerializeField] public float gameTimeDelta = 0f;
 
-    private bool isGameOver = false;
-
-    [SerializeField] private float distance = 0f;
-    [field: SerializeField] public float tokensCollected { get; private set; } = 0f;
-    [field: SerializeField] public float tokensDeposited { get; private set; } = 0f;
+    [Header("Player Related")]
+    [SerializeField] protected float distance = 0f;
+    [field: SerializeField] public float TokensCollected { get; private set; } = 0f;
+    [field: SerializeField] public float TokensDeposited { get; private set; } = 0f;
+    protected bool isGameOver = false;
 
     private void OnEnable()
     {
@@ -52,8 +52,10 @@ public class GameManager : MonoBehaviour
         if (player.health <= 0)
         {
             Debug.Log("Loose");
+            UpdateLoseScreenUI();
+            gameOverUI.gameObject.SetActive(true);
             OnGameOver();
-            StartCoroutine(GameLose());
+            StartCoroutine(RemovePlayer());
             return;
 
         }
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnGameOver()
+    protected void OnGameOver()
     {
         isGameOver = true;
         droneSpawner.RecallDone();
@@ -80,12 +82,9 @@ public class GameManager : MonoBehaviour
         //generator.enabled = false;
     }
 
-    private IEnumerator GameLose()
+    protected IEnumerator RemovePlayer()
     {
         //move player off screen
-        UpdateLoseScreenUI();
-        gameOverUI.gameObject.SetActive(true);
-        //generator.SetTargetSpeed(0f);
         while (player.transform.position.z > Camera.main.transform.position.z)
         {
             Vector3 currentPos = player.transform.position;
@@ -93,19 +92,20 @@ public class GameManager : MonoBehaviour
             player.transform.position = newPos;
             yield return new WaitForEndOfFrame();
         }
-        Destroy(player.gameObject);
+        player.gameObject.SetActive(false);
     }
+
 
     private void TokenCollected()
     {
-        tokensCollected += 1;
-        Debug.Log("Token Collected. Total: " + tokensCollected);
+        TokensCollected += 1;
+        Debug.Log("Token Collected. Total: " + TokensCollected);
 
     }
     private void TokenBanked()
     {
-        tokensDeposited += 1f;
-        Debug.Log("Token Banked. Total: " + tokensDeposited);
+        TokensDeposited += 1f;
+        Debug.Log("Token Banked. Total: " + TokensDeposited);
     }
 
 
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         GameOverScreenUI uiScreens = gameOverUI.GetComponent<GameOverScreenUI>();
         if (uiScreens != null)
         {
-            uiScreens.UpdateDisplay(gameTimeDelta, gameWinTime, tokensCollected, tokensDeposited);
+            uiScreens.UpdateDisplay(gameTimeDelta, gameWinTime, TokensCollected, TokensDeposited);
         }
         else
         {

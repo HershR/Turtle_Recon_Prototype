@@ -12,8 +12,6 @@ public class NewPlayerSetup : MonoBehaviour
     {
         //create new highscore entry
         playerStatsSO.ResetAllStats();
-        playerStatsSO.SetPlayerName(playerName);
+        playerStatsSO.SetPlayerName(playerName.Length > 0 ? playerName : "Player 1");
     }
-
-
 }
