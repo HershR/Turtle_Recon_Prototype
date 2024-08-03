@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 1101244426457181424}
   - component: {fileID: 669130753099731214}
   - component: {fileID: 2519584259416889418}
+  - component: {fileID: 7292066628819979392}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -736,9 +737,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneLoadingManager, Assembly-CSharp
-        m_MethodName: LoadGame
+      - m_Target: {fileID: 7292066628819979392}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -748,6 +749,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7292066628819979392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663137742067271510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98206a3f078632443b7e48244cc40f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 1
 --- !u!1 &7295068222422035773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1042,7 @@ GameObject:
   - component: {fileID: 8714699651581777440}
   - component: {fileID: 5746848138023393720}
   - component: {fileID: 781378468172395902}
+  - component: {fileID: 1942992306917158577}
   m_Layer: 5
   m_Name: UpgradeShopButton
   m_TagString: Untagged
@@ -1149,9 +1164,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneLoadingManager, Assembly-CSharp
-        m_MethodName: LoadStore
+      - m_Target: {fileID: 1942992306917158577}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1161,6 +1176,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1942992306917158577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7532605279898021027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98206a3f078632443b7e48244cc40f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: 2
 --- !u!1 &8130476152459842163
 GameObject:
   m_ObjectHideFlags: 0
