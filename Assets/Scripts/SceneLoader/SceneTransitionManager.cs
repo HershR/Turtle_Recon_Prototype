@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public enum SceneIndexes { Title = 0, Game = 1, Store = 2, Quit = 3 };
-public class SceneLoadingManager : MonoBehaviour
+public class SceneTransitionManager : MonoBehaviour
 {
-    public static SceneLoadingManager instance;
+    public static SceneTransitionManager instance;
     public GameObject loadingScreen;
     private List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
 

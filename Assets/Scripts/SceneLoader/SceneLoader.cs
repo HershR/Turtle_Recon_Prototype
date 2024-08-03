@@ -5,6 +5,6 @@ public class SceneLoader : MonoBehaviour
     public SceneIndexes scene;
     public void LoadScene()
     {
-        SceneLoadingManager.instance.LoadScene(scene);
+        SceneTransitionManager.instance.LoadScene(scene);
     }
 }
