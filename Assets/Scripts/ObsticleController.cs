@@ -38,7 +38,7 @@ public class ObsticleController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.name);
+        //Debug.Log(collision.gameObject.name);
         PlayerController playerScript = collision.GetComponent<PlayerController>();
 
         if (collision.gameObject.tag == "Despawner")

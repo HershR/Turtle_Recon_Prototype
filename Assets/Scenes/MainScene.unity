@@ -454,11 +454,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &439471002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 920956159980175181, guid: f9de929f4591d9145b665502d66b0439, type: 3}
-  m_PrefabInstance: {fileID: 2353843427756968945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &759796559 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5492551997196079269, guid: 0bce0bb40b82a4d41bd7c3c06903403e, type: 3}
@@ -1978,10 +1973,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7130689113614611586, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
-      propertyPath: loadingScreen
-      value: 
-      objectReference: {fileID: 439471002}
     - target: {fileID: 7915370750085484090, guid: e9721b1cf8787a84abffd60e223cda36, type: 3}
       propertyPath: m_Name
       value: SceneLoadingManager

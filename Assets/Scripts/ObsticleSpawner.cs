@@ -74,12 +74,12 @@ public class ObsticleSpawner : MonoBehaviour
 
 		// Fill dict with env values (make ur own dict)
 		UpdateObsticleWeights();
-		Debug.Log("Total weight:" + totalWeight);
-		Debug.Log("(Objects, weights): " + objWeights);
-		for (int i = 0; i < objWeights.Count; i++)
-		{
-			Debug.Log(i + ": " + objWeights[i]);
-		}
+		//Debug.Log("Total weight:" + totalWeight);
+		//Debug.Log("(Objects, weights): " + objWeights);
+		//for (int i = 0; i < objWeights.Count; i++)
+		//{
+		//	Debug.Log(i + ": " + objWeights[i]);
+		//}
 		float z = Camera.main.transform.position.z;
 		// Bottom-left corner
 		Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, z));
