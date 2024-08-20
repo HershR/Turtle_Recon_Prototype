@@ -97,9 +97,9 @@ public class TutorialManager : GameManager
             "However, if you miss time it, you will take damage, and your parry will go on cool down." +
             "Your parry cool down resets if you do a successful parry");
         dialogueManager.ShowDialogue("Watch out for the incoming trash!" +
-            "You can press the 'Space Bar' to parry trash." +
-            "However, if you miss time it, you will take damage, and your parry will go on cool down." +
-            "Your parry cool down resets if you do a successful parry");
+            " You can press the 'Space Bar' to parry trash." +
+            " However, if you miss time it, you will take damage, and your parry will go on cool down." +
+            " Your parry cool down resets if you do a successful parry");
         //wait to trigger parry key
         while (player.parrySucceed == false)
         {
