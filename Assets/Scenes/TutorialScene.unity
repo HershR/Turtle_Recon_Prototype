@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035196725, g: 0.6414828, b: 0.7775074, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203554, g: 0.64125663, b: 0.7778496, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1895,6 +1895,10 @@ PrefabInstance:
       propertyPath: blurCanvas
       value: 
       objectReference: {fileID: 8512744583187478687}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: isTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: playerStats
       value: 

@@ -47,6 +47,7 @@ public class PlayerStatsSO : ScriptableObject
     public void ResetAllStats()
     {
         Name = "Player";
+        HighScore = 0;
         Tokens = 10;
         foreach(StatSO stat in Stats.Values)
         {

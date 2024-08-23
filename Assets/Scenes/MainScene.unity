@@ -1683,6 +1683,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8512744583187478687}
     - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: isTutorial
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: volControler
       value: 
       objectReference: {fileID: 0}

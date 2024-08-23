@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CanvasGroup blurCanvas;
 
+    // Track if in tutorial
+    public bool isTutorial = false;
     public int playerScore = 0;
     public float playerSpeed;
     public float maxSpeed;
@@ -81,6 +83,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Dash Level: " + dashLevel);
 
         // Initialize Player Stats
+        playerScore = 0;
         maxHealth = 1 + healthLevel;
         health = maxHealth;
         maxSpeed = 3 + playerStats.GetStat(StatType.Speed).Level / playerStats.GetStat(StatType.Speed).MaxLevel;
@@ -185,7 +188,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnDeath()
     {
-        SetPlayerHighScore(playerScore);
+        if (isTutorial == false)
+        {
+            SetPlayerHighScore(playerScore);
+        }
         Debug.Log("You died!");
     }
 
