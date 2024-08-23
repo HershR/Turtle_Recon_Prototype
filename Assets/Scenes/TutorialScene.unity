@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
+  m_IndirectSpecularColor: {r: 0.035196725, g: 0.6414828, b: 0.7775074, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &28070600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7540965701589939093, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+  m_PrefabInstance: {fileID: 8032219179684932887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &53575702
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +480,7 @@ MonoBehaviour:
   <TokensDeposited>k__BackingField: 0
   playerHUD: {fileID: 1237538863}
   TutorialState: Not Started
+  dialogueManager: {fileID: 1337429234}
 --- !u!1001 &346334714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1318,6 +1324,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1337429232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337429233}
+  - component: {fileID: 1337429234}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1337429233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337429232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 355.2456, y: 198.96834, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1337429234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337429232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b447435fc61db4863be48f1c99fdf254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 1941029909}
+  dialogueBox: {fileID: 28070600}
 --- !u!1001 &1367301219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1746,6 +1798,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4193611223201818128, guid: cad127b0e66614211a2e79e0c3fbcb54, type: 3}
   m_PrefabInstance: {fileID: 1888431808}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1941029909 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2184841637489499626, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+  m_PrefabInstance: {fileID: 8032219179684932887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2080419083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2246,10 +2309,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 313360750}
-    - target: {fileID: 822412073862463799, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1021266163455250006, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: player
       value: 
@@ -2265,10 +2324,6 @@ PrefabInstance:
     - target: {fileID: 3480646297874445583, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_Name
       value: PlayerUICanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6953412814366815440, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8297271055722222838, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_Pivot.x
@@ -2481,6 +2536,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 313360749}
+  - {fileID: 1337429233}
   - {fileID: 1162554884}
   - {fileID: 1175798688}
   - {fileID: 346334714}
