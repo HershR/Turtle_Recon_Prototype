@@ -6,16 +6,19 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
+    public GameObject dialogueBox;
 
     public void ShowDialogue(string message)
     {
-        dialogueText.text = message;
-        StartCoroutine(ClearTextAfterDelay(5)); // Clear text after 5 seconds
+        dialogueBox.SetActive(true);  // Show dialogue box
+        dialogueText.text = message;  // Set the text
+        StartCoroutine(ClearTextAfterDelay(5));  // Clear text after 5 seconds
     }
 
     private IEnumerator ClearTextAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        dialogueText.text = ""; // Clear text
+        dialogueText.text = "";  // Clear text
+        dialogueBox.SetActive(false);  // Hide dialogue box
     }
 }
