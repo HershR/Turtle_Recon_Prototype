@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Player 1
   <Tokens>k__BackingField: 10
+  <HighScore>k__BackingField: 0
   Stats:
     _serializedList:
     - Key: 0

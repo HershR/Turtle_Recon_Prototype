@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "new PlayerStats", menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStatsSO : ScriptableObject
 {
     /*
-     Holds the Players Total Money
+     Holds the Players Total Money, Name, Highscore,
      and Holds the Players Stat Levels in a Dict<StatType, StatSO>
      */
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int Tokens { get; private set; } = 10;
+    [field: SerializeField] public int HighScore { get; private set; } = 0;
 
     [Header("Stats")]
     [SerializeField] private SerializedDictionary<StatType, StatSO> Stats;
@@ -55,9 +57,20 @@ public class PlayerStatsSO : ScriptableObject
     {
         Name = name;
     }
+    public string GetPlayerName()
+    {
+        return Name;
+    }
     public void AddTokens(int amount)
     {
         Tokens += amount;
     }
-
+    public int GetPlayerHighScore()
+    {
+        return HighScore;
+    }
+    public void SetPlayerHighScore(int score)
+    {
+        HighScore = score;
+    }
 }

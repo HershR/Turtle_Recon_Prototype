@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CanvasGroup blurCanvas;
 
+    public int playerScore = 0;
     public float playerSpeed;
     public float maxSpeed;
     public float health;
@@ -54,6 +55,9 @@ public class PlayerController : MonoBehaviour
     public UnityAction onTokenCollect;
     public UnityAction onTokenBanked;
     public UnityAction onHealthChange;
+
+    // Event used to set high scores
+    public UnityEvent<string, int> submitScoreEvent;
 
     // Start is called before the first frame update
     void Awake()
@@ -181,6 +185,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDeath()
     {
+        SetPlayerHighScore(playerScore);
         Debug.Log("You died!");
     }
 
@@ -226,6 +231,8 @@ public class PlayerController : MonoBehaviour
     IEnumerator SuccessfulParry()
     {   
         SoundManager.instance.PlaySoundClip(ParrySucceedSound, transform, 1f);
+        playerScore += 1000;
+        Debug.Log("Score: " + playerScore.ToString());
         parrySucceed = true;
         parry = false;
         canParry = true;
@@ -242,6 +249,8 @@ public class PlayerController : MonoBehaviour
         iFrames = true;
         health -= amount;
         onHealthChange?.Invoke();
+        playerScore -= 5000;
+        Debug.Log("Score: " + playerScore.ToString());
         if (health <= 0)
         {
             OnDeath();
@@ -255,6 +264,8 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollectFood()
     {
         SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
+        playerScore += 2000;
+        Debug.Log("Score: " + playerScore.ToString());
         if (health < maxHealth)
         {
             health += 1;
@@ -316,6 +327,8 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideToken()
     {
         SoundManager.instance.PlaySoundClip(collectTokenSound, transform, 1f);
+        playerScore += 5000;
+        Debug.Log("Score: " + playerScore.ToString());
         tokenCount += 1;
         onTokenCollect?.Invoke();
         this.GetComponentInChildren<Renderer>().material.color = researchColor; // Swap to research color.
@@ -326,10 +339,26 @@ public class PlayerController : MonoBehaviour
     IEnumerator CollideJellyfish()
     {
         health = Mathf.Min(maxHealth, health + 2);
+        playerScore += 3000;
+        Debug.Log("Score: " + playerScore.ToString());
         onHealthChange?.Invoke();
         SoundManager.instance.PlaySoundClip(IAteAJellyfish, transform, 1f);
         this.GetComponentInChildren<Renderer>().material.color = healColor; // Swap to heal color.
         yield return new WaitForSeconds(1);
         this.GetComponentInChildren<Renderer>().material.color = baseColor;
+    }
+
+    public void SetPlayerHighScore(int score)
+    {
+        if (score > playerStats.GetPlayerHighScore())
+        {
+            playerStats.SetPlayerHighScore(score);
+            SubmitScore();
+        }
+    }
+
+    public void SubmitScore() {
+        Debug.Log("Submitting high score of " + playerScore.ToString() + " to leaderboard database.");
+        submitScoreEvent.Invoke(playerStats.GetPlayerName(), playerScore);
     }
 }
