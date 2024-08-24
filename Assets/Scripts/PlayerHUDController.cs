@@ -7,6 +7,7 @@ public class PlayerHUDController : MonoBehaviour
     [SerializeField] private GameObject healthUI;
     [SerializeField] private GameObject tokenUI;
     [SerializeField] private GameObject progressUI;
+    [SerializeField] private GameObject scoreUI;
 
     public void ToggleHealthUI(bool isActive)
     {
@@ -20,4 +21,5 @@ public class PlayerHUDController : MonoBehaviour
     {
         progressUI.SetActive(isActive);
     }
+    
 }

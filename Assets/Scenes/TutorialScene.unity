@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035203554, g: 0.64125663, b: 0.7778496, a: 1}
+  m_IndirectSpecularColor: {r: 0.035203546, g: 0.64125663, b: 0.77784956, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -806,6 +806,11 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &927551211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8518448470093445302, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+  m_PrefabInstance: {fileID: 8032219179684932887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &964295717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8727331021354415102, guid: 5790754e850f54fabba0ec3355171566, type: 3}
@@ -2355,6 +2360,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 313360750}
+    - target: {fileID: 484198489393105517, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1021266163455250006, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: player
       value: 
@@ -2363,6 +2372,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 313360750}
+    - target: {fileID: 1951091668699435337, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1281905962}
     - target: {fileID: 2634299913042861443, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_Camera
       value: 
@@ -2371,8 +2384,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994593187679930604, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6953412814366815440, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540965701589939093, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8297271055722222838, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
@@ -2455,6 +2496,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8639136769643117119, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 927551211}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
