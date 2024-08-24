@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 3653440598996616838}
   - component: {fileID: 1080917055842903403}
   m_Layer: 0
-  m_Name: ScoreHeartUI
+  m_Name: HeartUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,7 +406,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3994593187679930604}
   - {fileID: 4302819400243108914}
   m_Father: {fileID: 6259820512415008782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -800,6 +799,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7055785543032125409}
+  - {fileID: 3994593187679930604}
   - {fileID: 8966163383482149624}
   - {fileID: 9179425041185010448}
   - {fileID: 7098324928214489218}
@@ -2128,7 +2128,7 @@ GameObject:
   - component: {fileID: 3994593187679930604}
   - component: {fileID: 1951091668699435337}
   m_Layer: 5
-  m_Name: ScoreCounter
+  m_Name: ScoreUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2148,11 +2148,11 @@ RectTransform:
   m_Children:
   - {fileID: 2446871219487668306}
   - {fileID: 2734113391535034314}
-  m_Father: {fileID: 7055785543032125409}
+  m_Father: {fileID: 6259820512415008782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: 22.4}
+  m_AnchoredPosition: {x: -925, y: 478.52}
   m_SizeDelta: {x: 388.83337, y: 99.00012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1951091668699435337

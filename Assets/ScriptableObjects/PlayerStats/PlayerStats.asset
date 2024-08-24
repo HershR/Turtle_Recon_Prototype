@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Tim
   <Tokens>k__BackingField: 10
-  <HighScore>k__BackingField: 8000
+  <HighScore>k__BackingField: 4000
   Stats:
     _serializedList:
     - Key: 0
