@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DroneMovement : MonoBehaviour
 {
-    public enum DroneState { Idle, Collecting, EnterExit }
+    public enum DroneState { Idle, Collecting, Enter, Exit }
 
     [SerializeField] private StatSO droneCollectionRateStat;
     [SerializeField] private AudioClip tokenDepositSound;
@@ -29,10 +29,16 @@ public class DroneMovement : MonoBehaviour
     private float timeRemaining;
 
     public float tiltIntensity;
-    public float droneRange;
 
     private float tokenCollectionRate;
     private float tokenCollectionTimer = 0f;
+
+    [Header("Range")]
+    public float droneRange;
+    public DroneRangeIndicator rangeIndicator;
+    [SerializeField] private Color inRangeColor;
+    [SerializeField] private Color notInRangeColor;
+
     // private float wantedYRotation;
     // private float currentYRotation;
     // private float rotateAmount = 2.5f;
@@ -40,7 +46,6 @@ public class DroneMovement : MonoBehaviour
 
 
     private PlayerController player;
-    public DroneRangeIndicator rangeIndicator;
 
     void Awake()
     {
@@ -64,7 +69,7 @@ public class DroneMovement : MonoBehaviour
         maxWidth = bottomRight.x;
 
         //moveSpeed = player.maxSpeed;
-        state = DroneState.EnterExit;
+        state = DroneState.Enter;
         timeRemaining = timeDuration;
         rb = GetComponent<Rigidbody>();
         startPos = transform.position;
@@ -73,16 +78,17 @@ public class DroneMovement : MonoBehaviour
 
     void Update()
     {
-        if (state == DroneState.EnterExit)
+        if (state == DroneState.Enter)
         {
             if (Vector3.Distance(transform.position, targetDestination) < 1f)
             {
+                rangeIndicator.Show();
                 UpdateTargetDestination();
                 state = DroneState.Idle;
             }
             return;
         }
-        if (timeRemaining > 0)
+        if (timeRemaining > 0.0f)
         {
             timeRemaining -= Time.deltaTime;
             if (Vector3.Distance(transform.position, targetDestination) < 1f)
@@ -93,7 +99,7 @@ public class DroneMovement : MonoBehaviour
             {
                 if (PlayerInRange())
                 {
-                    rangeIndicator.UpdateColor(Color.green, Color.green);
+                    rangeIndicator.UpdateColor(inRangeColor, inRangeColor);
                     state = DroneState.Collecting;
                     return;
                 }
@@ -102,7 +108,7 @@ public class DroneMovement : MonoBehaviour
             {
                 if (!PlayerInRange())
                 {
-                    rangeIndicator.UpdateColor(Color.red, Color.red);
+                    rangeIndicator.UpdateColor(notInRangeColor, notInRangeColor);
                     state = DroneState.Idle;
                     return;
                 }
@@ -123,16 +129,18 @@ public class DroneMovement : MonoBehaviour
         }
         else
         {
+            //exit
             if (Vector3.Distance(transform.position, startPos) < 1f)
             {
                 Destroy(gameObject);
             }
-            if (state != DroneState.EnterExit)
+            if (state != DroneState.Exit)
             {
-                state = DroneState.EnterExit;
+                state = DroneState.Exit;
+                rangeIndicator.Hide();
+                StopAllCoroutines();
                 targetDestination = startPos;
                 moveSpeed = 20f;
-                StopAllCoroutines();
                 return;
 
             }
@@ -144,7 +152,7 @@ public class DroneMovement : MonoBehaviour
     void FixedUpdate()
     {
         MoveToPosition();
-        if (state != DroneState.EnterExit)
+        if (state != DroneState.Enter && state != DroneState.Exit)
         {
             AdjustTilt();
             // Rotation();
@@ -233,11 +241,11 @@ public class DroneMovement : MonoBehaviour
     //     currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, 0.25f);
     //     drone.rotation = Quaternion.Euler(new Vector3(1, currentYRotation, drone.rotation.z));
     // }
-    void OnDrawGizmos()
-    {
-        // Draw a yellow sphere at the transform's position
-        Gizmos.color = state == DroneState.Collecting ? Color.green : Color.yellow;
-        Gizmos.DrawSphere(transform.position, droneRange);
-    }
+    //void OnDrawGizmos()
+    //{
+    //    // Draw a yellow sphere at the transform's position
+    //    Gizmos.color = state == DroneState.Collecting ? Color.green : Color.yellow;
+    //    Gizmos.DrawSphere(transform.position, droneRange);
+    //}
 
 }

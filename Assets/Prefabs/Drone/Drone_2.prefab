@@ -181,9 +181,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6756692465084777905}
-  - component: {fileID: 7541991438992340128}
   - component: {fileID: 6500403628352727678}
   - component: {fileID: 2702652739273573796}
+  - component: {fileID: 7541991438992340128}
   - component: {fileID: 6251719621041716563}
   m_Layer: 0
   m_Name: Drone_2
@@ -208,29 +208,6 @@ Transform:
   - {fileID: 743964671221001203}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7541991438992340128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895452092677521990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c968b03a3d37f504b83160522e6e3106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  droneCollectionRateStat: {fileID: 11400000, guid: 0f47a2606e55ae842a03cc8b37723cfb, type: 2}
-  tokenDepositSound: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
-  tokenVisualPrefab: {fileID: 1268078323957809874, guid: b18b5f03299469642b90cdffb3dc5bfc, type: 3}
-  topRight: {x: 15, y: 9, z: 8}
-  state: 0
-  moveSpeed: 5
-  upForce: 98.1
-  timeDuration: 20
-  tiltIntensity: 3
-  droneRange: 1
-  rangeIndicator: {fileID: 6251719621041716563}
 --- !u!54 &6500403628352727678
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -266,7 +243,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895452092677521990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -279,7 +256,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 89c7860c5cfeb744bbb6cae85aff4027, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -305,7 +282,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 2}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.9980612
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -362,6 +339,31 @@ LineRenderer:
   m_UseWorldSpace: 0
   m_Loop: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7541991438992340128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895452092677521990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c968b03a3d37f504b83160522e6e3106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droneCollectionRateStat: {fileID: 11400000, guid: 0f47a2606e55ae842a03cc8b37723cfb, type: 2}
+  tokenDepositSound: {fileID: 8300000, guid: 75aa623777c0430489b164f2046165ba, type: 3}
+  tokenVisualPrefab: {fileID: 1268078323957809874, guid: b18b5f03299469642b90cdffb3dc5bfc, type: 3}
+  topRight: {x: 15, y: 9, z: 8}
+  state: 0
+  moveSpeed: 5
+  upForce: 98.1
+  timeDuration: 20
+  tiltIntensity: 3
+  droneRange: 1
+  rangeIndicator: {fileID: 6251719621041716563}
+  inRangeColor: {r: 0, g: 1, b: 0.13491154, a: 0.5019608}
+  notInRangeColor: {r: 1, g: 0, b: 0, a: 0.5019608}
 --- !u!114 &6251719621041716563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +379,8 @@ MonoBehaviour:
   lineRenderer: {fileID: 2702652739273573796}
   subdivisions: 30
   radius: 1
+  startColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+  endColor: {r: 1, g: 0, b: 0, a: 0.5019608}
 --- !u!1 &2816862899085339775
 GameObject:
   m_ObjectHideFlags: 0

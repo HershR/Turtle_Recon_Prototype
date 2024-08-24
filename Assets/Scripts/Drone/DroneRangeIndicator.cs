@@ -8,8 +8,8 @@ public class DroneRangeIndicator : MonoBehaviour
     public LineRenderer lineRenderer;
     public int subdivisions;
     public float radius;
-    private Color startColor = Color.red;
-    private Color endColor = Color.red;
+    public Color startColor = Color.red;
+    public Color endColor = Color.red;
 
 
     // Start is called before the first frame update
@@ -37,11 +37,18 @@ public class DroneRangeIndicator : MonoBehaviour
         {
             float xPosition = radius * Mathf.Cos(i * angleStep);
             float yPosition = radius * Mathf.Sin(i * angleStep);
-            Vector3 pointInCircle = new Vector3(xPosition, yPosition, 0);
+            Vector3 pointInCircle = new Vector3(xPosition, yPosition, -transform.position.z);
             lineRenderer.SetPosition(i, pointInCircle);
         }
     }
-
+    public void Show()
+    {
+        lineRenderer.enabled = true;
+    }
+    public void Hide()
+    {
+        lineRenderer.enabled = false;
+    }
     public void UpdateColor(Color newStartColor, Color newEndColor)
     {
         startColor = newStartColor;
