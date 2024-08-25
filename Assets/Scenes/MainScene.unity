@@ -2280,6 +2280,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7203451308755064835, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1281905962}
     - target: {fileID: 8297271055722222838, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2367,17 +2371,12 @@ PrefabInstance:
     - target: {fileID: 8639136769643117119, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
       propertyPath: scoreUI
       value: 
-      objectReference: {fileID: 8032219179684932888}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
---- !u!1 &8032219179684932888 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8518448470093445302, guid: 745591eeeecb64343a7ca71a0983fe96, type: 3}
-  m_PrefabInstance: {fileID: 8032219179684932887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!225 &8512744583187478687 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 8527183278440853387, guid: a88dba0531c694a4ca4c5a091129308e, type: 3}
