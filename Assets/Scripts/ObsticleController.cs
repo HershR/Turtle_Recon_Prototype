@@ -9,6 +9,7 @@ public class ObsticleController : MonoBehaviour
     [SerializeField] public float speed = 0;
     // give it random movement on (x) similar to (gust of wind)
     [SerializeField] private float delZ;
+    // [SerializeField] private PlayerController playerScript;
     private void Awake()
     {
         //delZ = delZ = Camera.main.transform.position.z;
@@ -23,6 +24,7 @@ public class ObsticleController : MonoBehaviour
     {
         // gameObject.transform.rotation.eulerAngles.Set(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
         //Debug.Log("Ima " + obsticle_type + " type obsticle");
+        // playerScript = GameObject.Find("Player").GetComponent<PlayerController>();
         
     }
 
@@ -39,7 +41,7 @@ public class ObsticleController : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         //Debug.Log(collision.gameObject.name);
-        PlayerController playerScript = collision.GetComponent<PlayerController>();
+        // PlayerController playerScript = collision.GetComponent<PlayerController>();
 
         if (collision.gameObject.tag == "Despawner")
         {
@@ -50,16 +52,18 @@ public class ObsticleController : MonoBehaviour
         {
             return;
         }
+        collision.gameObject.GetComponent<PlayerController>().OnCollision(this.gameObject);
+        Debug.Log("You got hit");
 
-        if (playerScript != null)
+        /*if (playerScript != null)
         {
-            playerScript.OnCollision(this.gameObject);
+            collision.gameObject.GetComponent<PlayerController>().OnCollision(this.gameObject);
             Debug.Log("You got hit");
         }
         else
         {
             Debug.Log("Player controller = Null");
-        }
+        }*/
 
         Destroy(this.gameObject);
 
