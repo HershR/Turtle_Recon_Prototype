@@ -67,9 +67,10 @@ public class Dialogue : MonoBehaviour
         } 
         else
         {
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
             // I set the gameobject to not active for now when dialogue ends
             // But it needs to reroute to the tutorial when the introduction is done
+            SceneTransitionManager.instance.LoadTutorial();
         }
     }
 }
