@@ -67,12 +67,11 @@ MonoBehaviour:
     - Key: 4
       Value:
       - {fileID: 4837525402787687893, guid: a8dded0640cc6d7459fcde6db7f5c4ff, type: 3}
-  currentEnvironment: 0
   <CurrentEnvironmentToSpawn>k__BackingField: 1
   environmentSpeed: 5
   environmentTargetSpeed: 20
-  minEnvironmentTime: 55
-  maxEnvironmentTime: 75
+  minEnvironmentTime: 90
+  maxEnvironmentTime: 120
   environmentTimer: 0
   worldCurver: {fileID: 0}
   postProcessingManager: {fileID: 0}
