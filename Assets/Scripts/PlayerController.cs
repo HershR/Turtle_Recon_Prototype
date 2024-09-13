@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip SharpHitSound;
     [SerializeField] private AudioClip WireHitSound;
     [SerializeField] private AudioClip IAteAJellyfish;
-    [SerializeField] private ParticleSystem particleEffect;
+    [SerializeField] private ParticleSystem parryEffect;
+    [SerializeField] private ParticleSystem takeDmgEffect;
 
 
     [field: SerializeField] public PlayerStatsSO playerStats { get; private set; }
@@ -125,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollision(GameObject collider)
     {
-        //if(enabled == false) return;
+        if(enabled == false) return;
         InteractableType obst_type = collider.GetComponent<ObsticleController>().obsticle_type;
         if (parry && (obst_type != InteractableType.Tokens && obst_type != InteractableType.Kelp && obst_type != InteractableType.JellyFish))
         {
@@ -255,7 +256,7 @@ public class PlayerController : MonoBehaviour
     {   
         SoundManager.instance.PlaySoundClip(ParrySucceedSound, transform, 1f);
         playerScore += 1000;
-        particleEffect.Play();
+        parryEffect.Play();
         Debug.Log("Score: " + playerScore.ToString());
         parrySucceed = true;
         parry = false;
@@ -269,6 +270,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator TakeDamage(float amount = 1f)
     {
+        takeDmgEffect.Play();
         canParry = true;
         iFrames = true;
         health -= amount;

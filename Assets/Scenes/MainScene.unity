@@ -244,11 +244,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bce0bb40b82a4d41bd7c3c06903403e, type: 3}
---- !u!198 &234928173 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3517377753218245779, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-  m_PrefabInstance: {fileID: 2080419083}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &257431863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1639,41 +1634,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2044748958404520055, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3517377753218245779, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: lengthInSec
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3517377753218245779, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: playOnAwake
+    - target: {fileID: 880601304906314992, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
+      propertyPath: looping
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3517377753218245779, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3517377753218245779, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3517377753218245779, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.5019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 3758470903796441971, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3758470903796441971, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3758470903796441971, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.048
       objectReference: {fileID: 0}
     - target: {fileID: 4742481141674351129, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: m_Name
@@ -1724,41 +1687,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8512744583187478687}
     - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: isTutorial
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: volControler
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: particleEffect
-      value: 
-      objectReference: {fileID: 234928173}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: submitScoreEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
       propertyPath: submitScoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1897639198}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: submitScoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: submitScoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetLeaderboardEntry
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: submitScoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ScoreManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6316840366702586967, guid: 0e65a7229ed7230489400a7836aebb48, type: 3}
-      propertyPath: submitScoreEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
