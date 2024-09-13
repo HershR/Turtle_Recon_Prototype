@@ -12,24 +12,28 @@ public class TokenScriptUI : MonoBehaviour
 
     private void OnEnable()
     {
-        player.onTokenCollect += UpdateText;
-        player.onTokenBanked += UpdateText;
+        player.onTokenCollect += UpdateTextCollected;
+        player.onTokenBanked += UpdateBankedText;
     }
 
 
     private void OnDisable()
     {
-        player.onTokenCollect -= UpdateText;
-        player.onTokenBanked -= UpdateText;
+        player.onTokenCollect -= UpdateTextCollected;
+        player.onTokenBanked -= UpdateBankedText;
     }
-    private void UpdateText()
+    private void UpdateTextCollected()
     {
         //add delay so gamemanager can update itself
-        StartCoroutine("UpdateTextDelay");
+        StartCoroutine(UpdateTextDelay());
     }
-    private IEnumerator UpdateTextDelay()
+    public void UpdateBankedText()
     {
-        yield return new WaitForSeconds(0.01f);
+        StartCoroutine(UpdateTextDelay(1f));
+    }
+    private IEnumerator UpdateTextDelay(float delay = 0.1f)
+    {
+        yield return new WaitForSeconds(delay);
         tokenText.text = $"{player.tokenCount}|{gameManager.TokensDeposited}";
     }
 }
