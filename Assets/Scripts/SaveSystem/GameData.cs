@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,5 +9,9 @@ public class GameData
     public string playerName;
     public int playerTokens;
     public int playerHighscore;
-    public Dictionary<StatType, int> playerStats;
+    public Dictionary<StatType, int> playerStats = new();
+    public GameData() 
+    {
+    
+    }
 }

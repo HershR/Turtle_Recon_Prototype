@@ -55,6 +55,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     public IEnumerator GetSceneLoadProgress()
     {
+        DataPersistenceManager.Instance.SaveGame();
         for (int i = 0; i < scenesLoading.Count; i++)
         {
             while (!scenesLoading[i].isDone)
