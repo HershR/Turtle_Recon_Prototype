@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "new Stat", menuName = "ScriptableObjects/Stats")]
 public class StatSO : ScriptableObject
 {
+    [SerializeField] public StatType Type;
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int Level { get; private set; } = 0;
     [field: SerializeField] public int MaxLevel { get; private set; } = 5;
@@ -48,6 +49,10 @@ public class StatSO : ScriptableObject
     public bool IsMaxLevel()
     {
         return Level == MaxLevel;
+    }
+    public void Load(int level)
+    {
+        this.Level = level;
     }
     public override string ToString()
     {
