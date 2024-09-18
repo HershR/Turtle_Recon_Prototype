@@ -11,7 +11,7 @@ public class NewPlayerSetup : MonoBehaviour
         if (ValidateName(playerName))
         {
             DataPersistenceManager.Instance.NewGame(playerName);
-            SceneTransitionManager.instance.LoadGame();
+            SceneTransitionManager.instance.LoadTutorial();
         }
     }
     public void SetName(string newName)
@@ -24,7 +24,7 @@ public class NewPlayerSetup : MonoBehaviour
     public bool ValidateName(string nameToCheck)
     {
         Debug.Log("Validating: " + nameToCheck);
-        nameToCheck = nameToCheck.Trim().ToLower();
+        nameToCheck = nameToCheck.Trim();
         if (nameToCheck == null || nameToCheck.Length == 0)
         {
             alertText.text = "Name can not be empty";

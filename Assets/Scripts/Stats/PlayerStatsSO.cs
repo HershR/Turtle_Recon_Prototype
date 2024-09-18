@@ -48,7 +48,7 @@ public class PlayerStatsSO : ScriptableObject, IDataPersistence
     {
         Name = "Player";
         HighScore = 0;
-        Tokens = 10;
+        Tokens = 20;
         foreach(StatSO stat in Stats.Values)
         {
             stat.ResetLevel();

@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
 public class FileDataHandler
 {
     private string dataDirPath = "";
@@ -9,6 +10,7 @@ public class FileDataHandler
 
     public FileDataHandler(string dataDirPath, string dataFileName)
     {
+        Directory.CreateDirectory(dataDirPath);
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
     }
@@ -50,11 +52,12 @@ public class FileDataHandler
     public void Save(GameData data)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
+        //Debug.Log($"Saving to {fullPath}");
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-            string dataToStore = JsonConvert.SerializeObject(data);
+            string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented);
 
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
             {
@@ -75,7 +78,7 @@ public class FileDataHandler
     {
         try
         {
-            return Directory.GetFiles(dataDirPath);
+            return Directory.GetFiles(dataDirPath).Select(Path.GetFileName).ToArray();
         }
         catch (Exception e)
         {

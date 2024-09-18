@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class DataPersistenceManager : MonoBehaviour
     //loop through them
     //[SerializeField] private List<IDataPersistence> dataPersistenceObjs;
     [SerializeField] private PlayerStatsSO statsSO;
+    private string saveDataPath;
 
     private GameData gameData;
     private FileDataHandler dataHandler;
@@ -35,13 +37,14 @@ public class DataPersistenceManager : MonoBehaviour
     private void Start()
     {
         gameData = new GameData();
-        dataHandler = new FileDataHandler(Application.persistentDataPath, "temp.save.json");
+        saveDataPath = Path.Combine(Application.persistentDataPath, "saves");
+        dataHandler = new FileDataHandler(saveDataPath, "temp.save.json");
     }
     public void NewGame(string playerName)
     {
         string saveFileName = NameToSaveFileName(playerName);
         fileName = saveFileName;
-        dataHandler = new FileDataHandler(Application.persistentDataPath, saveFileName);
+        dataHandler = new FileDataHandler(saveDataPath, saveFileName);
         statsSO.ResetAllStats();
         statsSO.SetPlayerName(playerName);
         SaveGame();
@@ -49,7 +52,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame(string saveFileName)
     {
         fileName = saveFileName;
-        dataHandler = new FileDataHandler(Application.persistentDataPath, saveFileName);
+        dataHandler = new FileDataHandler(saveDataPath, saveFileName);
         gameData = dataHandler.Load();
         if (gameData == null) 
         {
@@ -101,7 +104,7 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.LogError("Error: NameToSaveFileName() passed in null string as param");
             return null; 
         }
-        playerName = playerName.Trim().ToLower();
+        playerName = playerName.Trim();
         return $"{playerName}.save.json";
     }
 }

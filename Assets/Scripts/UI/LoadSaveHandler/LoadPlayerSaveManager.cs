@@ -4,12 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadPlayerSaveHandler : MonoBehaviour
+public class LoadPlayerSaveManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerSaveButtonPrefab;
     [SerializeField] private Transform playerSaveTransform;
+    [SerializeField] private string selectedSaveName;
+    [SerializeField] private Button startButton;
     private string[] saves;
-    private string selectedSaveName;
     private List<GameObject> saveButtons = new();
 
     private void OnEnable()
@@ -27,20 +28,18 @@ public class LoadPlayerSaveHandler : MonoBehaviour
         saves = DataPersistenceManager.Instance.GetSaveFiles();
         for (int i = 0; i < saves.Length; i++)
         {
-            
-            string saveName = saves[0];
+            string saveFileName = saves[i];
+            string saveName = saveFileName.Split('.')[0];
             GameObject playerSaveGO = Instantiate(playerSaveButtonPrefab, playerSaveTransform);
-            string name = saveName.Split('.')[0];
             var button = playerSaveGO.GetComponent<Button>();
             if (button != null) 
             {
-                button.onClick.AddListener(delegate { SetSave(saveName); });
+                button.onClick.AddListener(delegate { SetSave(saveFileName); });
             }
             var text = playerSaveGO.GetComponentInChildren<TextMeshProUGUI>();
-            text.text = name;
+            text.text = saveName;
             saveButtons.Add(playerSaveGO);
         }
-
     }
     private void ResetList()
     {
@@ -53,6 +52,7 @@ public class LoadPlayerSaveHandler : MonoBehaviour
     public void SetSave(string save)
     {
         selectedSaveName = save;
+        startButton.interactable = true;
     }
     public void LoadGame()
     {
