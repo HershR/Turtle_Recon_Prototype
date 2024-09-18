@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using Newtonsoft.Json;
 public class FileDataHandler
 {
     private string dataDirPath = "";
@@ -13,7 +12,7 @@ public class FileDataHandler
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
     }
-    public void SetDataFileName(string dataFileName)
+    public void UpdateDataFileName(string dataFileName)
     {
         this.dataFileName = dataFileName;
     }
@@ -28,6 +27,7 @@ public class FileDataHandler
                 Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
                 string dataToLoad = "";
+                JsonSerializer serializer = new JsonSerializer();
                 using (FileStream stream = new FileStream(fullPath, FileMode.Open))
                 {
                     using (StreamReader reader = new StreamReader(stream))
@@ -35,7 +35,8 @@ public class FileDataHandler
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
-                loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
+                
+                loadedData = JsonConvert.DeserializeObject<GameData>(dataToLoad);
             }
             catch (Exception e)
             {
@@ -53,7 +54,8 @@ public class FileDataHandler
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-            string dataToStore = JsonUtility.ToJson(data, true);
+            string dataToStore = JsonConvert.SerializeObject(data);
+
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
             {
                 using (StreamWriter writer = new StreamWriter(stream))

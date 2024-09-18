@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DataPersistenceManager : MonoBehaviour
@@ -33,18 +34,22 @@ public class DataPersistenceManager : MonoBehaviour
     }
     private void Start()
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        gameData = new GameData();
+        dataHandler = new FileDataHandler(Application.persistentDataPath, "temp.save.json");
     }
     public void NewGame(string playerName)
     {
-        SetFileName(playerName);
-        gameData = new GameData();
-        gameData.playerName = playerName;
+        string saveFileName = NameToSaveFileName(playerName);
+        fileName = saveFileName;
+        dataHandler = new FileDataHandler(Application.persistentDataPath, saveFileName);
+        statsSO.ResetAllStats();
+        statsSO.SetPlayerName(playerName);
         SaveGame();
-        LoadGame();//reset all data
     }
-    public void LoadGame()
+    public void LoadGame(string saveFileName)
     {
+        fileName = saveFileName;
+        dataHandler = new FileDataHandler(Application.persistentDataPath, saveFileName);
         gameData = dataHandler.Load();
         if (gameData == null) 
         {
@@ -60,12 +65,17 @@ public class DataPersistenceManager : MonoBehaviour
     public void SaveGame()
     {
         if(fileName == null) { return; }
+        if(dataHandler == null) { return; }
         statsSO.SaveData(gameData);
         Debug.Log(
             $"Saved Player: {statsSO.Name},\n " +
             $"Tokens: {statsSO.Tokens},\n " +
             $"High Score: {statsSO.HighScore}");
         dataHandler.Save(gameData);
+    }
+    private void OnApplicationQuit()
+    {
+        SaveGame();
     }
     public string[] GetSaveFiles()
     {
@@ -84,9 +94,14 @@ public class DataPersistenceManager : MonoBehaviour
         }
         return fileNames;
     }
-    public void SetFileName(string playerName)
+    public string NameToSaveFileName(string playerName)
     {
-        fileName = $"{playerName}.save.json";
-        dataHandler.SetDataFileName(fileName);
+        if (playerName == null) 
+        {
+            Debug.LogError("Error: NameToSaveFileName() passed in null string as param");
+            return null; 
+        }
+        playerName = playerName.Trim().ToLower();
+        return $"{playerName}.save.json";
     }
 }
