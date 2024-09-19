@@ -100,7 +100,7 @@ public class ObsticleSpawner : MonoBehaviour
 		if (CurrentEnviornment != environmentGenerator.CurrentEnvironmentToSpawn && environmentGenerator.CurrentEnvironmentToSpawn != EnvironmentType.Transition)
 		{
 			CurrentEnviornment = environmentGenerator.CurrentEnvironmentToSpawn;
-			Debug.Log("New enviornemnt: " + CurrentEnviornment);
+			Debug.Log("New environment: " + CurrentEnviornment);
 			UpdateObsticleWeights();
 		}
 		if (timer <= 3f / (1 + gameManager.gameTimeDelta / 60))
@@ -119,6 +119,12 @@ public class ObsticleSpawner : MonoBehaviour
 					{
 						//Debug.Log("About to spawn a: " + InteractableObjects[t] + " at " + this.transform.position);
 						GameObject new_obsticle = Instantiate(InteractableObjects[t], transform);
+						// Trash, Oil and Sharp objects with different sizes
+						if (t == InteractableType.Trash || t == InteractableType.Sharp || t == InteractableType.Oil)
+                        {
+							float randomScale = Random.Range(0.5f, 2.0f);
+							new_obsticle.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+                        }
 						float x = Random.Range(minWidth, maxWidth);
 						float y = Random.Range(minHeight, maxHeight);
 						if(i % 2 == 0)
