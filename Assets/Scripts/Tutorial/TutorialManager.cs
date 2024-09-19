@@ -49,11 +49,9 @@ public class TutorialManager : GameManager
         //Trigger dialogue
         Debug.Log("Use WASD to move");
         dialogueManager.ShowDialogue(
-            "Hello! Welcome to the Ocean Rescue Mission Organization! " +
-            "We’re super stoked you decided to take part in this global effort of saving your home. " +
-            "We need all the help we can get.\nThat’s where you come in! " +
-            "We can strap on your back a gadget that can help us collect data, " +
-            "which we need to do research on methods for saving the ocean.\n" +
+            "It's time to get started on saving the ocean! " +
+            "It might seem like a daunting task but we'll walk you through it for your first mission.\n" +
+            "We strapped the gadget on your back earlier so it might feel a little unfamiliar to swim with extra weight on you." +
             "Your first task is to get used to swimming with the gadget on your back. " +
             "To move, use WASD.");
         //wait for player to move
@@ -117,7 +115,7 @@ public class TutorialManager : GameManager
             "Wires will tangle you and slow you down. Sharp objects will cut you, causing you to lose more health.\n" +
             "Luckily, you can parry away the trash by pressing the ‘Space Bar’. " +
             "If you miss time it, you will take damage and your parry will go on cooldown. " +
-            "If you successfully parry, the cooldown will reset instead.Give it a try!");
+            "If you successfully parry, the cooldown will reset instead. Give it a try!");
         //wait to trigger parry key
         while (player.parrySucceed == false)
         {
