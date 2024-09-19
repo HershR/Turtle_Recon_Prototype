@@ -10,7 +10,8 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
 
     private int index;
-    
+    private bool finished;
+
     // Start is called before the first frame update
     // Starts the dialogue
     void Start()
@@ -42,6 +43,7 @@ public class Dialogue : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
+        finished = false;
         StartCoroutine(TypeLine());
     }
 
@@ -56,21 +58,25 @@ public class Dialogue : MonoBehaviour
     }
 
     // Goes to the next text line
-    // If no more lines, go to tutorial?
+    // If no more lines, go to tutorial
     void NextLine()
     {
-        if (index < lines.Length - 1)
+        if (finished == false)
         {
-            index++;
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
-        } 
-        else
-        {
-            // gameObject.SetActive(false);
-            // I set the gameobject to not active for now when dialogue ends
-            // But it needs to reroute to the tutorial when the introduction is done
-            SceneTransitionManager.instance.LoadTutorial();
+            if (index < lines.Length - 1)
+            {
+                index++;
+                textComponent.text = string.Empty;
+                StartCoroutine(TypeLine());
+            }
+            else
+            {
+                SceneTransitionManager.instance.LoadTutorial();
+                finished = true;
+
+            }
         }
+        
+        
     }
 }
