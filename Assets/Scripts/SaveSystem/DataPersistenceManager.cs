@@ -6,7 +6,7 @@ using UnityEngine;
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
-    private string fileName = ""; //format: <player_name>.save.json
+    private string fileName; //format: <player_name>.save.json
     
     [Header("To save/load")]
     //since we only really need the statsSO we wont use the list

@@ -1,11 +1,20 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewPlayerSetup : MonoBehaviour
 {
     [SerializeField] private string playerName;
     [SerializeField] private TextMeshProUGUI alertText;
+    [SerializeField] private string[] existingPlayers;
+    [SerializeField] private Button startButton;
+
+    private void Start()
+    {
+        var existingSaves = DataPersistenceManager.Instance.GetSaveFiles();
+        existingPlayers = existingSaves.Select(x => x.Split('.')[0]).ToArray();
+    }
     public void CreateNewGame()
     {
         if (ValidateName(playerName))
@@ -19,6 +28,11 @@ public class NewPlayerSetup : MonoBehaviour
         if (ValidateName(newName))
         {
             playerName = newName;
+            startButton.interactable = true;
+        }
+        else
+        {
+            startButton.interactable = false;
         }
     }
     public bool ValidateName(string nameToCheck)
@@ -36,7 +50,6 @@ public class NewPlayerSetup : MonoBehaviour
             return false;
         }
 
-        string[] existingPlayers = DataPersistenceManager.Instance.GetSaveFiles();
         if (existingPlayers != null && existingPlayers.Length > 0)
         {
             if (existingPlayers.Contains(nameToCheck)) 
@@ -44,6 +57,7 @@ public class NewPlayerSetup : MonoBehaviour
                 alertText.text = "Name is already taken"; //or check highscore thing
                 return false;
             }
+            // check if name exist on leaderboard
         }
         alertText.text = "";
         return true;
