@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc88bc33beb49c428b7111685b8e93d, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
+  Type: 0
   <Name>k__BackingField: Max Health
-  <Level>k__BackingField: 0
+  <Level>k__BackingField: 5
   <MaxLevel>k__BackingField: 5
   <Icon>k__BackingField: {fileID: 0}
   description:
