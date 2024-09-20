@@ -28,6 +28,7 @@ public class EnvironmentGenerator : MonoBehaviour
     [SerializeField] private int minEnvironmentTime; //min amount to spawn an env
     [SerializeField] private int maxEnvironmentTime; //max amount to spawn an env
     [SerializeField] private float environmentTimer; //amount left for current env    
+    [SerializeField] private float transitionTime; //amount to transition from one env to another
 
     [SerializeField] private WorldCurver worldCurver;
     [SerializeField] private PostProcessingManager postProcessingManager;
@@ -65,7 +66,7 @@ public class EnvironmentGenerator : MonoBehaviour
             if (CurrentEnvironmentToSpawn != EnvironmentType.Transition)
             {
                 CurrentEnvironmentToSpawn = EnvironmentType.Transition;
-                environmentTimer = Random.Range(minEnvironmentTime / 3, maxEnvironmentTime / 3);
+                environmentTimer = transitionTime;
             }
             else
             {
