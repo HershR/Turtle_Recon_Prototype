@@ -20,7 +20,7 @@ public class NewPlayerSetup : MonoBehaviour
         if (ValidateName(playerName))
         {
             DataPersistenceManager.Instance.NewGame(playerName);
-            SceneTransitionManager.instance.LoadTutorial();
+            SceneTransitionManager.instance.LoadIntroduction();
         }
     }
     public void SetName(string newName)

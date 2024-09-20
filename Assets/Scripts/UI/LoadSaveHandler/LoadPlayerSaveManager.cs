@@ -8,16 +8,19 @@ public class LoadPlayerSaveManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerSaveButtonPrefab;
     [SerializeField] private Transform playerSaveTransform;
-    [SerializeField] private string selectedSaveName;
+    [SerializeField] private string selectedSaveFile;
     [SerializeField] private Button startButton;
     private string[] saves;
-    private List<GameObject> saveButtons = new();
+    private List<GameObject> saveButtonsList = new();
 
     private void OnEnable()
     {
         Init();
     }
-
+    private void Awake()
+    {
+        saves = DataPersistenceManager.Instance.GetSaveFiles();
+    }
 
     private void OnDisable()
     {
@@ -25,7 +28,7 @@ public class LoadPlayerSaveManager : MonoBehaviour
     }
     private void Init()
     {
-        saves = DataPersistenceManager.Instance.GetSaveFiles();
+        startButton.interactable = false;
         for (int i = 0; i < saves.Length; i++)
         {
             string saveFileName = saves[i];
@@ -38,25 +41,25 @@ public class LoadPlayerSaveManager : MonoBehaviour
             }
             var text = playerSaveGO.GetComponentInChildren<TextMeshProUGUI>();
             text.text = saveName;
-            saveButtons.Add(playerSaveGO);
+            saveButtonsList.Add(playerSaveGO);
         }
     }
     private void ResetList()
     {
-        foreach (var button in saveButtons)
+        foreach (var button in saveButtonsList)
         {
             Destroy(button);
         }
-        saveButtons.Clear();
+        saveButtonsList.Clear();
     }
     public void SetSave(string save)
     {
-        selectedSaveName = save;
+        selectedSaveFile = save;
         startButton.interactable = true;
     }
     public void LoadGame()
     {
-        DataPersistenceManager.Instance.LoadGame(selectedSaveName);
+        DataPersistenceManager.Instance.LoadGame(selectedSaveFile);
         SceneTransitionManager.instance.LoadGame();
     }
 
