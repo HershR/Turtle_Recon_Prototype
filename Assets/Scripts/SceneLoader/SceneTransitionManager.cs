@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System;
 
-public enum SceneIndexes { Title = 0, Game = 1, Store = 2, Tutorial = 3, Quit = -1};
+public enum SceneIndexes { Title = 0, Game = 1, Store = 2, Tutorial = 3, Quit = -1, Introduction = 4};
 public class SceneTransitionManager : MonoBehaviour
 {
     public static SceneTransitionManager instance;
@@ -52,6 +52,12 @@ public class SceneTransitionManager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void LoadIntroduction()
+    {
+        loadingScreen.SetActive(true);
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.Introduction));
+        StartCoroutine(GetSceneLoadProgress());
+    }
 
     public IEnumerator GetSceneLoadProgress()
     {
@@ -84,6 +90,9 @@ public class SceneTransitionManager : MonoBehaviour
                 break;
             case SceneIndexes.Quit:
                 QuitGame();
+                break;
+            case SceneIndexes.Introduction:
+                LoadIntroduction();
                 break;
         }
     }
