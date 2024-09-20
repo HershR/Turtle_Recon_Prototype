@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip SharpHitSound;
     [SerializeField] private AudioClip WireHitSound;
     [SerializeField] private AudioClip IAteAJellyfish;
+    [SerializeField] private ParticleSystem parryEffect;
+    [SerializeField] private ParticleSystem takeDmgEffect;
 
 
     [field: SerializeField] public PlayerStatsSO playerStats { get; private set; }
@@ -118,6 +120,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canParry){
             StartCoroutine(PlayerParry()); 
+            StartCoroutine(SPIIIIIIIN());
         }
     }
 
@@ -206,14 +209,15 @@ public class PlayerController : MonoBehaviour
         this.GetComponentInChildren<Renderer>().material.color = parryColor; // Swap to parry color.
         SoundManager.instance.PlaySoundClip(ParrySound, transform, 1f);
         // SPIIIIIIIIIIIIIINNNNN
+        /*
         while (passedTime < parryDuration)
         {
             this.transform.Rotate(Vector3.up * (360 * Time.deltaTime / parryDuration));
             passedTime += Time.deltaTime;
             yield return null;
-        }
-        this.transform.rotation = Quaternion.identity;
-        //yield return new WaitForSeconds(parryDuration);
+        }*/
+        //this.transform.rotation = Quaternion.identity;
+        yield return new WaitForSeconds(parryDuration);
         if (parrySucceed == false) {
             StartCoroutine(ParryCooldown(parryCooldownStat));
         }
@@ -223,6 +227,20 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ParryCooldown(0));
         }
         yield return null;
+    }
+
+    IEnumerator SPIIIIIIIN()
+    {
+        float spinDuration = 0.5f;
+        float passedTime = 0;
+        Quaternion initialRotation = this.transform.rotation;
+        while (passedTime < spinDuration)
+        {
+            this.transform.Rotate(Vector3.up * (360 * Time.deltaTime / spinDuration));
+            passedTime += Time.deltaTime;
+            yield return null;
+        }
+        this.transform.rotation = initialRotation;
     }
 
     IEnumerator ParryCooldown(float seconds)
@@ -238,6 +256,7 @@ public class PlayerController : MonoBehaviour
     {   
         SoundManager.instance.PlaySoundClip(ParrySucceedSound, transform, 1f);
         playerScore += 1000;
+        parryEffect.Play();
         Debug.Log("Score: " + playerScore.ToString());
         parrySucceed = true;
         parry = false;
@@ -251,6 +270,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator TakeDamage(float amount = 1f)
     {
+        takeDmgEffect.Play();
         canParry = true;
         iFrames = true;
         health -= amount;
