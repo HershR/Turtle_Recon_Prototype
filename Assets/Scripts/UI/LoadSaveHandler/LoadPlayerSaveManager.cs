@@ -16,19 +16,16 @@ public class LoadPlayerSaveManager : MonoBehaviour
     private void OnEnable()
     {
         Init();
-    }
-    private void Start()
-    {
-        saves = DataPersistenceManager.Instance.GetSaveFiles();
         startButton.onClick.AddListener(LoadGame);
     }
-
     private void OnDisable()
     {
         ResetList();
+        startButton.onClick.RemoveListener(LoadGame);
     }
     private void Init()
     {
+        saves = DataPersistenceManager.Instance.GetSaveFiles();
         startButton.interactable = false;
         for (int i = 0; i < saves.Length; i++)
         {

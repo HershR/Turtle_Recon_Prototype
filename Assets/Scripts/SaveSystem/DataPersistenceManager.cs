@@ -34,9 +34,12 @@ public class DataPersistenceManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
+    private void Start()
+    {
         gameData = new GameData();
         saveDataPath = Path.Combine(Application.persistentDataPath, "saves");
-        dataHandler = new FileDataHandler(saveDataPath, "temp.save.json");
+        dataHandler = new FileDataHandler(saveDataPath, "");
     }
     public void NewGame(string playerName)
     {
