@@ -13,6 +13,7 @@ public class TimelineSkip : MonoBehaviour
         if (isSkipped) { return; }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            isSkipped = true;
             currentDirector.time = currentDirector.duration;
             Debug.Log("Skipped Cutscene");
         }

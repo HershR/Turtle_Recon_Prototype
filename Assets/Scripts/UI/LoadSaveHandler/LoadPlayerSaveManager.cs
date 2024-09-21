@@ -58,7 +58,7 @@ public class LoadPlayerSaveManager : MonoBehaviour
     public void LoadGame()
     {
         DataPersistenceManager.Instance.LoadGame(selectedSaveFile);
-        SceneTransitionManager.instance.LoadGame();
+        SceneTransitionManager.instance.LoadStore();
     }
 
 
