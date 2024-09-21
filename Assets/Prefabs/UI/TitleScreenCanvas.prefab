@@ -4240,19 +4240,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8952706698373812599}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5733927731333438376}
-        m_TargetAssemblyTypeName: LoadPlayerSaveManager, Assembly-CSharp
-        m_MethodName: LoadGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &8065125983160774330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7646,10 +7634,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3285946511120612189, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}
-      propertyPath: m_MovementType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4083938707645447871, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -7668,32 +7652,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7066402708612374181, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7066402708612374181, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7066402708612374181, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.21705216
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}
---- !u!114 &5733927731333438376 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4209213392729562255, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}
-  m_PrefabInstance: {fileID: 8500862759235372839}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5867877107648071262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50ec2afc2695cda418f24279c62d5a26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5867877107648071262 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2636789961920135545, guid: 52038c8ced4b9604a8a059fcf0b8ceb2, type: 3}

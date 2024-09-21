@@ -14,12 +14,14 @@ public class NewPlayerSetup : MonoBehaviour
     {
         var existingSaves = DataPersistenceManager.Instance.GetSaveFiles();
         existingPlayers = existingSaves.Select(x => x.Split('.')[0]).ToArray();
+        startButton.onClick.AddListener(CreateNewGame);
     }
     public void CreateNewGame()
     {
         if (ValidateName(playerName))
         {
             DataPersistenceManager.Instance.NewGame(playerName);
+            //DataPersistenceManager.Instance.LoadGame();
             SceneTransitionManager.instance.LoadIntroduction();
         }
     }

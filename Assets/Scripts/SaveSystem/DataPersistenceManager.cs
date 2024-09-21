@@ -32,10 +32,8 @@ public class DataPersistenceManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
-    }
-    private void Start()
-    {
         gameData = new GameData();
         saveDataPath = Path.Combine(Application.persistentDataPath, "saves");
         dataHandler = new FileDataHandler(saveDataPath, "temp.save.json");
@@ -48,6 +46,23 @@ public class DataPersistenceManager : MonoBehaviour
         statsSO.ResetAllStats();
         statsSO.SetPlayerName(playerName);
         SaveGame();
+    }
+    public void LoadGame()
+    {
+        if(fileName == null || fileName.Length == 0) { return; }
+        dataHandler = new FileDataHandler(saveDataPath, fileName);
+        gameData = dataHandler.Load();
+        if (gameData == null)
+        {
+            Debug.LogError("No Data Found");
+            return;
+        }
+        statsSO.LoadData(gameData);
+        Debug.Log(
+            $"Loaded Player: {statsSO.Name},\n " +
+            $"Tokens: {statsSO.Tokens},\n " +
+            $"High Score: {statsSO.HighScore}");
+
     }
     public void LoadGame(string saveFileName)
     {
@@ -67,7 +82,7 @@ public class DataPersistenceManager : MonoBehaviour
     }
     public void SaveGame()
     {
-        if(fileName == null) { return; }
+        if(fileName == null || fileName.Length == 0) { return; }
         if(dataHandler == null) { return; }
         statsSO.SaveData(gameData);
         Debug.Log(

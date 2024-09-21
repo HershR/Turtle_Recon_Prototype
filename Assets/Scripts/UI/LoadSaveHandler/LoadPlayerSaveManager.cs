@@ -17,9 +17,10 @@ public class LoadPlayerSaveManager : MonoBehaviour
     {
         Init();
     }
-    private void Awake()
+    private void Start()
     {
         saves = DataPersistenceManager.Instance.GetSaveFiles();
+        startButton.onClick.AddListener(LoadGame);
     }
 
     private void OnDisable()
