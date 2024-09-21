@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc88bc33beb49c428b7111685b8e93d, type: 3}
   m_Name: DashRefillParry
   m_EditorClassIdentifier: 
+  Type: 3
   <Name>k__BackingField: Parry Reward
   <Level>k__BackingField: 0
   <MaxLevel>k__BackingField: 5
