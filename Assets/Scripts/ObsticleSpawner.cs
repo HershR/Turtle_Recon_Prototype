@@ -117,27 +117,31 @@ public class ObsticleSpawner : MonoBehaviour
 				{
 					if (w > index)
 					{
+						int groupSize = 1;
 						//Debug.Log("About to spawn a: " + InteractableObjects[t] + " at " + this.transform.position);
-						GameObject new_obsticle = Instantiate(InteractableObjects[t], transform);
-						// Trash, Oil and Sharp objects with different sizes
-						if (t == InteractableType.Trash || t == InteractableType.Sharp || t == InteractableType.Oil)
+						// Clump of Trash, Oil and Sharp objects
+						if (t == InteractableType.Trash || t == InteractableType.Oil || t == InteractableType.Sharp)
                         {
-							float randomScale = Random.Range(0.5f, 2.0f);
-							new_obsticle.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+							groupSize = Random.Range(2, 5);
                         }
-						float x = Random.Range(minWidth, maxWidth);
-						float y = Random.Range(minHeight, maxHeight);
-						if(i % 2 == 0)
-                        {
-							x = player.gameObject.transform.position.x;
-							y = player.gameObject.transform.position.y;
 
+						for (int j = 0; j < groupSize; j++)
+                        {
+							GameObject new_obsticle = Instantiate(InteractableObjects[t], transform);
+							float x = Random.Range(minWidth, maxWidth);
+							float y = Random.Range(minHeight, maxHeight);
+							if(j % 2 == 0)
+							{
+								x = player.gameObject.transform.position.x;
+								y = player.gameObject.transform.position.y;
+
+							}
+							Vector3 start_position = new Vector3(x + Random.Range(-0.75f, 0.75f), y + Random.Range(-0.75f, 0.75f), new_obsticle.transform.position.z);
+							new_obsticle.transform.position = start_position;
+							ObsticleController obsticleController = new_obsticle.GetComponent<ObsticleController>();
+							obsticleController.obsticle_type = t;
+							obsticleController.speed += environmentGenerator.GetSpeed();
 						}
-						Vector3 start_position = new Vector3(x, y, new_obsticle.transform.position.z);
-						new_obsticle.transform.position = start_position;
-                        ObsticleController obsticleController = new_obsticle.GetComponent<ObsticleController>();
-                        obsticleController.obsticle_type = t;
-						obsticleController.speed += environmentGenerator.GetSpeed();
 						//Debug.Log("env speed: " + environmentGenerator.GetSpeed());
 						//Debug.Log("Spawned a " + t);
 						break;
