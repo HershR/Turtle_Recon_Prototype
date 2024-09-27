@@ -57,17 +57,24 @@ MonoBehaviour:
       Value:
       - {fileID: 7236155961674200435, guid: ab8aeb017645b4542867a8d145438c2a, type: 3}
       - {fileID: 844134494074748373, guid: dc7b04559d3d7244ba8e1d4da414c304, type: 3}
+      - {fileID: 5989788933900611186, guid: 6601cd6adc0cfd84696f12414d8297c7, type: 3}
+      - {fileID: 8346002046594596003, guid: 070db8e81d1e0ce4c9d1b96952143a07, type: 3}
+      - {fileID: 3877751378343934196, guid: 211a2610e8acecf45860649c33a7e223, type: 3}
     - Key: 2
       Value:
       - {fileID: 6603232865682820935, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
       - {fileID: 3149620300410358771, guid: 93e987c0025c13b4e8123f134666db49, type: 3}
+      - {fileID: 4526894045343097694, guid: b88c3728945b5d7408fdd01fe63cf111, type: 3}
+      - {fileID: 5127343109461954211, guid: 29df4e6d173ec8e4184183c67de91c11, type: 3}
+      - {fileID: 6215566741218906274, guid: 778d5f199369711468c1d2dad38687c6, type: 3}
     - Key: 3
       Value:
+      - {fileID: 2063290554475380667, guid: 03ea1a5b414a342d89f47907a3af51e3, type: 3}
       - {fileID: 1498637681267822241, guid: 1dddaf9b952a9e14da28343b9320f4ec, type: 3}
+      - {fileID: 2869066018039094792, guid: 690c1a987705d604bad12a6a5eeef95f, type: 3}
     - Key: 4
       Value:
       - {fileID: 4837525402787687893, guid: a8dded0640cc6d7459fcde6db7f5c4ff, type: 3}
-  currentEnvironment: 0
   <CurrentEnvironmentToSpawn>k__BackingField: 1
   environmentSpeed: 5
   environmentTargetSpeed: 20
