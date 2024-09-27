@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -17,18 +18,32 @@ public class Leaderboard : MonoBehaviour
         GetLeaderboard();
     }
     public void GetLeaderboard() {
-        LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, ((msg) => {
+        try
+        {
+            LeaderboardCreator.GetLeaderboard(publicLeaderboardKey, ((msg) => {
             int loopLength = (msg.Length < names.Count) ? msg.Length : names.Count;
             for (int i = 0; i < loopLength; ++i) {
                 names[i].text = msg[i].Username;
                 scores[i].text = msg[i].Score.ToString();
             }
         }));
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error retrieving leaderboard.");
+        }
     }
 
     public void SetLeaderboardEntry(string username, int score) {
-        LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, score, ((msg) => {
+        try
+        {
+           LeaderboardCreator.UploadNewEntry(publicLeaderboardKey, username, score, ((msg) => {
             GetLeaderboard();
-        }));
+        })); 
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error uploading leaderboard entry.");
+        }
     }
 }
