@@ -2,8 +2,9 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "new Stat", menuName = "ScriptableObjects/Stats")]
-public class StatSO : ScriptableObject
+public class StatSO : ScriptableObject, IDataPersistence
 {
+    [SerializeField] public StatType Type;
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int Level { get; private set; } = 0;
     [field: SerializeField] public int MaxLevel { get; private set; } = 5;
@@ -48,6 +49,14 @@ public class StatSO : ScriptableObject
     public bool IsMaxLevel()
     {
         return Level == MaxLevel;
+    }
+    public void LoadData(GameData gameData)
+    {
+        Level = gameData.playerStats[Type];
+    }
+    public void SaveData(GameData gameData)
+    {
+        gameData.playerStats[Type] = Level;
     }
     public override string ToString()
     {

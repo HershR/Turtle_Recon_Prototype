@@ -5,7 +5,7 @@ using AYellowpaper.SerializedCollections;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "new PlayerStats", menuName = "ScriptableObjects/PlayerStats")]
-public class PlayerStatsSO : ScriptableObject
+public class PlayerStatsSO : ScriptableObject, IDataPersistence
 {
     /*
      Holds the Players Total Money, Name, Highscore,
@@ -48,7 +48,7 @@ public class PlayerStatsSO : ScriptableObject
     {
         Name = "Player";
         HighScore = 0;
-        Tokens = 10;
+        Tokens = 20;
         foreach(StatSO stat in Stats.Values)
         {
             stat.ResetLevel();
@@ -73,5 +73,27 @@ public class PlayerStatsSO : ScriptableObject
     public void SetPlayerHighScore(int score)
     {
         HighScore = score;
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        Name = gameData.playerName;
+        Tokens = gameData.playerTokens;
+        HighScore = gameData.playerHighscore;
+        foreach (var stat in Stats.Values)
+        {
+            stat.LoadData(gameData);
+        }
+    }
+
+    public void SaveData(GameData gameData)
+    {
+        gameData.playerName = Name;
+        gameData.playerTokens = Tokens;
+        gameData.playerHighscore = HighScore;
+        foreach (var stat in Stats.Values)
+        {
+            stat.SaveData(gameData);
+        }
     }
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbbf3a05aa3f0f499ca0e8c0db673c8, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Tim
-  <Tokens>k__BackingField: 10
-  <HighScore>k__BackingField: 4000
+  <Name>k__BackingField: Player
+  <Tokens>k__BackingField: 20
+  <HighScore>k__BackingField: 0
   Stats:
     _serializedList:
     - Key: 0

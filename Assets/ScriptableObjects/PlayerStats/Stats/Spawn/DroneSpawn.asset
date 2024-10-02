@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc88bc33beb49c428b7111685b8e93d, type: 3}
   m_Name: DroneSpawn
   m_EditorClassIdentifier: 
+  Type: 10
   <Name>k__BackingField: Drone Spawn
   <Level>k__BackingField: 0
   <MaxLevel>k__BackingField: 5
