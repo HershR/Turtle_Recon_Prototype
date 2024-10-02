@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1764152712}
-  m_IndirectSpecularColor: {r: 0.035215516, g: 0.64123696, b: 0.77748823, a: 1}
+  m_IndirectSpecularColor: {r: 0.03518859, g: 0.64135075, b: 0.7780189, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2453,10 +2453,6 @@ PrefabInstance:
     - target: {fileID: 4062720952454305318, guid: a88dba0531c694a4ca4c5a091129308e, type: 3}
       propertyPath: m_Name
       value: InkCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4062720952454305318, guid: a88dba0531c694a4ca4c5a091129308e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
