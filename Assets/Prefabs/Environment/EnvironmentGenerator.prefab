@@ -57,6 +57,7 @@ MonoBehaviour:
       Value:
       - {fileID: 7236155961674200435, guid: ab8aeb017645b4542867a8d145438c2a, type: 3}
       - {fileID: 844134494074748373, guid: dc7b04559d3d7244ba8e1d4da414c304, type: 3}
+      - {fileID: 5989788933900611186, guid: 6601cd6adc0cfd84696f12414d8297c7, type: 3}
     - Key: 2
       Value:
       - {fileID: 6603232865682820935, guid: e0d166ee453b61147b1e4f9ed2ac3076, type: 3}
@@ -67,7 +68,6 @@ MonoBehaviour:
     - Key: 4
       Value:
       - {fileID: 4837525402787687893, guid: a8dded0640cc6d7459fcde6db7f5c4ff, type: 3}
-  currentEnvironment: 0
   <CurrentEnvironmentToSpawn>k__BackingField: 1
   environmentSpeed: 5
   environmentTargetSpeed: 20
