@@ -1101,42 +1101,6 @@ PrefabInstance:
       propertyPath: postProcessingManager
       value: 
       objectReference: {fileID: 1211529431}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[1].Value.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[2].Value.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[3].Value.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[1].Value.Array.data[3]
-      value: 
-      objectReference: {fileID: 8346002046594596003, guid: 070db8e81d1e0ce4c9d1b96952143a07, type: 3}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[1].Value.Array.data[4]
-      value: 
-      objectReference: {fileID: 3877751378343934196, guid: 211a2610e8acecf45860649c33a7e223, type: 3}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[2].Value.Array.data[2]
-      value: 
-      objectReference: {fileID: 4526894045343097694, guid: b88c3728945b5d7408fdd01fe63cf111, type: 3}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[2].Value.Array.data[3]
-      value: 
-      objectReference: {fileID: 5127343109461954211, guid: 29df4e6d173ec8e4184183c67de91c11, type: 3}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[2].Value.Array.data[4]
-      value: 
-      objectReference: {fileID: 6215566741218906274, guid: 778d5f199369711468c1d2dad38687c6, type: 3}
-    - target: {fileID: 8967354980100875621, guid: 25cfd1491269fbf42a65b25b2bcc6e11, type: 3}
-      propertyPath: environments._serializedList.Array.data[3].Value.Array.data[1]
-      value: 
-      objectReference: {fileID: 2869066018039094792, guid: 690c1a987705d604bad12a6a5eeef95f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
