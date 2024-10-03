@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
-using UnityEngine.Events;
+using System.Collections.Generic;
+using System;
 
 [CreateAssetMenu(fileName = "new PlayerStats", menuName = "ScriptableObjects/PlayerStats")]
 public class PlayerStatsSO : ScriptableObject, IDataPersistence
@@ -14,6 +13,10 @@ public class PlayerStatsSO : ScriptableObject, IDataPersistence
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int Tokens { get; private set; } = 10;
     [field: SerializeField] public int HighScore { get; private set; } = 0;
+
+    public StatType ActiveResearch { get; private set; } = StatType.TrashResearch;
+    private Dictionary<StatType, int> researchProgressDict = new ();
+    public int AccumilatedTokens => researchProgressDict[ActiveResearch];
 
     [Header("Stats")]
     [SerializeField] private SerializedDictionary<StatType, StatSO> Stats;
@@ -28,17 +31,17 @@ public class PlayerStatsSO : ScriptableObject, IDataPersistence
 
     public void UpgradeStat(StatType type)
     {
-        if (!IsUpgradable(type)) 
+        if (!IsUpgradable(type))
         {
             Debug.Log($"Fail to upgrade stat");
-            return; 
+            return;
         }
         Tokens -= Stats[type].GetCost();
         Stats[type].Upgrade();
     }
 
     public StatSO GetStat(StatType type)
-    {        
+    {
         Stats.TryGetValue(type, out StatSO stat);
         return stat;
     }
@@ -49,7 +52,7 @@ public class PlayerStatsSO : ScriptableObject, IDataPersistence
         Name = "Player";
         HighScore = 0;
         Tokens = 20;
-        foreach(StatSO stat in Stats.Values)
+        foreach (StatSO stat in Stats.Values)
         {
             stat.ResetLevel();
         }
@@ -66,13 +69,32 @@ public class PlayerStatsSO : ScriptableObject, IDataPersistence
     {
         Tokens += amount;
     }
+
+    public void AddToGoal(int amount)
+    {
+        researchProgressDict[ActiveResearch] += amount;
+        var stat = ResearchStats[ActiveResearch];
+        while (AccumilatedTokens >= stat.GetCost() && !stat.IsMaxLevel())
+        {
+            researchProgressDict[ActiveResearch] -= stat.GetCost();
+            stat.Upgrade();
+        }
+    }
+
     public int GetPlayerHighScore()
     {
         return HighScore;
     }
+    
+    //IDataPersistence
     public void SetPlayerHighScore(int score)
     {
         HighScore = score;
+    }    
+
+    public void SetActiveResearch(StatType statType)
+    {
+        ActiveResearch = statType;
     }
 
     public void LoadData(GameData gameData)
@@ -80,6 +102,8 @@ public class PlayerStatsSO : ScriptableObject, IDataPersistence
         Name = gameData.playerName;
         Tokens = gameData.playerTokens;
         HighScore = gameData.playerHighscore;
+        ActiveResearch = gameData.activeResearch;
+        researchProgressDict = gameData.researchProgress;
         foreach (var stat in Stats.Values)
         {
             stat.LoadData(gameData);
@@ -91,6 +115,8 @@ public class PlayerStatsSO : ScriptableObject, IDataPersistence
         gameData.playerName = Name;
         gameData.playerTokens = Tokens;
         gameData.playerHighscore = HighScore;
+        gameData.activeResearch = ActiveResearch;
+        gameData.researchProgress = researchProgressDict;
         foreach (var stat in Stats.Values)
         {
             stat.SaveData(gameData);
